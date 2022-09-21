@@ -1,0 +1,43 @@
+@use '../theme.scss' as theme;
+
+#layout {
+  width: 100%;
+  height: 100%;
+  min-height: 100vh;
+  position: relative;
+  background: theme.$bckg-primary-color;
+
+  display: grid;
+  grid-template-rows: min-content min-content 1fr min-content;
+  grid-template-columns: 1fr;
+  grid-template-areas: "header" "menu" "page" "footer";
+}
+
+#headerWrapper {
+  grid-area: header;
+  position: relative;
+  background: theme.$bckg-secondary-color;
+}
+
+#menuWrapper {
+  grid-area: menu;
+  position: relative;
+  background: theme.$primary-color;
+}
+
+#pageContent {
+  grid-area: page;
+  position: relative;
+  height: 100%;
+  background: theme.$bckg-primary-color;
+}
+
+#footerWrapper {
+  grid-area: footer;
+  position: relative;
+  background: theme.$bckg-secondary-color;
+}
+
+.hide {
+  display: none;
+}

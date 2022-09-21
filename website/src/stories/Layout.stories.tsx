@@ -1,6 +1,6 @@
 import React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
-import { Layout } from '../components/Layout/Layout';
+import { Layout, Menu, Header, Footer } from '../components';
 
 export default {
     title: 'Components/Layout',
@@ -13,3 +13,8 @@ export default {
 const Template: ComponentStory<typeof Layout> = (args) => (<Layout {...args} />);
 
 export const Default = Template.bind({})
+Default.args = {
+    menu: <Menu />,
+    header: <Header />,
+    footer: <Footer />
+}

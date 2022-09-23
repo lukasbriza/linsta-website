@@ -1,3 +1,17 @@
+$breakpoints: (
+  mobile: 320px,
+  tablet: 768px,
+  laptop: 980px,
+  desktop: 1200px,
+);
+
+$show-breakpoints: (mobile, tablet, laptop, desktop);
+
+@use "../../node_modules/sass-mq/mq" with (
+  $breakpoints: $breakpoints,
+  $show-breakpoints: $show-breakpoints
+);
+
 * {
   margin: 0;
   padding: 0;

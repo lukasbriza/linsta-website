@@ -1,7 +1,7 @@
 import React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { Menu } from '../components/Menu/Menu';
-
+import { routes } from '../config/routes'
 import main from '../assets/main.svg'
 import services from '../assets/services.svg'
 import references from '../assets/references.svg'
@@ -18,10 +18,10 @@ const Template: ComponentStory<typeof Menu> = (args) => (<Menu {...args} />);
 export const Default = Template.bind({})
 Default.args = {
     items: [
-        { src: main, url: "someurl", name: "Hlavní stránka" },
-        { src: services, url: "someurl", name: "Služby" },
-        { src: references, url: "someurl", name: "Reference" },
-        { src: mechanization, url: "someurl", name: "Mechanizace" },
-        { src: contact, url: "someurl", name: "Kontakt" }
+        { src: main, url: routes.home, name: "Hlavní stránka" },
+        { src: services, url: routes.services, name: "Služby" },
+        { src: references, url: routes.references, name: "Reference" },
+        { src: mechanization, url: routes.mechanization, name: "Mechanizace" },
+        { src: contact, url: routes.contact, name: "Kontakt" }
     ]
 }

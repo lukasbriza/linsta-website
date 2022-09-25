@@ -11,7 +11,7 @@
     "build-storybook": "build-storybook -s public"
   },
   "dependencies": {
-    "@lukasbriza/lbui-lib": "^1.0.23",
+    "@lukasbriza/lbui-lib": "^1.0.3",
     "clsx": "^1.2.1",
     "next": "12.3.0",
     "react": "18.2.0",

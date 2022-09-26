@@ -3,6 +3,8 @@ import styles from '../../styles/modules/Menu.module.scss'
 import { FC, useState, useRef, useEffect } from 'react'
 import clsx from 'clsx'
 import Image from 'next/image'
+import Link from 'next/link'
+import { useRedirect } from '../../hooks'
 import { MenuBar, MenuList, MenuItem, BasicHamburger, useElementSize } from '@lukasbriza/lbui-lib'
 import { Logo } from '../Logo/Logo'
 import { MenuProps } from './Menu.model'
@@ -14,6 +16,7 @@ export const Menu: FC<MenuProps> = (props) => {
     const [showslider, setShowSlider] = useState<boolean>(false)
     const menuBarRef = useRef<HTMLElement>(null)
     const { width } = useElementSize(menuBarRef)
+    const redirect = useRedirect()
 
     const handleHmbClick = () => setShowSlider(value => !value)
 
@@ -32,17 +35,18 @@ export const Menu: FC<MenuProps> = (props) => {
                 <MenuList className={clsx([styles.menuList, hmbShow && styles.hide])}>
                     {items.map((item, index) => {
                         return (
-                            <MenuItem
-                                className={styles.menuItem}
-                                labelClass={styles.label}
-                                key={index}
-                                label={item.name}
-                                iconPosition={"left"}
-                                icon={<Image src={item.src} width="14" height="14" alt="menu icon" />}
-                                underliner={true}
-                                underlinerOrigin="center"
-                                onClick={() => console.log("redirect:", item.url)}
-                            />
+                            <Link key={index} href={item.url} prefetch>
+                                <MenuItem
+                                    className={styles.menuItem}
+                                    labelClass={styles.label}
+                                    label={item.name}
+                                    iconPosition={"left"}
+                                    icon={<Image src={item.src} width="16" height="16" alt="menu icon" />}
+                                    underliner={true}
+                                    underlinerOrigin="center"
+                                    onClick={() => redirect({ path: item.url })}
+                                />
+                            </Link>
                         )
                     })}
                 </MenuList>
@@ -54,21 +58,21 @@ export const Menu: FC<MenuProps> = (props) => {
                 />
             </MenuBar>
             <section className={clsx([styles.slider, !hmbShow && styles.hide, showslider && styles.sliderShow])}>
-                <MenuList orientation={"onHeight"} className={styles.menuList}>
+                <MenuList orientation={"onHeight"} className={clsx([styles.menuList, styles.sliderListWrapper])}>
                     {items.map((item, index) => {
                         return (
-                            <div className={styles.menuItemWrapper} key={index}>
+                            <Link href={item.url} className={styles.menuItemWrapper} key={index} prefetch>
                                 <MenuItem
                                     className={clsx([styles.menuItem, styles.sliderItem])}
-                                    labelClass={styles.label}
+                                    labelClass={clsx([styles.label, styles.sliderLabel])}
                                     label={item.name}
                                     iconPosition={"left"}
-                                    icon={<Image src={item.src} width="14" height="14" alt="menu icon" />}
+                                    icon={<Image src={item.src} width="16" height="16" alt="menu icon" />}
                                     underliner={false}
                                     underlinerOrigin="center"
-                                    onClick={() => console.log("redirect:", item.url)}
+                                    onClick={() => redirect({ path: item.url })}
                                 />
-                            </div>
+                            </Link>
                         )
                     })}
                 </MenuList>

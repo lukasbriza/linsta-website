@@ -1,6 +1,6 @@
 import React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
-import { Menu } from '../components/Menu/Menu';
+import { Menu } from '../components';
 import { routes } from '../config/routes'
 import main from '../assets/main.svg'
 import services from '../assets/services.svg'

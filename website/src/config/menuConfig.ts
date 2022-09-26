@@ -1,7 +1,7 @@
 import main from "../assets/main.svg";
 import services from "../assets/services.svg";
 import references from "../assets/references.svg";
-import mechanization from "../assets/references.svg";
+import mechanization from "../assets/mechanization.svg";
 import contact from "../assets/contact.svg";
 import { routes } from "./routes";
 

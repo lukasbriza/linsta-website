@@ -1,5 +1,4 @@
 @use "../theme.scss" as theme;
-@use "../mixins" as q;
 
 .menuItem {
   grid-auto-rows: min-content;
@@ -29,7 +28,8 @@
   align-items: center;
   justify-content: space-between;
   background: theme.$primary-color !important;
-  height: 65px;
+  height: 80px;
+  padding: 0px 15px !important;
 }
 
 .logoWrapper {
@@ -45,18 +45,19 @@
 }
 
 .hamburger {
-  right: 10px;
+  right: 25px;
 }
 
 .slider {
+  $sliderOffset: 110px;
   z-index: 1;
   background: theme.$primary-color !important;
   overflow: hidden;
-  top: 91px;
+  top: $sliderOffset;
   left: 100%;
   position: fixed;
   width: 100vw;
-  height: calc(100% - 76.8px);
+  height: calc(100% - $sliderOffset);
   transition: left 0.75s ease-in-out;
 
   .sliderItem {

@@ -16,7 +16,7 @@ export const Header: FC<HeaderProps> = (props) => {
             <MenuList className={styles.leftSection}>
                 {leftItems.map((item, index) => {
                     return (
-                        <Link key={index} href={item.url} prefetch>
+                        <Link key={index} href={item.url}>
                             <MenuItem
                                 onClick={() => { redirect({ path: item.url }) }}
                                 className={styles.menuItem}

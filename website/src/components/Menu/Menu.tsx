@@ -1,6 +1,6 @@
 import styles from '../../styles/modules/Menu.module.scss'
 
-import { FC, useState, useRef, useEffect } from 'react'
+import React, { FC, useState, useRef, useEffect } from 'react'
 import clsx from 'clsx'
 import Image from 'next/image'
 import Link from 'next/link'
@@ -18,13 +18,30 @@ export const Menu: FC<MenuProps> = (props) => {
     const { width } = useElementSize(menuBarRef)
     const redirect = useRedirect()
 
+    const preventScroll = (e: WheelEvent) => {
+        console.log('scroll')
+        e.preventDefault();
+        e.stopPropagation();
+        return false;
+    }
+
+    useEffect(() => {
+        if (showslider) {
+            document.addEventListener('wheel', preventScroll, { passive: false })
+        }
+        document.removeEventListener('wheel', preventScroll)
+    }, [showslider])
+
     const handleHmbClick = () => setShowSlider(value => !value)
 
     useEffect(() => {
+        console.log(width)
         if (width !== null) {
             width <= 780 ? setHmbShow(true) : setHmbShow(false)
         }
-    }, [width])
+    }, [menuBarRef, width])
+
+
 
     return (
         <>

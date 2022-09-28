@@ -35,9 +35,8 @@ export const Menu: FC<MenuProps> = (props) => {
     const handleHmbClick = () => setShowSlider(value => !value)
 
     useEffect(() => {
-        console.log(width)
         if (width !== null) {
-            width <= 780 ? setHmbShow(true) : setHmbShow(false)
+            width <= 870 ? setHmbShow(true) : setHmbShow(false)
         }
     }, [menuBarRef, width])
 

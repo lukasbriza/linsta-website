@@ -8,6 +8,7 @@ export type LayoutProps = {
   headerClass?: string;
   footerClass?: string;
   pageClass?: string;
+  maxHeight?: boolean;
   header?: Element;
   footer?: Element;
 };

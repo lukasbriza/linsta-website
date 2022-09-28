@@ -1,0 +1,30 @@
+@use "../theme.scss" as theme;
+
+.iconWrapper {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: theme.$primary-color;
+}
+.textWrapper {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  text-transform: uppercase;
+  font-size: 11px;
+  font-weight: bold;
+  background: theme.$secondary-color;
+  color: theme.$text-secondary-color;
+}
+
+.badge {
+  border-radius: 50% !important;
+  background: none !important;
+  margin-left: 15px;
+  margin-right: 15px;
+}

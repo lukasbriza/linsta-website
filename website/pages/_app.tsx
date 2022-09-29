@@ -5,19 +5,21 @@ import { Layout } from '../src/components/Layout/Layout'
 import { Menu } from '../src/components/Menu/Menu'
 import { Header } from '../src/components/Header/Header'
 import { Footer } from '../src/components/Footer/Footer'
-
+import { TypographyProvider } from '@lukasbriza/lbui-lib'
 import { menuConfig } from '../src/config/menuConfig'
 import { headerConfig } from '../src/config/headerConfig'
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
-    <Layout
-      header={<Header leftItems={headerConfig.leftItems} rightItems={headerConfig.rightItems} />}
-      menu={<Menu items={menuConfig.items} />}
-      footer={<Footer />}
-    >
-      <Component {...pageProps} />
-    </Layout>
+    <TypographyProvider>
+      <Layout
+        header={<Header leftItems={headerConfig.leftItems} rightItems={headerConfig.rightItems} />}
+        menu={<Menu items={menuConfig.items} />}
+        footer={<Footer />}
+      >
+        <Component {...pageProps} />
+      </Layout>
+    </TypographyProvider>
   )
 }
 

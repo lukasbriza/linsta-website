@@ -1,0 +1,33 @@
+@use "../theme.scss" as theme;
+
+.wrapper {
+  position: relative;
+  width: 100%;
+  height: 250px;
+}
+
+.topDivider {
+  background: theme.$secondary-color;
+  z-index: +1;
+  position: absolute;
+  top: 0px;
+}
+
+.bottomDivider {
+  background: theme.$secondary-color;
+  z-index: +1;
+  position: absolute;
+  bottom: 0px;
+}
+
+.header {
+  position: relative;
+  color: theme.$text-secondary-color;
+  text-transform: uppercase;
+  z-index: +1;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  margin: 0;
+  width: min-content;
+}

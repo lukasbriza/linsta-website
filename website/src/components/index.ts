@@ -5,3 +5,4 @@ export * from "./Menu/Menu";
 export * from "./Point/Point";
 export * from "./Badge/Badge";
 export * from "./PictureHeader/PictureHeader";
+export * from "./ReferenceCard/ReferenceCard";

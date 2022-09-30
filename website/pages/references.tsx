@@ -1,9 +1,30 @@
-import type { NextPage } from 'next'
+import styles from '../src/styles/pages/References.module.scss'
+import references from '../src/assets/referencesHeader.webp'
 
+import type { NextPage } from 'next'
+import { PictureHeader, ReferenceCard } from '../src/components'
+
+import { data } from '../src/dummydata'
 
 const References: NextPage = () => {
     return (
-        <section>References</section>
+        <section className={styles.references}>
+            <PictureHeader
+                src={references}
+                alt={"References page header"}
+                text={"Reference"}
+            />
+            <section className={styles.referencesWrapper}>
+                {data.map((item, index) => {
+                    return (
+                        <ReferenceCard
+                            key={index}
+                            {...item}
+                        />
+                    )
+                })}
+            </section>
+        </section>
     )
 }
 

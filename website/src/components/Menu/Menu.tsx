@@ -51,13 +51,13 @@ export const Menu: FC<MenuProps> = (props) => {
                 <MenuList className={clsx([styles.menuList, hmbShow && styles.hide])}>
                     {items.map((item, index) => {
                         return (
-                            <Link key={index} href={item.url} prefetch>
+                            <Link key={index} href={item.url}>
                                 <MenuItem
                                     className={styles.menuItem}
                                     labelClass={styles.label}
                                     label={item.name}
                                     iconPosition={"left"}
-                                    icon={<Image src={item.src} width="16" height="16" alt="menu icon" />}
+                                    icon={<Image src={item.src} width="18" height="18" alt="menu icon" />}
                                     underliner={true}
                                     underlinerOrigin="center"
                                     onClick={() => redirect({ path: item.url })}
@@ -77,7 +77,7 @@ export const Menu: FC<MenuProps> = (props) => {
                 <MenuList orientation={"onHeight"} className={clsx([styles.menuList, styles.sliderListWrapper])}>
                     {items.map((item, index) => {
                         return (
-                            <Link href={item.url} className={styles.menuItemWrapper} key={index} prefetch>
+                            <Link href={item.url} className={styles.menuItemWrapper} key={index}>
                                 <MenuItem
                                     className={clsx([styles.menuItem, styles.sliderItem])}
                                     labelClass={clsx([styles.label, styles.sliderLabel])}

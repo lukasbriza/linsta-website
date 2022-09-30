@@ -1,22 +1,23 @@
 @use "../theme.scss" as theme;
+@use "../mixins" as q;
 
 .wrapper {
   position: relative;
   width: 100%;
-  height: 250px;
+  height: 170px;
 }
 
 .topDivider {
-  background: theme.$secondary-color;
+  background: theme.$secondary-color !important;
   z-index: +1;
-  position: absolute;
+  position: absolute !important;
   top: 0px;
 }
 
 .bottomDivider {
-  background: theme.$secondary-color;
+  background: theme.$secondary-color !important;
   z-index: +1;
-  position: absolute;
+  position: absolute !important;
   bottom: 0px;
 }
 
@@ -30,4 +31,14 @@
   transform: translate(-50%, -50%);
   margin: 0;
   width: min-content;
+
+  @include q.until(700px) {
+    font-size: 2.5rem !important;
+  }
+}
+.layer {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.335);
 }

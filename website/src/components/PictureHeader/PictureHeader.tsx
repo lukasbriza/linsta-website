@@ -4,7 +4,7 @@ import { FC } from 'react'
 import { Divider, Typography } from '@lukasbriza/lbui-lib'
 import Image from 'next/image'
 
-import { PictureHeaderProps } from './PictureHeader.module'
+import { PictureHeaderProps } from './PictureHeader.model'
 
 export const PictureHeader: FC<PictureHeaderProps> = (props) => {
     return (
@@ -18,6 +18,7 @@ export const PictureHeader: FC<PictureHeaderProps> = (props) => {
                 objectPosition="center"
                 quality={100}
             />
+            <div className={styles.layer}></div>
             <Typography type="h2" className={styles.header} size="medium">{props.text}</Typography>
             <Divider className={styles.bottomDivider} depth={4} />
         </section>

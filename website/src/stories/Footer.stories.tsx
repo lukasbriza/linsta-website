@@ -10,6 +10,3 @@ export default {
 const Template: ComponentStory<typeof Footer> = (args) => (<Footer {...args} />);
 
 export const Default = Template.bind({})
-Default.args = {
-
-}

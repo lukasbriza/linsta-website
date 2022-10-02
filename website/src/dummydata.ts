@@ -1,4 +1,4 @@
-import img from "./assets/referencePicturetest.jpg";
+import img from "@assets/referencePicturetest.jpg";
 import { StaticImageData } from "next/image";
 import { Routes } from "../src/models";
 

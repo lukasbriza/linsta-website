@@ -1,8 +1,8 @@
 import styles from '../src/styles/pages/References.module.scss'
-import references from '../src/assets/referencesHeader.webp'
+import references from '@assets/referencesHeader.webp'
 
 import type { NextPage } from 'next'
-import { PictureHeader, ReferenceCard } from '../src/components'
+import { PictureHeader, ReferenceCard } from '@components'
 
 import { data } from '../src/dummydata'
 

@@ -3,7 +3,7 @@ import styles from '../../styles/modules/Badge.module.scss'
 import { FC } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
-import { useRedirect } from '../../hooks'
+import { useRedirect } from '@hooks'
 import { RoundBadge, Paper } from '@lukasbriza/lbui-lib'
 
 import { BadgeProps } from './Badge.model'

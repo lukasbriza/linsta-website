@@ -13,5 +13,6 @@ const Template: ComponentStory<typeof Badge> = (args) => (<Badge {...args} />);
 export const Default = Template.bind({})
 Default.args = {
     icon: badgeConfig[0].icon,
-    text: badgeConfig[0].text
+    text: badgeConfig[0].text,
+    url: badgeConfig[0].url
 }

@@ -1,10 +1,7 @@
 import '../src/styles/global.scss'
 
 import type { AppProps } from 'next/app'
-import { Layout } from '../src/components/Layout/Layout'
-import { Menu } from '../src/components/Menu/Menu'
-import { Header } from '../src/components/Header/Header'
-import { Footer } from '../src/components/Footer/Footer'
+import { Footer, Header, Menu, Layout } from '@components'
 import { TypographyProvider } from '@lukasbriza/lbui-lib'
 import { menuConfig } from '../src/config/menuConfig'
 import { headerConfig } from '../src/config/headerConfig'

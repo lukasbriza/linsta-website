@@ -11,11 +11,3 @@ export type HeaderProps = {
     url: Routes;
   }[];
 };
-
-export type LeftItemProps = {
-  name: string;
-  url: Routes;
-  src: string;
-};
-
-export type RightItemProps = {};

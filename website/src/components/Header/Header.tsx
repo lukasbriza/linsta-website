@@ -4,8 +4,8 @@ import React, { FC } from 'react'
 import clsx from 'clsx'
 import Image from 'next/image'
 import Link from 'next/link'
-import { useRedirect } from '../../hooks'
-import { HeaderProps, LeftItemProps, RightItemProps } from './Header.model'
+import { useRedirect } from '@hooks'
+import { HeaderProps } from './Header.model'
 import { MenuItem, MenuList } from '@lukasbriza/lbui-lib'
 
 export const Header: FC<HeaderProps> = (props) => {

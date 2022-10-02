@@ -1,8 +1,11 @@
 import React from 'react';
-import { ComponentStory, ComponentMeta } from '@storybook/react';
-import { Layout, Menu, Header, Footer } from '../components';
+import { ComponentStory, ComponentMeta } from '@storybook/react'
+import { Layout } from '../components/Layout/Layout'
+import { Menu } from '../components/Menu/Menu'
+import { Header } from '../components/Header/Header'
+import { Footer } from '../components/Footer/Footer'
 import { headerConfig } from '../config/headerConfig'
-import { menuConfig } from '../config/menuConfig';
+import { menuConfig } from '../config/menuConfig'
 
 export default {
     title: 'Components/Layout',

@@ -1,7 +1,7 @@
 import React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { PictureHeader } from '../components'
-import service from '../assets/serviceHeader.webp'
+import service from '../../public/assets/serviceHeader.webp'
 
 export default {
     title: 'Components/PictureHeader',

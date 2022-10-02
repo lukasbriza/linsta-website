@@ -1,7 +1,7 @@
 import styles from '../../styles/modules/Footer.module.scss'
 
 import { FC } from 'react'
-import { Point } from '../Point/Point'
+import { Point } from '@components'
 import clsx from 'clsx'
 
 import { FooterPointProps } from './Footer.model'

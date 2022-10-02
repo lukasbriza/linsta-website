@@ -3,10 +3,10 @@ import styles from '../src/styles/pages/Home.module.scss'
 import type { NextPage } from 'next'
 import Image from 'next/image'
 import { badgeConfig } from '../src/config/badgeConfig'
-import { Badge } from '../src/components'
+import { Badge } from '@components'
 import { Typography } from '@lukasbriza/lbui-lib'
 
-import background from '../src/assets/home.webp'
+import background from '@assets/home.webp'
 
 
 const Home: NextPage = () => {

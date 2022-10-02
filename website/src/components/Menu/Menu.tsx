@@ -4,9 +4,9 @@ import React, { FC, useState, useRef, useEffect } from 'react'
 import clsx from 'clsx'
 import Image from 'next/image'
 import Link from 'next/link'
-import { useRedirect } from '../../hooks'
+import { useRedirect } from '@hooks'
 import { MenuBar, MenuList, MenuItem, BasicHamburger, useElementSize } from '@lukasbriza/lbui-lib'
-import { Logo } from '../Logo/Logo'
+import { Logo } from '@components'
 import { MenuProps } from './Menu.model'
 
 

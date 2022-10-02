@@ -1,7 +1,7 @@
 import styles from '../../styles/modules/Layout.module.scss'
 
-import { FC, useRef, useEffect, useState } from 'react'
-import { useRouter } from 'next/router'
+import { FC } from 'react'
+
 import clsx from 'clsx'
 
 import { LayoutProps } from './Layout.model'

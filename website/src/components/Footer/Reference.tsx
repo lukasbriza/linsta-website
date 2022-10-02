@@ -1,9 +1,8 @@
 import styles from '../../styles/modules/Footer.module.scss'
 
 import { FC, useState } from 'react'
-import { FooterTypography } from './Footer'
-import { Point } from '../Point/Point'
-import { useRedirect } from '../../hooks'
+import { Point, FooterTypography } from '@components'
+import { useRedirect } from '@hooks'
 import { Underlining } from '@lukasbriza/lbui-lib'
 import Link from 'next/link'
 

@@ -2,11 +2,11 @@ import React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { Menu } from '../components';
 import { routes } from '../config/routes'
-import main from '../assets/main.svg'
-import services from '../assets/services.svg'
-import references from '../assets/references.svg'
-import mechanization from '../assets/mechanization.svg'
-import contact from '../assets/contact.svg'
+import main from '../../public/assets/main.svg'
+import services from '../../public/assets/services.svg'
+import references from '../../public/assets/references.svg'
+import mechanization from '../../public/assets/mechanization.svg'
+import contact from '../../public/assets/contact.svg'
 
 export default {
     title: 'Components/Menu',

@@ -1,5 +1,5 @@
-import email from "../assets/email.svg";
-import phone from "../assets/phone.svg";
+import email from "@assets/email.svg";
+import phone from "@assets/phone.svg";
 import { routes } from "./routes";
 
 export const headerConfig = {

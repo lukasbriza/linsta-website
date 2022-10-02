@@ -1,3 +1,5 @@
+const path = require("path");
+
 module.exports = {
   stories: ["../src/**/*.stories.mdx", "../src/**/*.stories.@(js|jsx|ts|tsx)"],
   addons: [
@@ -6,6 +8,16 @@ module.exports = {
     "@storybook/addon-interactions",
     "@storybook/preset-scss",
   ],
+  webpackFinal: async (config, { configType }) => {
+    config.resolve.alias = {
+      ...config.resolve.alias,
+      "@components": path.resolve(__dirname, "../src/components/index.ts"),
+      "@assets": path.resolve(__dirname, "../public/assets"),
+      "@module": path.resolve(__dirname, "../src/styles/modules"),
+      "@hooks": path.resolve(__dirname, "../src/hooks/index.ts"),
+    };
+    return config;
+  },
   framework: "@storybook/react",
   core: {
     builder: "@storybook/builder-webpack5",

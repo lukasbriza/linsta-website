@@ -1,7 +1,7 @@
 import React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { ReferenceCard } from '../components'
-import img from '../assets/referencePicturetest.jpg'
+import img from '../../public/assets/referencePicturetest.jpg'
 
 
 export default {
@@ -16,5 +16,6 @@ Default.args = {
     src: img,
     header: "Název stavby",
     place: "Nová Ves",
-    realization: "2022"
+    realization: "2022",
+    url: "/"
 }

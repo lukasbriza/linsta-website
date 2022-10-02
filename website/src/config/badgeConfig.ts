@@ -1,7 +1,7 @@
-import demolition from "../assets/demolition.svg";
-import transport from "../assets/transport.svg";
-import excavation from "../assets/excavation.svg";
-import steamroller from "../assets/steamroller.svg";
+import demolition from "@assets/demolition.svg";
+import transport from "@assets/transport.svg";
+import excavation from "@assets/excavation.svg";
+import steamroller from "@assets/steamroller.svg";
 import { routes } from "./routes";
 
 export const badgeConfig = [

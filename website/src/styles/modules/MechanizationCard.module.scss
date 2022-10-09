@@ -1,0 +1,119 @@
+@use "../theme.scss" as theme;
+@use "../mixins" as q;
+
+$medium-query: 730px;
+$small-query: 600px;
+
+.card {
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+  display: grid;
+  grid-template-columns: 250px 1fr 1fr 150px;
+  width: calc(100% - 30px) !important;
+  height: 110px !important;
+  padding: 5px 15px 5px 15px;
+  background: theme.$primary-color;
+
+  @include q.until($medium-query) {
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 100px 100px;
+    grid-template-areas: "q1 q2" "q3 q4";
+    height: unset !important;
+  }
+
+  @include q.until($small-query) {
+    width: 280px !important;
+    grid-template-columns: 1fr;
+    grid-template-rows: 100px 100px 100px 100px;
+    grid-template-areas: "q1" "q2" "q3" "q4";
+  }
+}
+.sq {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  height: 100%;
+
+  div {
+    text-align: center;
+    position: relative;
+    display: block;
+    margin: 0px;
+    display: flex;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+.underliner {
+  position: absolute;
+  width: calc(100% - 50px);
+  left: 50%;
+  transform: translateX(-50%);
+  height: 1px;
+  border-radius: 100%;
+  background: theme.$bckg-secondary-color;
+  opacity: 0.3;
+}
+.underliner1 {
+  top: 32px;
+}
+.underliner2 {
+  display: none;
+
+  @include q.until($medium-query) {
+    display: initial;
+    top: 132px;
+  }
+}
+.underliner3 {
+  display: none;
+
+  @include q.until($small-query) {
+    display: initial;
+    top: 232px;
+  }
+}
+.underliner4 {
+  display: none;
+
+  @include q.until($small-query) {
+    display: initial;
+    top: 332px;
+  }
+}
+
+.header {
+  margin: 0px;
+  font-size: 17px;
+  line-height: 17px;
+  position: relative;
+  width: 100%;
+  padding-top: 8px;
+  white-space: nowrap;
+  text-align: center;
+}
+
+.sq1 {
+  .header {
+    font-size: 15px;
+
+    @include q.until($medium-query) {
+      font-size: 17px;
+    }
+  }
+  & > :last-child {
+    align-self: center;
+    justify-self: center;
+    height: 100% !important;
+  }
+}
+.sq2 {
+}
+.sq3 {
+}
+.sq4 {
+}

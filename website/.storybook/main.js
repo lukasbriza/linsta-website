@@ -13,7 +13,6 @@ module.exports = {
       ...config.resolve.alias,
       "@components": path.resolve(__dirname, "../src/components/index.ts"),
       "@assets": path.resolve(__dirname, "../public/assets"),
-      "@module": path.resolve(__dirname, "../src/styles/modules"),
       "@hooks": path.resolve(__dirname, "../src/hooks/index.ts"),
     };
     return config;

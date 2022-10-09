@@ -18,7 +18,6 @@
     "paths": {
       "@components": ["./src/components/index.ts"],
       "@assets/*": ["./public/assets/*"],
-      "@modules": ["./src/styles/modules/*"],
       "@hooks": ["./src/hooks/index.ts"]
     }
   },

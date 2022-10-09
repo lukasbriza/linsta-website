@@ -7,3 +7,5 @@ export * from "./Badge/Badge";
 export * from "./PictureHeader/PictureHeader";
 export * from "./ReferenceCard/ReferenceCard";
 export * from "./Logo/Logo";
+export * from "./ServiceCard/ServiceCard";
+export * from "./MechanizationCard/MechanizationCard";

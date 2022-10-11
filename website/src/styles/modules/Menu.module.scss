@@ -17,6 +17,15 @@
   margin-right: 20px;
 }
 
+.underliner {
+  background: rgb(90, 90, 90) !important;
+  margin-left: 25px !important;
+}
+
+.underlinerHover {
+  width: calc(100% - 25px) !important;
+}
+
 .label {
   white-space: nowrap;
   font-size: 15px;
@@ -84,6 +93,8 @@
 
 .menuList {
   position: relative;
+  height: 100%;
+  align-items: center !important;
 }
 .sliderListWrapper {
   top: 40%;

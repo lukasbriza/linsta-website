@@ -1,5 +1,6 @@
 import styles from '../../styles/modules/Footer.module.scss'
 
+import { useTranslation } from 'next-i18next'
 import { FC } from 'react'
 import clsx from 'clsx'
 import { Reference } from './Reference'
@@ -27,34 +28,35 @@ const FooterHeader: FC<FooterheaderProps> = (props) => {
     )
 }
 
-export const Footer: FC<FooterProps> = (props) => {
+export const Footer: FC<FooterProps> = () => {
+    const { t } = useTranslation()
     return (
         <section className={styles.footer}>
             <Divider className={styles.divider} fullWidth={true} depth={4} />
             <section className={clsx([styles.column, styles.column1])}>
-                <FooterHeader variant={['bold']}>LINSTA stavební s.r.o.</FooterHeader>
-                <FooterTypography noWrap={false}>Demolice, výkopové práce, autodoprava a pronájem stavebních strojů.</FooterTypography>
+                <FooterHeader variant={['bold']}>{t('footer.col1.header')}</FooterHeader>
+                <FooterTypography noWrap={false}>{t('footer.col1.subtitle')}</FooterTypography>
             </section>
             <section className={clsx([styles.column, styles.column2])}>
-                <FooterHeader variant={['bold', 'underline']}>Odkazy</FooterHeader>
-                <Reference text={"Nějaký odkaz"} url={"/mechanization"} />
-                <Reference text={"Nějaký odkaz"} url={"/mechanization"} />
-                <Reference text={"Nějaký odkaz"} url={"/mechanization"} />
-                <Reference text={"Nějaký odkaz"} url={"/mechanization"} />
+                <FooterHeader variant={['bold', 'underline']}>{t('footer.col2.header')}</FooterHeader>
+                <Reference text={t('footer.col2.ref1')} url={"/mechanization"} />
+                <Reference text={t('footer.col2.ref2')} url={"/mechanization"} />
+                <Reference text={t('footer.col2.ref3')} url={"/mechanization"} />
+                <Reference text={t('footer.col2.ref4')} url={"/mechanization"} />
             </section>
             <section className={clsx([styles.column, styles.column3])}>
-                <FooterHeader variant={['bold', 'underline']}>Kontakt</FooterHeader>
+                <FooterHeader variant={['bold', 'underline']}>{t('footer.col3.header')}</FooterHeader>
                 <FooterPoint>
-                    <FooterTypography>Tel.: +420 774 876 504</FooterTypography>
+                    <FooterTypography>{t('footer.col3.tel')}</FooterTypography>
                 </FooterPoint>
                 <FooterPoint>
-                    <FooterTypography>IČO.: 23468490</FooterTypography>
+                    <FooterTypography>{t('footer.col3.ico')}</FooterTypography>
                 </FooterPoint>
                 <FooterPoint className={styles.officePoint}>
                     <FooterTypography>
-                        Sídlo:<br />
-                        Višňová 1367, Hořovice 268 01,<br />
-                        Česká republika
+                        {t('footer.col3.place')}<br />
+                        {t('footer.col3.line1')}<br />
+                        {t('footer.col3.line2')}
                     </FooterTypography>
                 </FooterPoint>
             </section>

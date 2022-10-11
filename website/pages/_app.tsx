@@ -1,6 +1,5 @@
 import '../src/styles/global.scss'
 
-import nextI18NextConfig from '../next-i18next.config.js'
 import { appWithTranslation } from 'next-i18next'
 import type { AppProps } from 'next/app'
 import { Footer, Header, Menu, Layout } from '@components'
@@ -22,4 +21,4 @@ function MyApp({ Component, pageProps }: AppProps) {
   )
 }
 
-export default appWithTranslation(MyApp, nextI18NextConfig)
+export default appWithTranslation(MyApp)

@@ -7,10 +7,10 @@ import { routes } from "./routes";
 
 export const menuConfig = {
   items: [
-    { src: main, url: routes.home, name: "Hlavní stránka" },
-    { src: services, url: routes.services, name: "Služby" },
-    { src: references, url: routes.references, name: "Reference" },
-    { src: mechanization, url: routes.mechanization, name: "Mechanizace" },
-    { src: contact, url: routes.contact, name: "Kontakt" },
+    { src: main, url: routes.home, name: "item1" },
+    { src: services, url: routes.services, name: "item2" },
+    { src: references, url: routes.references, name: "item3" },
+    { src: mechanization, url: routes.mechanization, name: "item4" },
+    { src: contact, url: routes.contact, name: "item5" },
   ],
 };

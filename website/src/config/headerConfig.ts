@@ -4,8 +4,8 @@ import { routes } from "./routes";
 
 export const headerConfig = {
   leftItems: [
-    { src: phone, name: "+420 774 876 504", url: routes.contact },
-    { src: email, name: "linstastavebniny@email.cz", url: routes.contact },
+    { src: phone, name: "phone", url: routes.contact },
+    { src: email, name: "email", url: routes.contact },
   ],
-  rightItems: [{ name: "Přihlásit", url: routes.administration }],
+  rightItems: [{ name: "login", url: routes.administration }],
 };

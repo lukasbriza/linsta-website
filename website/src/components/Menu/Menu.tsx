@@ -1,5 +1,6 @@
 import styles from '../../styles/modules/Menu.module.scss'
 
+import { useTranslation } from 'next-i18next'
 import React, { FC, useState, useRef, useEffect } from 'react'
 import clsx from 'clsx'
 import Image from 'next/image'
@@ -12,6 +13,7 @@ import { Routes } from '../../models'
 
 
 export const Menu: FC<MenuProps> = (props) => {
+    const { t } = useTranslation()
     const { items } = props
     const [hmbShow, setHmbShow] = useState<boolean>(false)
     const [showslider, setShowSlider] = useState<boolean>(false)
@@ -63,16 +65,16 @@ export const Menu: FC<MenuProps> = (props) => {
                 />
             </MenuBar>
             <section className={clsx([styles.slider, !hmbShow && styles.hide, showslider && styles.sliderShow])}>
-                <MenuList orientation={"onHeight"} className={clsx([styles.menuList, styles.sliderListWrapper])}>
+                <MenuList orientation={"onHeight"} className={clsx([styles.sliderListWrapper])}>
                     {items.map((item, index) => {
                         return (
                             <Link href={item.url} className={styles.menuItemWrapper} key={index}>
                                 <MenuItem
                                     className={clsx([styles.menuItem, styles.sliderItem])}
                                     labelClass={clsx([styles.label, styles.sliderLabel])}
-                                    label={item.name}
+                                    label={t(`menu.${item.name}`)}
                                     iconPosition={"left"}
-                                    icon={<Image src={item.src} width="16" height="16" alt="menu icon" />}
+                                    icon={<Image src={item.src} width="22" height="22" alt="menu icon" />}
                                     underliner={false}
                                     underlinerOrigin="center"
                                     onClick={() => redirect({ path: item.url })}
@@ -89,6 +91,7 @@ export const Menu: FC<MenuProps> = (props) => {
 
 const MapMenuItem: FC<{ item: { name: string, src: string, url: Routes } }> = ({ item }) => {
     const [hoverClass, setHoverClass] = useState<boolean>(false)
+    const { t } = useTranslation()
     const redirect = useRedirect()
 
     return (
@@ -102,7 +105,7 @@ const MapMenuItem: FC<{ item: { name: string, src: string, url: Routes } }> = ({
                 onMouseLeave={() => { setHoverClass(false) }}
                 labelClass={styles.label}
                 underliner={true}
-                label={item.name}
+                label={t(`menu.${item.name}`)}
                 iconPosition={"left"}
                 icon={<Image src={item.src} width="18" height="18" alt="menu icon" />}
                 underlinerOrigin="left"

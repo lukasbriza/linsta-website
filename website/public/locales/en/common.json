@@ -1,10 +1,86 @@
 {
-  "menu": {},
-  "header": {},
-  "footer": {},
+  "head": {
+    "home": {
+      "title": "Hlavní stránka",
+      "description": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aliquam erat volutpat. Cras elementum. Maecenas ipsum velit, consectetuer eu lobortis ut, dictum at dui."
+    },
+    "services": {
+      "title": "Služby",
+      "description": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aliquam erat volutpat. Cras elementum. Maecenas ipsum velit, consectetuer eu lobortis ut, dictum at dui."
+    },
+    "references": {
+      "title": "Reference",
+      "description": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aliquam erat volutpat. Cras elementum. Maecenas ipsum velit, consectetuer eu lobortis ut, dictum at dui."
+    },
+    "mechanization": {
+      "title": "Mechanizace",
+      "description": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aliquam erat volutpat. Cras elementum. Maecenas ipsum velit, consectetuer eu lobortis ut, dictum at dui."
+    },
+    "contact": {
+      "title": "Kontakt",
+      "description": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aliquam erat volutpat. Cras elementum. Maecenas ipsum velit, consectetuer eu lobortis ut, dictum at dui."
+    }
+  },
+  "menu": {
+    "item1": "Hlavní stránka",
+    "item2": "Služby",
+    "item3": "Reference",
+    "item4": "Mechanizace",
+    "item5": "Kontakt"
+  },
+  "header": {
+    "phone": "+420 774 876 504",
+    "email": "linstastavebniny@email.cz",
+    "login": "Přihlásit"
+  },
+  "footer": {
+    "col1": {
+      "header": "LINSTA stavební s.r.o.",
+      "subtitle": "Demolice, výkopové práce, autodoprava a pronájem stavebních strojů."
+    },
+    "col2": {
+      "header": "Odkazy",
+      "ref1": "Nějaký odkaz",
+      "ref2": "Nějaký odkaz",
+      "ref3": "Nějaký odkaz",
+      "ref4": "Nějaký odkaz"
+    },
+    "col3": {
+      "header": "Kontakt",
+      "tel": "Tel.: +420 774 876 504",
+      "ico": "IČO.: 23468490",
+      "place": "Sídlo:",
+      "line1": "Višňová 1367, Hořovice 268 01,",
+      "line2": "Česká republika"
+    }
+  },
   "pages": {
     "home": {
-      "header": "testen"
+      "header": "LINSTA stavební s.r.o.",
+      "subtitle": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aliquam erat volutpat. Cras elementum. Maecenas ipsum velit, consectetuer eu lobortis ut, dictum at dui.",
+      "badge1": "Výstavba komunikací",
+      "badge2": "Výstavba vodovodů a kanalizací",
+      "badge3": "Zemní práce a demolice",
+      "badge4": "Nákladní autodoprava"
+    },
+    "mechanization": {
+      "header1": " Nákladní autodoprava",
+      "header2": "Stavební stroje",
+      "header3": "Drobná mechanizace"
+    },
+    "references": {
+      "pictureHeader": "Reference",
+      "headerAlt": "Nadpis stránky reference"
+    },
+    "services": {
+      "pictureHeader": "Služby",
+      "headerAlt": "Nadpis stránky služby",
+      "subtitle": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aliquam erat volutpat. Cras elementum. Maecenas ipsum velit, consectetuer eu lobortis ut, dictum at dui. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aliquam erat volutpat. Cras elementum. Maecenas ipsum velit, consectetuer eu lobortis ut, dictum at dui.",
+      "service1": "ZEMNÍ PRÁCE a DEMOLICE",
+      "service2": "VÝSTAVBA KOMUNIKACÍ",
+      "service3": "VÝSTAVBA VODOVODNÍCH KANALIZACÍ",
+      "service4": "NÁKLADNÍ AUTODOPRAVA",
+      "service5": "PRONÁJEM STAVEBÍCH STROJŮ"
     }
   }
 }

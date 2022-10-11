@@ -25,9 +25,14 @@ $linePadding: 8px;
       "c3"
       "copy";
   }
+
+  @include q.from(1500px) {
+    grid-template-columns: calc(1500px / 3) calc(1500px / 3) calc(1500px / 3);
+  }
 }
 .divider {
   grid-area: divider;
+  width: 100vw !important;
   background: theme.$secondary-color !important;
 }
 .column {

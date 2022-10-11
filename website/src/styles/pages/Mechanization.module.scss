@@ -1,6 +1,24 @@
+@use "../theme.scss" as theme;
+
 .mechanization {
   width: 100%;
   height: 100%;
   padding-top: 15px;
   padding-bottom: 15px;
+}
+
+.header {
+  text-transform: uppercase;
+}
+
+.underliner {
+  background: theme.$secondary-color !important;
+}
+
+.typography {
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+  padding-top: 20px;
+  padding-bottom: 20px;
 }

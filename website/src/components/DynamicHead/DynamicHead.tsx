@@ -1,16 +1,9 @@
 import { siteMetaData, MetaData } from '../../config/siteMetadata'
-import { Element } from '@lukasbriza/lbui-lib'
+import { HeadProps } from './DynamicHead.model'
 import Head from "next/head"
 import { FC } from 'react'
 
-interface HeadProps {
-    children?: Element,
-    title: string,
-    description: string,
-    canonicalUrl: string,
-    ogType: "article" | "website",
-    ogImageUrl?: string
-}
+
 
 export const DynamicHead: FC<HeadProps> = (props) => {
     return (

@@ -1,21 +1,40 @@
 @use "../theme.scss" as theme;
+@use "../mixins" as q;
 
 #layout {
   width: 100%;
+  max-width: 1500px;
   height: 100%;
   min-height: 100vh;
   position: relative;
+  left: 50%;
+  transform: translateX(-50%);
   background: theme.$bckg-primary-color;
 
   display: grid;
   grid-template-rows: min-content min-content 1fr min-content;
   grid-template-columns: 1fr;
   grid-template-areas: "header" "menu" "page" "footer";
+
+  @include q.from(1500px) {
+    grid-template-columns: 1500px;
+  }
 }
 
 #headerWrapper {
   grid-area: header;
   position: relative;
+  background: theme.$bckg-secondary-color;
+}
+
+#headerWrapper:before {
+  width: 100vw;
+  height: 100%;
+  z-index: -1;
+  left: 50%;
+  transform: translateX(-50%);
+  content: "";
+  position: absolute;
   background: theme.$bckg-secondary-color;
 }
 
@@ -32,9 +51,31 @@
   background: theme.$bckg-primary-color;
 }
 
+#pageContent:before {
+  width: 100vw;
+  height: 100%;
+  z-index: -1;
+  left: 50%;
+  transform: translateX(-50%);
+  content: "";
+  position: absolute;
+  background: theme.$bckg-primary-color;
+}
+
 #footerWrapper {
   grid-area: footer;
   position: relative;
+  background: theme.$bckg-secondary-color;
+}
+
+#footerWrapper:before {
+  width: 100vw;
+  height: 100%;
+  z-index: -1;
+  left: 50%;
+  transform: translateX(-50%);
+  content: "";
+  position: absolute;
   background: theme.$bckg-secondary-color;
 }
 

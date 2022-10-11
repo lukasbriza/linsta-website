@@ -29,3 +29,9 @@
     @content;
   }
 }
+
+@mixin from($width) {
+  @include mq.mq($from: $width) {
+    @content;
+  }
+}

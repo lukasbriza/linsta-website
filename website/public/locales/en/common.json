@@ -1,0 +1,10 @@
+{
+  "menu": {},
+  "header": {},
+  "footer": {},
+  "pages": {
+    "home": {
+      "header": "testen"
+    }
+  }
+}

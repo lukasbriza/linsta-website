@@ -1,0 +1,15 @@
+{
+  "menu": {},
+  "header": {},
+  "footer": {},
+  "pages": {
+    "home": {
+      "header": "LINSTA stavební s.r.o.",
+      "subtitle": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aliquam erat volutpat. Cras elementum. Maecenas ipsum velit, consectetuer eu lobortis ut, dictum at dui.",
+      "badge1": "Výstavba komunikací",
+      "badge2": "Výstavba vodovodů a kanalizací",
+      "badge3": "Zemní práce a demolice",
+      "badge4": "Nákladní autodoprava"
+    }
+  }
+}

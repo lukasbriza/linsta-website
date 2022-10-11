@@ -1,16 +1,16 @@
 import demolition from "@assets/demolition.svg";
 import transport from "@assets/transport.svg";
-import excavation from "@assets/excavation.svg";
+import canalization from "@assets/canalization.svg";
 import steamroller from "@assets/steamroller.svg";
 import { routes } from "./routes";
 
 export const badgeConfig = [
-  { icon: steamroller, text: "Výstavba komunikací", url: routes.services },
+  { icon: steamroller, text: "badge1", url: routes.services },
   {
-    icon: excavation,
-    text: "Výstavba vodovodů a kanalizací",
+    icon: canalization,
+    text: "badge2",
     url: routes.services,
   },
-  { icon: demolition, text: "Zemní práce a demolice", url: routes.services },
-  { icon: transport, text: "Nákladní autodoprava", url: routes.services },
+  { icon: demolition, text: "badge3", url: routes.services },
+  { icon: transport, text: "badge4", url: routes.services },
 ];

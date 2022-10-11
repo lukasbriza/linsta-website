@@ -1,5 +1,7 @@
 import styles from '../src/styles/pages/Home.module.scss'
 
+import { useTranslation } from 'next-i18next'
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import type { NextPage } from 'next'
 import Image from 'next/image'
 import { badgeConfig } from '../src/config/badgeConfig'
@@ -8,8 +10,16 @@ import { Typography } from '@lukasbriza/lbui-lib'
 
 import background from '@assets/home.webp'
 
+export async function getStaticProps({ locale }: any) {
+  return {
+    props: {
+      ...(await serverSideTranslations(locale, ['common'])),
+    },
+  };
+}
 
 const Home: NextPage = () => {
+  const { t } = useTranslation()
   return (
     <section className={styles.home}>
       <Image
@@ -27,20 +37,19 @@ const Home: NextPage = () => {
               variant={["bold"]}
               size="small"
             >
-              LINSTA stavební s.r.o.
+              {t('pages.home.header')}
             </Typography>
             <Typography
               type="subtitle1"
               size="medium"
             >
-              Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aliquam erat volutpat.
-              Cras elementum. Maecenas ipsum velit, consectetuer eu lobortis ut, dictum at dui.
+              {t('pages.home.subtitle')}
             </Typography>
           </section>
           <nav className={styles.badgeSection}>
             {badgeConfig.map((item, index) => {
               return (
-                <Badge icon={item.icon} text={item.text} url={item.url} key={index} />
+                <Badge icon={item.icon} text={t(`pages.home.${item.text}`)} url={item.url} key={index} />
               )
             })}
           </nav>

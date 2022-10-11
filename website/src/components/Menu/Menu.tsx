@@ -8,6 +8,7 @@ import { useRedirect } from '@hooks'
 import { MenuBar, MenuList, MenuItem, BasicHamburger, useElementSize } from '@lukasbriza/lbui-lib'
 import { Logo } from '@components'
 import { MenuProps } from './Menu.model'
+import { Routes } from '../../models'
 
 
 export const Menu: FC<MenuProps> = (props) => {
@@ -41,7 +42,6 @@ export const Menu: FC<MenuProps> = (props) => {
     }, [menuBarRef, width])
 
 
-
     return (
         <>
             <MenuBar className={styles.menu} ref={menuBarRef}>
@@ -51,18 +51,7 @@ export const Menu: FC<MenuProps> = (props) => {
                 <MenuList className={clsx([styles.menuList, hmbShow && styles.hide])}>
                     {items.map((item, index) => {
                         return (
-                            <Link key={index} href={item.url}>
-                                <MenuItem
-                                    className={styles.menuItem}
-                                    labelClass={styles.label}
-                                    label={item.name}
-                                    iconPosition={"left"}
-                                    icon={<Image src={item.src} width="18" height="18" alt="menu icon" />}
-                                    underliner={true}
-                                    underlinerOrigin="center"
-                                    onClick={() => redirect({ path: item.url })}
-                                />
-                            </Link>
+                            <MapMenuItem key={index} item={item} />
                         )
                     })}
                 </MenuList>
@@ -95,5 +84,30 @@ export const Menu: FC<MenuProps> = (props) => {
             </section>
         </>
 
+    )
+}
+
+const MapMenuItem: FC<{ item: { name: string, src: string, url: Routes } }> = ({ item }) => {
+    const [hoverClass, setHoverClass] = useState<boolean>(false)
+    const redirect = useRedirect()
+
+    return (
+        <Link href={item.url}>
+            <MenuItem
+                className={styles.menuItem}
+                underlinerClass={clsx([styles.underliner, hoverClass && styles.underlinerHover])}
+                onMouseEnter={() => { setHoverClass(true) }}
+                onTouchStart={() => { setHoverClass(true) }}
+                onTouchEnd={() => { setHoverClass(false) }}
+                onMouseLeave={() => { setHoverClass(false) }}
+                labelClass={styles.label}
+                underliner={true}
+                label={item.name}
+                iconPosition={"left"}
+                icon={<Image src={item.src} width="18" height="18" alt="menu icon" />}
+                underlinerOrigin="left"
+                onClick={() => redirect({ path: item.url })}
+            />
+        </Link>
     )
 }

@@ -1,0 +1,43 @@
+@use "../theme.scss" as theme;
+
+.card {
+  padding: 15px 10px 30px 10px !important;
+  background: theme.$primary-color;
+}
+
+.cardBody {
+  position: relative;
+  height: 200px;
+  width: 280px;
+}
+
+.cardDescription {
+  padding: 15px 20px 20px 20px;
+  padding-bottom: 0px;
+}
+
+.headerWrapper {
+  padding-bottom: 5px;
+}
+
+.header {
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.underliner {
+  background: theme.$secondary-color !important;
+  height: 2px !important;
+}
+
+.descriptionWrapper {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  padding-top: 5px;
+}
+
+.descriptionPoint {
+  padding-right: 8px;
+  color: theme.$secondary-color;
+}

@@ -1,0 +1,45 @@
+@use "../theme.scss" as theme;
+
+.header {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  white-space: nowrap;
+  align-items: center;
+  justify-content: space-between;
+  height: 30px;
+  background: theme.$bckg-secondary-color;
+}
+.leftSection {
+  margin-left: 10px;
+  color: theme.$text-secondary-color;
+
+  .menuItem {
+    margin-right: 30px !important;
+  }
+}
+.rightSection {
+  color: theme.$text-secondary-color;
+
+  .menuItem {
+    margin-right: 10px !important;
+  }
+}
+
+.menuItem {
+  height: 25px !important;
+  :first-child {
+    width: 10px;
+  }
+}
+.label {
+  font-size: 0.75em;
+}
+.login {
+  margin-right: 10px;
+  cursor: pointer;
+}
+
+.login:hover {
+  text-decoration: underline;
+}

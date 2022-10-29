@@ -1,0 +1,127 @@
+@use "../theme.scss" as theme;
+
+.menuItem {
+  grid-auto-rows: min-content;
+  align-items: normal !important;
+  margin-right: 10px !important;
+  :first-child {
+    width: 18px;
+    margin-bottom: 0px;
+    margin-top: 0px;
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+}
+.menuItem:last-child {
+  margin-right: 20px;
+}
+
+.underliner {
+  background: rgb(90, 90, 90) !important;
+  margin-left: 25px !important;
+}
+
+.underlinerHover {
+  width: calc(100% - 25px) !important;
+}
+
+.label {
+  white-space: nowrap;
+  font-size: 15px;
+  font-weight: 600;
+  line-height: 20px;
+}
+
+.menu {
+  z-index: 20;
+  align-items: center;
+  justify-content: space-between;
+  background: theme.$primary-color !important;
+  height: 80px;
+  padding: 0px 15px !important;
+}
+
+.logoWrapper {
+  width: 180px;
+}
+
+.logo {
+  cursor: pointer;
+}
+
+.hide {
+  display: none !important;
+}
+
+.hamburger {
+  right: 25px;
+}
+
+.slider {
+  $sliderOffset: 110px;
+  z-index: 18;
+  background: theme.$primary-color !important;
+  overflow: hidden;
+  top: $sliderOffset;
+  left: 100%;
+  position: fixed;
+  width: 100%;
+  height: calc(100% - $sliderOffset);
+  transition: left 0.75s ease-in-out;
+
+  .sliderItem {
+    width: 210px;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    margin: 0px !important;
+    padding: 12px 0px 12px 0px;
+  }
+
+  .sliderItem::after {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(128, 128, 128, 0.208);
+    opacity: 0;
+    content: "";
+    width: 100vw;
+    height: 100%;
+    transition-property: opacity;
+    transition-duration: 0.3s;
+    transition-timing-function: ease-out;
+  }
+  .sliderItem:hover::after {
+    opacity: 1;
+  }
+
+  .sliderLabel {
+    font-size: 20px;
+    line-height: 30px;
+    padding-left: 5px;
+  }
+
+  .menuItemWrapper {
+    width: 100%;
+    transition: background 0.5s ease-out;
+  }
+  .menuItemWrapper:hover {
+    cursor: pointer;
+    background: gray;
+  }
+}
+
+.menuList {
+  position: relative;
+  height: 100%;
+  align-items: center !important;
+}
+
+.sliderListWrapper {
+  padding-top: 50px;
+  height: 100%;
+}
+.sliderShow {
+  left: 0%;
+}

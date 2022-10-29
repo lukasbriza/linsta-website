@@ -1,0 +1,117 @@
+@use "../theme.scss" as theme;
+@use "../mixins" as q;
+//MAIN
+$colWidth: calc(100vw / 3);
+$linePadding: 8px;
+
+.footer {
+  color: theme.$text-secondary-color;
+  display: grid;
+  grid-template-columns: $colWidth $colWidth $colWidth;
+  grid-template-rows: min-content min-content min-content;
+  grid-template-areas:
+    "divider divider divider"
+    "c1 c2 c3"
+    "copy copy copy";
+  justify-items: center;
+
+  @include q.tablet {
+    grid-template-columns: 1fr;
+    grid-template-rows: min-content min-content min-content min-content min-content;
+    grid-template-areas:
+      "divider"
+      "c1"
+      "c2"
+      "c3"
+      "copy";
+  }
+
+  @include q.from(1500px) {
+    grid-template-columns: calc(1500px / 3) calc(1500px / 3) calc(1500px / 3);
+  }
+}
+.divider {
+  grid-area: divider;
+  width: 100vw !important;
+  background: theme.$secondary-color !important;
+}
+.column {
+  padding: 30px 35px 0px 35px;
+  @include q.tablet {
+    padding: 25px 0px 0px 0px;
+    width: 100px;
+  }
+}
+.column1 {
+  grid-area: c1;
+  @include q.tablet {
+    width: 100%;
+    text-align: center;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 30px;
+  }
+}
+.column2 {
+  grid-area: c2;
+}
+.column3 {
+  grid-area: c3;
+}
+.copyright {
+  justify-self: center;
+  grid-area: copy;
+  padding: 15px 0px;
+}
+
+//SUBCOMPONENTS
+.header {
+  padding-bottom: 15px;
+  font-size: 17px !important;
+
+  @include q.tablet {
+    text-align: center;
+  }
+}
+
+.reference {
+  position: relative;
+  display: grid;
+  grid-template-columns: min-content min-content;
+  grid-template-rows: min-content min-content;
+  grid-template-areas: "point label" ". underline";
+  align-items: center;
+  cursor: pointer;
+  padding-bottom: $linePadding;
+}
+
+.point {
+  grid-area: point;
+}
+
+.referenceText {
+  grid-area: label;
+}
+
+.underline {
+  grid-area: underline;
+  background: theme.$primary-color !important;
+}
+
+.pointWrapper {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding-bottom: $linePadding;
+}
+
+.officePoint {
+  :first-child {
+    margin-top: 4px;
+    align-self: flex-start;
+  }
+}
+
+.noWrap {
+  white-space: nowrap;
+}

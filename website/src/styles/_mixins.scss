@@ -1,0 +1,37 @@
+@use "mq";
+
+@mixin mobile {
+  @include mq.mq($until: mobile) {
+    @content;
+  }
+}
+
+@mixin tablet {
+  @include mq.mq($until: tablet) {
+    @content;
+  }
+}
+
+@mixin laptop {
+  @include mq.mq($until: laptop) {
+    @content;
+  }
+}
+
+@mixin desktop {
+  @include mq.mq($until: desktop) {
+    @content;
+  }
+}
+
+@mixin until($width) {
+  @include mq.mq($until: $width) {
+    @content;
+  }
+}
+
+@mixin from($width) {
+  @include mq.mq($from: $width) {
+    @content;
+  }
+}

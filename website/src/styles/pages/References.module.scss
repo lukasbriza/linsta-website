@@ -1,0 +1,16 @@
+@use "../theme.scss" as theme;
+@use "../mixins" as q;
+
+.references {
+  position: relative;
+  height: 100%;
+  width: 100%;
+  background: theme.$bckg-primary-color;
+}
+.referencesWrapper {
+  padding: 15px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, 300px);
+  grid-gap: 15px;
+  justify-content: center;
+}

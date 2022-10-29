@@ -1,0 +1,17 @@
+@use "../theme.scss" as theme;
+.point {
+  padding-right: 5px;
+}
+.line1 {
+  background: theme.$primary-color;
+  height: 1px;
+  width: 5px;
+  transform: translateY(-1px) rotate(45deg);
+}
+
+.line2 {
+  background: theme.$primary-color;
+  height: 1px;
+  width: 5px;
+  transform: translateY(1px) rotate(-45deg);
+}

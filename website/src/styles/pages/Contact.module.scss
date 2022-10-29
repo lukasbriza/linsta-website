@@ -1,0 +1,106 @@
+@use "../theme.scss" as theme;
+@use "../mixins" as q;
+
+.statutars {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  padding: 100px 20px;
+}
+
+.divider {
+  background: theme.$secondary-color !important;
+  z-index: +1;
+}
+
+.map {
+  position: relative;
+}
+
+.flag {
+  background: theme.$bckg-secondary-color;
+  width: 300px;
+  z-index: +1;
+  position: absolute;
+  margin-left: auto;
+  padding: 30px 40px;
+  right: 30px;
+  top: 50%;
+  transform: translateY(-50%);
+
+  @include q.tablet {
+    width: 100%;
+    transform: unset;
+    top: 0px;
+    right: 0px;
+    position: relative;
+  }
+}
+
+.logoWrapper {
+  width: min-content;
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+  @include q.tablet {
+    transform: translateX(-50%) scale(1.4);
+  }
+}
+
+.typographyWrapper {
+  position: relative;
+  color: theme.$text-secondary-color;
+  padding-top: 20px;
+  padding-bottom: 20px;
+
+  p {
+    margin-top: 4px;
+  }
+
+  @include q.tablet {
+    p {
+      width: fit-content;
+    }
+
+    margin-top: 10px;
+    margin-bottom: 10px;
+    width: fit-content;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+}
+
+.link {
+  text-align: center;
+  text-decoration: none;
+  color: theme.$secondary-color;
+  text-decoration: underline;
+  position: relative;
+  display: block;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.form {
+  background: theme.$bckg-secondary-color;
+  padding-top: 50px;
+  padding-bottom: 50px;
+}
+
+.typography {
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+.underliner {
+  background: theme.$secondary-color !important;
+}
+
+.header {
+  text-transform: uppercase;
+  color: theme.$text-secondary-color;
+}

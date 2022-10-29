@@ -1,0 +1,191 @@
+@use "../theme.scss" as theme;
+@use "../mixins" as q;
+
+.input {
+  height: 60px !important;
+  width: 350px;
+  border-radius: 0px !important;
+  background: theme.$primary-color !important;
+  font-size: 14px !important;
+  color: rgba(0, 0, 0, 0.719);
+
+  @include q.until(820px) {
+    width: 400px;
+  }
+  @include q.until(520px) {
+    width: 300px;
+  }
+}
+
+.label {
+  font-size: 16px !important;
+  cursor: text;
+}
+.focusLabel {
+  font-size: 11px !important;
+  color: theme.$secondary-color !important;
+}
+.filledLine {
+  background: theme.$secondary-color !important;
+  width: 100% !important;
+}
+
+.errorLine {
+  background: theme.$error-background !important;
+  width: 100% !important;
+}
+.errorLabel {
+  color: theme.$error-color !important;
+}
+
+.form {
+  display: grid;
+  grid-template-columns: 1fr 50px 1fr;
+  grid-template-rows: 120px 120px 200px 70px min-content;
+  grid-template-areas:
+    "name . surname"
+    "email . company"
+    "message message message"
+    "gdpr gdpr gdpr"
+    "submit submit submit";
+  justify-items: center;
+  width: fit-content;
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+  padding-top: 20px;
+
+  @include q.until(820px) {
+    grid-template-columns: 1fr;
+    grid-template-rows: 100px 100px 100px 100px 200px 70px min-content;
+    grid-template-areas: "name" "surname" "email" "company" "message" "gdpr" "submit";
+  }
+}
+
+.name {
+  grid-area: name;
+  height: fit-content;
+}
+
+.surname {
+  grid-area: surname;
+  height: fit-content;
+}
+
+.email {
+  grid-area: email;
+  height: fit-content;
+}
+
+.company {
+  grid-area: company;
+  height: fit-content;
+}
+
+.gdpr {
+  grid-area: gdpr;
+  height: fit-content;
+  margin-top: 30px;
+}
+
+.messageWrapper {
+  height: 100%;
+  width: 100% !important;
+
+  p {
+    display: block;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 0px;
+    z-index: +1;
+    margin: 0px;
+    padding: 0px;
+    width: 0%;
+    height: 2px;
+    background: theme.$secondary-color;
+    transition: width 0.25s ease-in-out;
+  }
+}
+
+.messageWrapperError {
+  grid-area: message;
+  position: relative;
+  height: 100%;
+  width: 100% !important;
+}
+
+.errorMessageWrappper {
+  p {
+    width: 100%;
+    background: theme.$error-background;
+  }
+}
+
+.messageWrapper:has(.message:focus) {
+  p {
+    width: 100%;
+  }
+}
+
+.message {
+  height: inherit;
+  width: inherit;
+  padding: 10px;
+  outline: none;
+  resize: none;
+  color: rgba(0, 0, 0, 0.719);
+  font-size: 14px;
+  border: none;
+}
+
+.message::placeholder {
+  font-size: 16px;
+}
+
+.gdprLabel {
+  color: theme.$text-secondary-color !important;
+
+  a {
+    text-transform: uppercase !important;
+    text-decoration: underline !important;
+    color: theme.$text-secondary-color;
+  }
+}
+.gdprCheckbox {
+  width: 16px !important;
+  height: 16px !important;
+  border-color: theme.$text-secondary-color !important;
+  border: none !important;
+  background: theme.$text-secondary-color !important;
+}
+.gdprChecker {
+  background: theme.$secondary-color !important;
+}
+
+.gdprLink {
+  text-decoration: none !important;
+  text-transform: uppercase;
+  text-decoration: underline;
+  color: theme.$text-secondary-color;
+}
+
+.submit {
+  grid-area: submit;
+  height: fit-content;
+  width: fit-content;
+  background: theme.$secondary-color;
+  border: none;
+  outline: none;
+  color: theme.$text-secondary-color;
+  width: 150px;
+  height: 50px;
+  text-transform: uppercase;
+  font-weight: 700;
+  margin: 30px;
+  cursor: pointer;
+}
+
+.helperError {
+  color: theme.$error-color;
+}

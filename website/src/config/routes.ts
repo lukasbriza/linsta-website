@@ -6,4 +6,5 @@ export const routes = {
   services: "/services",
   login: "/login",
   administration: "/administration",
+  gdpr: "/gdpr",
 } as const;

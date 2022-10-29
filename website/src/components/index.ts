@@ -10,3 +10,5 @@ export * from "./Logo/Logo";
 export * from "./ServiceCard/ServiceCard";
 export * from "./MechanizationCard/MechanizationCard";
 export * from "./DynamicHead/DynamicHead";
+export * from "./StatutarCard/StatutarCard";
+export * from "./Form/Form";

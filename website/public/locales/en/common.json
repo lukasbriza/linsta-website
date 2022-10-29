@@ -81,6 +81,28 @@
       "service3": "VÝSTAVBA VODOVODNÍCH KANALIZACÍ",
       "service4": "NÁKLADNÍ AUTODOPRAVA",
       "service5": "PRONÁJEM STAVEBÍCH STROJŮ"
+    },
+    "contact": {
+      "pictureHeader": "Kontakt",
+      "headerAlt": "Nadpis stránky kontakty",
+      "form": {
+        "header": "Napište nám",
+        "name": "Jméno *",
+        "surname": "Příjmení *",
+        "email": "Email *",
+        "company": "Firma",
+        "message": "Zpráva *",
+        "gdpr": "Souhlas se zpracováním dle ",
+        "link": "GDPR",
+        "submit": "Odeslat",
+        "validations": {
+          "max40": "Maximálně 40 znaků.",
+          "max500": "Maximálně 500 znaků",
+          "specialCharacters": "Speciální znaky jsou zakázány.",
+          "required": "Povinné",
+          "invalidEmail": "Nevalidní email"
+        }
+      }
     }
   }
 }

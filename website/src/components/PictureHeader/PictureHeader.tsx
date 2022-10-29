@@ -17,6 +17,7 @@ export const PictureHeader: FC<PictureHeaderProps> = (props) => {
                 objectFit="cover"
                 objectPosition="center"
                 quality={100}
+                priority={true}
             />
             <div className={styles.layer}></div>
             <Typography type="h2" className={styles.header} size="medium">{props.text}</Typography>

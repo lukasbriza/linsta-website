@@ -64,6 +64,8 @@
       "badge4": "Nákladní autodoprava"
     },
     "mechanization": {
+      "pictureHeader": "Mechanizace",
+      "headerAlt": "Nadpis stránky mechanizace",
       "header1": " Nákladní autodoprava",
       "header2": "Stavební stroje",
       "header3": "Drobná mechanizace"

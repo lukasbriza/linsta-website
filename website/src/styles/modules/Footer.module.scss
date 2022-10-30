@@ -26,8 +26,8 @@ $linePadding: 8px;
       "copy";
   }
 
-  @include q.from(1500px) {
-    grid-template-columns: calc(1500px / 3) calc(1500px / 3) calc(1500px / 3);
+  @include q.from(2000px) {
+    grid-template-columns: calc(2000px / 3) calc(2000px / 3) calc(2000px / 3);
   }
 }
 .divider {

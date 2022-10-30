@@ -1,9 +1,10 @@
 import styles from '../src/styles/pages/Mechanization.module.scss'
+import mechanization from '@assets/mechanizationHeader.webp'
 
 import { useTranslation } from 'next-i18next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import type { NextPage } from 'next'
-import { MechanizationCard, DynamicHead } from '@components'
+import { MechanizationCard, DynamicHead, PictureHeader } from '@components'
 import { Typography, Underliner } from '@lukasbriza/lbui-lib'
 import { siteMetaData } from '../src/config/siteMetadata'
 import { mechanizationData } from '../src/dummydata'
@@ -29,6 +30,11 @@ const Mechanization: NextPage = () => {
                 ogType="website"
             />
             <section className={styles.mechanization}>
+                <PictureHeader
+                    src={mechanization}
+                    alt={t('pages.mechanization.headerAlt')}
+                    text={t('pages.mechanization.pictureHeader')}
+                />
                 <Underliner underlinerClass={styles.underliner} className={styles.typography}>
                     <Typography
                         type="h4"

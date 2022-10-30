@@ -4,7 +4,15 @@ import { RouteTypes, Routes } from "../models";
 
 export const useRedirect = () => {
   const router = useRouter();
-  const redirect = ({ route, path }: { route?: RouteTypes; path?: Routes }) => {
+  const redirect = ({
+    route,
+    path,
+    callback,
+  }: {
+    route?: RouteTypes;
+    path?: Routes;
+    callback?: (value?: boolean) => void;
+  }) => {
     try {
       if (route && path) {
         throw new Error(
@@ -22,8 +30,14 @@ export const useRedirect = () => {
       console.error(e);
     }
 
-    path && router.push(path);
-    route && router.push(routes[route]);
+    path &&
+      router.push(path).then((value) => {
+        callback?.(value);
+      });
+    route &&
+      router.push(routes[route]).then((value) => {
+        callback?.(value);
+      });
   };
   return redirect;
 };

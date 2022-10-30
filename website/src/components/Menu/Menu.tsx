@@ -18,6 +18,7 @@ export const Menu: FC<MenuProps> = (props) => {
     const [hmbShow, setHmbShow] = useState<boolean>(false)
     const [showslider, setShowSlider] = useState<boolean>(false)
     const menuBarRef = useRef<HTMLElement>(null)
+    const hmbRef = useRef<HTMLDivElement>(null)
     const { width } = useElementSize(menuBarRef)
     const redirect = useRedirect()
 
@@ -58,6 +59,7 @@ export const Menu: FC<MenuProps> = (props) => {
                     })}
                 </MenuList>
                 <BasicHamburger
+                    ref={hmbRef}
                     show={hmbShow}
                     lineType="rounded"
                     className={styles.hamburger}
@@ -77,7 +79,7 @@ export const Menu: FC<MenuProps> = (props) => {
                                     icon={<Image src={item.src} width="22" height="22" alt="menu icon" />}
                                     underliner={false}
                                     underlinerOrigin="center"
-                                    onClick={() => redirect({ path: item.url })}
+                                    onClick={() => redirect({ path: item.url, callback: () => { hmbRef.current?.click() } })}
                                 />
                             </Link>
                         )

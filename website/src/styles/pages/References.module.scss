@@ -8,9 +8,12 @@
   background: theme.$bckg-primary-color;
 }
 .referencesWrapper {
+  position: relative;
   padding: 15px;
   display: grid;
   grid-template-columns: repeat(auto-fit, 300px);
   grid-gap: 15px;
   justify-content: center;
+  align-items: center;
+  height: calc(100% - 170px);
 }

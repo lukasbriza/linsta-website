@@ -18,7 +18,9 @@
     "paths": {
       "@components": ["./src/components/index.ts"],
       "@assets/*": ["./public/assets/*"],
-      "@hooks": ["./src/hooks/index.ts"]
+      "@hooks": ["./src/hooks/index.ts"],
+      "@abl": ["./src/abl/index.ts"],
+      "@utils": ["./src/utils/index.ts"]
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],

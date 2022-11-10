@@ -5,6 +5,7 @@ import {
   serverErrorResponse,
   findById,
   findAll,
+  MechanizationObjectExt,
   Mechanization,
   sucessResponse,
   apiErrorResponse,
@@ -34,7 +35,7 @@ export const getMechanization = async (
 
   //FIND BY ID
   if (query.id && !validation.error) {
-    const result: GetMechanization_response = await findById(
+    const result = await findById<MechanizationObjectExt>(
       Mechanization,
       query.id
     );
@@ -52,7 +53,7 @@ export const getMechanization = async (
 
   //FIND ALL
   if (Object.keys(query).length === 0) {
-    const result = (await findAll(Mechanization)) as GetMechanization_response;
+    const result = await findAll<MechanizationObjectExt>(Mechanization);
     const response =
       result instanceof DatabaseError
         ? serverErrorResponse(res, result)

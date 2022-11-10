@@ -2,6 +2,7 @@ import type { NextApiRequest, NextApiResponse } from "next";
 import {
   connectDB,
   Reference,
+  ReferenceObjectExt,
   findAll,
   findById,
   DatabaseError,
@@ -31,7 +32,7 @@ export const getReferences = async (
 
   //FIND BY ID
   if (query.id && !validation.error) {
-    const result: GetReferences_response = await findById(Reference, query.id);
+    const result = await findById<ReferenceObjectExt>(Reference, query.id);
     const response =
       result instanceof DatabaseError
         ? serverErrorResponse(res, result)
@@ -46,7 +47,7 @@ export const getReferences = async (
 
   //FIND ALL
   if (Object.keys(query).length === 0) {
-    const result = (await findAll(Reference)) as GetReferences_response;
+    const result = await findAll<ReferenceObjectExt>(Reference);
     const response =
       result instanceof DatabaseError
         ? serverErrorResponse(res, result)

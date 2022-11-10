@@ -17,7 +17,6 @@ export const findAll = async (model: ModelType) => {
     return result;
   } catch (error) {
     if (error instanceof Error) {
-      console.log(error.stack);
       return new DatabaseError(error);
     }
     throw error;
@@ -31,10 +30,12 @@ export const findById = async (
 ) => {
   try {
     const result = await model.findById(id, projection);
+    if (result === null) {
+      throw new Error("Can´t find object.");
+    }
     return result;
   } catch (error) {
     if (error instanceof Error) {
-      console.log(error.stack);
       return new DatabaseError(error);
     }
     throw error;

@@ -16,6 +16,11 @@ export type MechanizationObject = {
   pictures: string;
 };
 
+export type UserObject = {
+  name: string;
+  password: string;
+  permission: "USER" | "ADMIN";
+};
 //SCHEMAS
 const mechanizationSchema = new Schema<MechanizationObject>({
   name: { type: String, required: true },
@@ -44,7 +49,7 @@ export const Mechanization =
   models.Mechanization ||
   model<MechanizationObject>("Mechanization", mechanizationSchema);
 
-export const User = models.User || model("User", userSchema);
+export const User = models.User || model<UserObject>("User", userSchema);
 
 export const Reference =
   models.Reference || model<ReferenceObject>("Reference", referenceSchema);

@@ -1,13 +1,13 @@
-import { DatabaseError, ReferenceObject } from "@utils";
+import { DatabaseError, ReferenceObject, ReferenceObjectExt } from "@utils";
 
 type DeleteReferences_response = boolean | DatabaseError;
 type DeleteReferences_request = { id: string };
 
 type GetReferences_response =
-  | ReferenceObject
-  | ReferenceObject[]
+  | ReferenceObjectExt
+  | ReferenceObjectExt[]
   | DatabaseError;
-type GetReferences_request = { id: string };
+type GetReferences_request = { id?: string };
 
 type PostReferences_response = boolean | DatabaseError;
 type PostReferences_request = ReferenceObject;

@@ -6,3 +6,4 @@ export * from "./isAllowed";
 export * from "./serverResponses";
 export * from "./getParsed";
 export * from "./dbOperations";
+export * from "./hashPassword";

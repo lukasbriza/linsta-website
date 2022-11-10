@@ -1,9 +1,13 @@
-import { MechanizationObject, DatabaseError } from "@utils";
+import {
+  DatabaseError,
+  MechanizationObjectExt,
+  MechanizationObject,
+} from "@utils";
 
-type GetMechanization_request = { id: string };
+type GetMechanization_request = { id?: string };
 type GetMechanization_response =
-  | MechanizationObject
-  | MechanizationObject[]
+  | MechanizationObjectExt
+  | MechanizationObjectExt[]
   | DatabaseError;
 
 type PostMechanization_request = MechanizationObject;

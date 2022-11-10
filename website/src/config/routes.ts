@@ -5,6 +5,5 @@ export const routes = {
   references: "/references",
   services: "/services",
   login: "/login",
-  administration: "/administration",
   gdpr: "/gdpr",
 } as const;

@@ -12,6 +12,7 @@
   },
   "dependencies": {
     "@lukasbriza/lbui-lib": "^1.0.54",
+    "axios": "^1.1.3",
     "bcrypt": "^5.1.0",
     "clsx": "^1.2.1",
     "joi": "^17.6.4",

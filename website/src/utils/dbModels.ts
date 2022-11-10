@@ -8,6 +8,8 @@ export type ReferenceObject = {
   pictures: string[];
 };
 
+export type ReferenceObjectExt = ReferenceObject & { _id: string };
+
 export type MechanizationObject = {
   name: string;
   label: string;
@@ -16,11 +18,16 @@ export type MechanizationObject = {
   pictures: string;
 };
 
+export type MechanizationObjectExt = MechanizationObject & { _id: string };
+
 export type UserObject = {
   name: string;
   password: string;
   permission: "USER" | "ADMIN";
 };
+
+export type UserObjectExt = UserObject & { _id: string };
+
 //SCHEMAS
 const mechanizationSchema = new Schema<MechanizationObject>({
   name: { type: String, required: true },

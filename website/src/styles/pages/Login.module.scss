@@ -1,0 +1,77 @@
+@use "../theme.scss" as theme;
+@use "../mixins" as q;
+
+.input {
+  height: 60px !important;
+  width: 350px;
+  border-radius: 0px !important;
+  background: theme.$primary-color !important;
+  font-size: 14px !important;
+  color: rgba(0, 0, 0, 0.719);
+
+  @include q.until(820px) {
+    width: 400px;
+  }
+  @include q.until(520px) {
+    width: 300px;
+  }
+}
+
+.label {
+  font-size: 16px !important;
+  cursor: text;
+}
+.focusLabel {
+  font-size: 11px !important;
+  color: theme.$secondary-color !important;
+}
+.filledLine {
+  background: theme.$secondary-color !important;
+  width: 100% !important;
+}
+.errorLine {
+  background: theme.$error-background !important;
+  width: 100% !important;
+}
+.errorLabel {
+  color: theme.$error-color !important;
+}
+.helperError {
+  color: theme.$error-color;
+}
+.submit {
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+  height: fit-content;
+  width: fit-content;
+  background: theme.$secondary-color;
+  border: none;
+  outline: none;
+  color: theme.$text-secondary-color;
+  width: 150px;
+  height: 50px;
+  text-transform: uppercase;
+  font-weight: 700;
+  margin-bottom: 30px;
+  cursor: pointer;
+}
+
+.login {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: theme.$bckg-secondary-color;
+}
+
+.username {
+  height: 90px;
+  margin-bottom: 30px;
+}
+.password {
+  height: 90px;
+  margin-bottom: 30px;
+}

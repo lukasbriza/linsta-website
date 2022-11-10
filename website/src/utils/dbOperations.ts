@@ -11,9 +11,11 @@ import { ModelType } from "src/models";
 import { DatabaseError, connectDB, serverErrorResponse } from "@utils";
 import { Get_response } from "../../src/abl/image/_models";
 
-export const findAll = async (model: ModelType) => {
+export const findAll = async <T>(
+  model: ModelType
+): Promise<T[] | DatabaseError> => {
   try {
-    const result = await model.find<typeof model>();
+    const result = await model.find<T>();
     return result;
   } catch (error) {
     if (error instanceof Error) {
@@ -23,13 +25,13 @@ export const findAll = async (model: ModelType) => {
   }
 };
 
-export const findById = async (
+export const findById = async <T>(
   model: ModelType,
   id: string,
   projection?: ProjectionType<any>
-) => {
+): Promise<T | DatabaseError> => {
   try {
-    const result = await model.findById(id, projection);
+    const result = await model.findById<T>(id, projection);
     if (result === null) {
       throw new Error("Can´t find object.");
     }

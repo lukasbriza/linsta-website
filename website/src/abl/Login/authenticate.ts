@@ -1,27 +1,47 @@
 import type { NextApiRequest, NextApiResponse } from "next";
-import { apiErrorResponse, sucessResponse } from "@utils";
+import { sucessResponse } from "@utils";
 import jwt from "jsonwebtoken";
 import Joi from "joi";
+import { loginResponseDecoded } from "./_model";
 
-const schema = Joi.object({
-  token: Joi.string().required(),
+const decodedSchema = Joi.object({
+  _id: Joi.string().required(),
+  permission: Joi.string().required(),
+  iat: Joi.number().required(),
+  exp: Joi.number().required(),
 });
 
 export const authenticate = async (
   req: NextApiRequest,
   res: NextApiResponse<boolean>
 ) => {
-  const { token } = req.query as { token: string };
-  const validation = schema.validate(req.query);
+  const cookies = req.cookies;
 
-  if (validation.error) {
-    return apiErrorResponse(res, validation.error.message);
+  if (!cookies.Authorization) {
+    return sucessResponse(res, false);
   }
 
-  jwt.verify(token, process.env.JWT_PRIVATE_KEY!, (err, payload: any) => {
-    if ((err && err.message === "jwt expired") || err) {
-      return sucessResponse(res, false);
+  jwt.verify(
+    cookies.Authorization,
+    process.env.JWT_PRIVATE_KEY!,
+    (err, payload) => {
+      if (err) {
+        return sucessResponse(res, false);
+      }
+
+      const decoded = payload as loginResponseDecoded;
+      const validation = decodedSchema.validate(decoded);
+
+      if (validation.error) {
+        return sucessResponse(res, false);
+      }
+
+      const expired =
+        decoded.exp < (new Date().getTime() + 1) / 1000
+          ? sucessResponse(res, false)
+          : sucessResponse(res, true);
+
+      return expired;
     }
-    return sucessResponse(res, true);
-  });
+  );
 };

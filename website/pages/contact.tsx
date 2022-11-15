@@ -40,22 +40,22 @@ const Contact: NextPage = () => {
                 />
                 <section className={styles.statutars}>
                     <StatutarCard
-                        header="Pavel Novotný"
-                        subtitle="role ve firmě"
-                        phone='+420 774 876 504'
-                        mail="name@linstastavebni.cz"
+                        header={t('pages.contact.contact1.name')}
+                        subtitle={t('pages.contact.contact1.role')}
+                        phone={t('pages.contact.contact1.tel')}
+                        mail={t('pages.contact.contact1.email')}
                     />
                     <StatutarCard
-                        header="Pavel Novotný"
-                        subtitle="role ve firmě"
-                        phone='+420 774 876 504'
-                        mail="name@linstastavebni.cz"
+                        header={t('pages.contact.contact2.name')}
+                        subtitle={t('pages.contact.contact2.role')}
+                        phone={t('pages.contact.contact2.tel')}
+                        mail={t('pages.contact.contact2.email')}
                     />
                     <StatutarCard
-                        header="Pavel Novotný"
-                        subtitle="role ve firmě"
-                        phone='+420 774 876 504'
-                        mail="name@linstastavebni.cz"
+                        header={t('pages.contact.contact3.name')}
+                        subtitle={t('pages.contact.contact3.role')}
+                        phone={t('pages.contact.contact3.tel')}
+                        mail={t('pages.contact.contact3.email')}
                     />
                 </section>
                 <section className={styles.map}>
@@ -65,10 +65,10 @@ const Contact: NextPage = () => {
                             <Logo fill2={"#fff"} />
                         </div>
                         <div className={styles.typographyWrapper}>
-                            <Typography type="body1" size="small">{"Višňová 1367"}</Typography>
-                            <Typography type="body1" size="small">{"Hořovice 268 01, Česká republika"}</Typography>
+                            <Typography type="body1" size="small">{t('pages.contact.map.line1')}</Typography>
+                            <Typography type="body1" size="small">{t('pages.contact.map.line2')}</Typography>
                         </div>
-                        <a className={styles.link} href={googleMap}>{"Zobrazit na GoogleMaps"}</a>
+                        <a className={styles.link} href={googleMap}>{t('pages.contact.map.link')}</a>
                     </div>
                     <Map />
                     <Divider depth={4} className={styles.divider} />

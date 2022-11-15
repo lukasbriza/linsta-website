@@ -2,23 +2,27 @@
   "head": {
     "home": {
       "title": "Hlavní stránka",
-      "description": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aliquam erat volutpat. Cras elementum. Maecenas ipsum velit, consectetuer eu lobortis ut, dictum at dui."
+      "description": "LINSTA stavební s.r.o. Česká stavební společnost se zkušenostmi již od roku 1996. Hlavním cílem společnosti je kvalita, odbornost, vstřícnost a celková spokojenost objednatelů a investorů."
     },
     "services": {
       "title": "Služby",
-      "description": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aliquam erat volutpat. Cras elementum. Maecenas ipsum velit, consectetuer eu lobortis ut, dictum at dui."
+      "description": "ZEMNÍ PRÁCE A DEMOLICE | VÝSTAVBA KOMUNIKACÍ | VÝSTAVBA VODOVODNÍCH KANALIZACÍ | NÁKLADNÍ AUTODOPRAVA | PRONÁJEM STAVEBÍCH STROJŮ"
     },
     "references": {
       "title": "Reference",
-      "description": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aliquam erat volutpat. Cras elementum. Maecenas ipsum velit, consectetuer eu lobortis ut, dictum at dui."
+      "description": "Zhotovené stavby pro naše zákazníky."
     },
     "mechanization": {
       "title": "Mechanizace",
-      "description": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aliquam erat volutpat. Cras elementum. Maecenas ipsum velit, consectetuer eu lobortis ut, dictum at dui."
+      "description": "Disponujeme řadou moderních strojů a nákladních automobilů, které si lze pronajmout."
     },
     "contact": {
       "title": "Kontakt",
-      "description": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aliquam erat volutpat. Cras elementum. Maecenas ipsum velit, consectetuer eu lobortis ut, dictum at dui."
+      "description": "Zaujali Vás naše služby? Napište nám."
+    },
+    "login": {
+      "title": "Přihlášení",
+      "description": "Přihlášení do dashboardu"
     }
   },
   "menu": {
@@ -29,8 +33,8 @@
     "item5": "Kontakt"
   },
   "header": {
-    "phone": "+420 774 876 504",
-    "email": "linstastavebniny@email.cz",
+    "phone": "+420 606 095 352",
+    "email": "linsta@linsta.cz",
     "login": "Přihlásit"
   },
   "footer": {
@@ -47,17 +51,20 @@
     },
     "col3": {
       "header": "Kontakt",
-      "tel": "Tel.: +420 774 876 504",
-      "ico": "IČO.: 23468490",
-      "place": "Sídlo:",
-      "line1": "Višňová 1367, Hořovice 268 01,",
-      "line2": "Česká republika"
+      "tel": "Tel.: +420 606 095 352",
+      "email": "lista@lista.cz",
+      "ico": "IČO.: 090 43 667",
+      "dic": "DIČ: CZ09043667",
+      "line1": "Hvozdecká 1488/1, 268 01 Hořovice,",
+      "line2": "Česká republika",
+      "line3": "Zapsaná v OR vedeném Městským soudem",
+      "line4": "v Praze, oddíl C, vložka 329672"
     }
   },
   "pages": {
     "home": {
       "header": "LINSTA stavební s.r.o.",
-      "subtitle": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aliquam erat volutpat. Cras elementum. Maecenas ipsum velit, consectetuer eu lobortis ut, dictum at dui.",
+      "subtitle": "Česká stavební společnost se zkušenostmi již od roku 1996. Hlavním cílem společnosti je kvalita, odbornost, vstřícnost a celková spokojenost objednatelů a investorů.",
       "badge1": "Výstavba komunikací",
       "badge2": "Výstavba vodovodů a kanalizací",
       "badge3": "Zemní práce a demolice",
@@ -77,8 +84,8 @@
     "services": {
       "pictureHeader": "Služby",
       "headerAlt": "Nadpis stránky služby",
-      "subtitle": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aliquam erat volutpat. Cras elementum. Maecenas ipsum velit, consectetuer eu lobortis ut, dictum at dui. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aliquam erat volutpat. Cras elementum. Maecenas ipsum velit, consectetuer eu lobortis ut, dictum at dui.",
-      "service1": "ZEMNÍ PRÁCE a DEMOLICE",
+      "subtitle": "Živnostenské podnikání začalo v roce 1996 nákupem 3,5 tunového bagru značky TEREX. Postupem času se naše mechanizace rozšiřovala s realizací větších a náročnějších stavebních projektů. V roce 2022 jsme založili společnost s ručením omezeným za účelem zvýšení efektivity a kvality poskytovaných služeb. Disponujeme řadou moderních strojů a nákladních automobilů. Specializujeme se na výstavbu liniových staveb, zemních a výkopových práci a nákladní autodopravu.",
+      "service1": "ZEMNÍ PRÁCE A DEMOLICE",
       "service2": "VÝSTAVBA KOMUNIKACÍ",
       "service3": "VÝSTAVBA VODOVODNÍCH KANALIZACÍ",
       "service4": "NÁKLADNÍ AUTODOPRAVA",
@@ -87,6 +94,29 @@
     "contact": {
       "pictureHeader": "Kontakt",
       "headerAlt": "Nadpis stránky kontakty",
+      "contact1": {
+        "name": "Ing. Šimon Mytyzek",
+        "role": "Majitel",
+        "tel": "+420 606 095 352",
+        "email": "mytyzek.simon@gmail.com"
+      },
+      "contact2": {
+        "name": "Hana Humlová",
+        "role": "Majitelka",
+        "tel": "+420 602 124 182",
+        "email": "h.humlova@cbox.cz"
+      },
+      "contact3": {
+        "name": "Jan Huml",
+        "role": "Majitel",
+        "tel": "+420 731 184 310",
+        "email": "Jan.huml@seznam.cz"
+      },
+      "map": {
+        "line1": "Hvozdecká 1488/1",
+        "line2": "268 01 Hořovice",
+        "link": "Zobrazit na GoogleMaps"
+      },
       "form": {
         "header": "Napište nám",
         "name": "Jméno *",
@@ -104,6 +134,16 @@
           "required": "Povinné",
           "invalidEmail": "Nevalidní email"
         }
+      }
+    },
+    "login": {
+      "username": "Uživatel *",
+      "password": "Heslo *",
+      "validations": {
+        "max50": "Maximálně 50 znaků.",
+        "min8": "Minimálně 8 znaků.",
+        "specialCharacters": "Speciální znaky jsou zakázány.",
+        "required": "Povinné"
       }
     }
   }

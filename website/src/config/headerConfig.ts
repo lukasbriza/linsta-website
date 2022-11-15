@@ -7,5 +7,5 @@ export const headerConfig = {
     { src: phone, name: "phone", url: routes.contact },
     { src: email, name: "email", url: routes.contact },
   ],
-  rightItems: [{ name: "login", url: routes.administration }],
+  rightItems: [{ name: "login", url: routes.login }],
 };

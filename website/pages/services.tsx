@@ -38,10 +38,10 @@ const Services: NextPage = () => {
                 </Typography>
                 <section className={styles.servicesWrapper}>
                     <ServiceCard className={styles.demolition} src={'assets/demolition.webp'} text={t('pages.services.service1')} />
-                    <ServiceCard className={styles.communications} src={'assets/buildingCommunications.webp'} text={t('pages.services.service1')} />
-                    <ServiceCard className={styles.canalizations} src={'assets/sewersConstruction.webp'} text={t('pages.services.service2')} />
-                    <ServiceCard className={styles.transposrtation} src={'assets/transport.webp'} text={t('pages.services.service3')} />
-                    <ServiceCard className={styles.carrent} src={'assets/machineRent.webp'} text={t('pages.services.service4')} />
+                    <ServiceCard className={styles.communications} src={'assets/buildingCommunications.webp'} text={t('pages.services.service2')} />
+                    <ServiceCard className={styles.canalizations} src={'assets/sewersConstruction.webp'} text={t('pages.services.service3')} />
+                    <ServiceCard className={styles.transposrtation} src={'assets/transport.webp'} text={t('pages.services.service4')} />
+                    <ServiceCard className={styles.carrent} src={'assets/machineRent.webp'} text={t('pages.services.service5')} />
                 </section>
             </section>
         </>

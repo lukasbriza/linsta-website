@@ -19,6 +19,14 @@
     "contact": {
       "title": "Kontakt",
       "description": "Zaujali Vás naše služby? Napište nám."
+    },
+    "login": {
+      "title": "Přihlášení",
+      "description": "Přihlášení do dashboardu"
+    },
+    "protected": {
+      "title": "Dashboard",
+      "description": "Administrativní rozhraní."
     }
   },
   "menu": {
@@ -139,8 +147,7 @@
         "max50": "Maximálně 50 znaků.",
         "min8": "Minimálně 8 znaků.",
         "specialCharacters": "Speciální znaky jsou zakázány.",
-        "required": "Povinné",
-        "invalidEmail": "Nevalidní email"
+        "required": "Povinné"
       }
     }
   }

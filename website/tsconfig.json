@@ -20,7 +20,8 @@
       "@assets/*": ["./public/assets/*"],
       "@hooks": ["./src/hooks/index.ts"],
       "@abl": ["./src/abl/index.ts"],
-      "@utils": ["./src/utils/index.ts"]
+      "@utils": ["./src/utils/index.ts"],
+      "@fetchers": ["./src/fetchers/index.ts"]
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],

@@ -10,6 +10,7 @@ import {
   UserObjectExt,
 } from "@utils";
 import jwt from "jsonwebtoken";
+import cookie from "cookie";
 import bcrypt from "bcrypt";
 import { PostLogin_request, PostLogin_response } from "./_model";
 import Joi from "joi";
@@ -25,13 +26,19 @@ const requiredStringValidation = (property: string, maxLength: number) => {
 const schema = Joi.object({
   name: requiredStringValidation("Name", 50),
   password: requiredStringValidation("Password", 100),
+  iat: Joi.number(),
 });
 
 export const login = async (
   req: NextApiRequest,
   res: NextApiResponse<PostLogin_response>
 ) => {
-  const body = req.body as PostLogin_request;
+  const token = jwt.verify(
+    req.body.token,
+    process.env.NEXT_PUBLIC_JWT_REGISTRATION_KEY!
+  );
+
+  const body = token as PostLogin_request;
   const validation = schema.validate(body);
 
   if (validation.error) {
@@ -51,16 +58,26 @@ export const login = async (
   }
 
   //FIND BY NAME
-  const userToCompare = users.map((user) => {
+  let userToCompare: UserObjectExt[] = [];
+  users.forEach((user) => {
     if (user.name === body.name) {
-      return user;
+      return userToCompare.push(user);
     }
+    return;
   });
 
-  if (userToCompare === undefined) {
+  if (userToCompare.length === 0) {
     return serverErrorResponse(res, "User does not exist.");
   }
-  if (userToCompare.length === 1 && userToCompare[0] !== undefined) {
+
+  if (userToCompare.length > 1) {
+    return serverErrorResponse(
+      res,
+      "Multiple user error, contact administrator."
+    );
+  }
+
+  if (userToCompare.length === 1) {
     //COMPARE PASSWORDS
     const compareResult = await bcrypt.compare(
       body.password,
@@ -83,6 +100,17 @@ export const login = async (
     const response: PostLogin_response = {
       token: token,
     };
+
+    res.setHeader(
+      "Set-cookie",
+      cookie.serialize("Authorization", token, {
+        httpOnly: true,
+        secure: process.env.NODE_ENV !== "development",
+        maxAge: 60 * 60,
+        sameSite: "strict",
+        path: "/",
+      })
+    );
 
     return sucessResponse(res, response);
   }

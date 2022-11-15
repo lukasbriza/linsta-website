@@ -1,9 +1,9 @@
 import type { NextApiRequest, NextApiResponse } from "next";
 import { Methods } from "src/models";
 import { isAllowed, badRequestResponse } from "@utils";
-import { login, authenticate } from "@abl";
+import { login, authenticate, logout } from "@abl";
 
-const allowed: Methods = ["POST", "GET"];
+const allowed: Methods = ["POST", "GET", "DELETE"];
 
 export default async function usersApi(
   req: NextApiRequest,
@@ -20,6 +20,8 @@ export default async function usersApi(
       return await login(req, res);
     case "GET":
       return await authenticate(req, res);
+    case "DELETE":
+      return await logout(req, res);
     default:
       return badRequestResponse(res);
   }

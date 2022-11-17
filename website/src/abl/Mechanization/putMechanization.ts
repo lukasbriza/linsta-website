@@ -31,7 +31,9 @@ const schema = Joi.object({
   label: stringValidation(50),
   capacity: stringValidation(50),
   price: Joi.number(),
-  img: stringValidation(150),
+  pictures: stringValidation(150),
+  type: Joi.string(),
+  order: Joi.number().required(),
 });
 
 export const putMechanization = async (

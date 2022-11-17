@@ -30,7 +30,10 @@ const schema = Joi.object({
     .messages({ "string.empty": `Permission property is required.` }),
 });
 
-export const postUsers = async (req: NextApiRequest, res: NextApiResponse) => {
+export const postUsers = async (
+  req: NextApiRequest,
+  res: NextApiResponse<PostUsers_response>
+) => {
   const body = req.body as PostUsers_request;
   const validation = schema.validate(body);
 

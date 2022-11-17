@@ -9,6 +9,7 @@ import {
   serverErrorResponse,
   sucessResponse,
   removeImg,
+  ReferenceObjectExt,
 } from "@utils";
 import type {
   DeleteReferences_request,
@@ -38,7 +39,11 @@ export const deleteReferences = async (
   }
 
   //GET REFERENCE PICTURE IDS
-  const referencePictures = await findById(Reference, query.id, "pictures");
+  const referencePictures = await findById<ReferenceObjectExt>(
+    Reference,
+    query.id,
+    "pictures"
+  );
 
   if (referencePictures instanceof DatabaseError) {
     return serverErrorResponse(res, referencePictures);

@@ -35,11 +35,10 @@ export const authenticate = async (
       if (validation.error) {
         return sucessResponse(res, false);
       }
-
-      const expired =
-        decoded.exp < (new Date().getTime() + 1) / 1000
-          ? sucessResponse(res, false)
-          : sucessResponse(res, true);
+      const expiredBool = decoded.exp < (new Date().getTime() + 1) / 1000;
+      const expired = expiredBool
+        ? sucessResponse(res, false)
+        : sucessResponse(res, true);
 
       return expired;
     }

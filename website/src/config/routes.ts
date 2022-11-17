@@ -14,6 +14,7 @@ export const apiRoutes = {
   login: "/api/login",
   postImage: "/api/image/post",
   getImage: "/api/image/get",
-  mechanization: "/api/mechanization",
+  removeImage: "/api/image/remove",
+  mechanization: "/api/mechanizations",
   references: "/api/references",
 } as const;

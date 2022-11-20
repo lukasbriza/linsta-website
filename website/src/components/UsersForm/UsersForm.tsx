@@ -1,11 +1,14 @@
 import styles from '../../styles/pages/Protected.module.scss'
+import users from '@assets/usersHeader.webp'
 
 import React, { FC } from 'react'
 import { useForm, SubmitHandler } from 'react-hook-form'
-import { Typography, HelperText, FilledTextFieldHF } from '@lukasbriza/lbui-lib'
+import { HelperText, FilledTextFieldHF } from '@lukasbriza/lbui-lib'
 import { useTranslation } from 'next-i18next'
 import { formValidationSchema } from './UsersForm.validation'
 import { saveUser } from '@fetchers'
+import { PictureHeader } from '@components'
+import clsx from 'clsx'
 
 type UsersInputs = {
     name: string;
@@ -35,7 +38,7 @@ export const AddUserForm: FC = () => {
         const { property, label } = props
         return (
             <HelperText
-                className={styles[property]}
+                className={clsx([styles[property]], styles.helperText)}
                 text={""}
                 errorText={errors[property]?.message}
                 errorClass={styles.helperError}
@@ -43,6 +46,7 @@ export const AddUserForm: FC = () => {
             >
                 <FilledTextFieldHF
                     className={styles.input}
+                    rootClass={styles.root}
                     labelClass={styles.label}
                     labelFocusClass={styles.focusLabel}
                     labelFilledClass={styles.focusLabel}
@@ -72,14 +76,16 @@ export const AddUserForm: FC = () => {
     }
 
     return (
-        <form onSubmit={handleSubmit(onSubmit)}>
-            <Typography type="h4" size="medium">Přidat referenci</Typography>
+        <form onSubmit={handleSubmit(onSubmit)} className={clsx([styles.form, styles.userForm])}>
+            <PictureHeader text={"Přidat referenci"} src={users} className={styles.pictureHeader} />
             <StandardInput property={"name"} label={"Přihlašovací jméno"} />
             <StandardInput property={"password"} label={"Heslo"} />
-            <select {...register("permission")}>
-                <option value="USER">USER</option>
-                <option value="ADMIN">ADMIN</option>
-            </select>
+            <div className={styles.select} >
+                <select {...register("permission")} className={styles.customSelect}>
+                    <option value="USER">USER</option>
+                    <option value="ADMIN">ADMIN</option>
+                </select>
+            </div>
             <input type="submit" value={"Odeslat"} className={styles.submit} />
         </form>
     )

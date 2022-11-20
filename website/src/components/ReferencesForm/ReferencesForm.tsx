@@ -1,11 +1,14 @@
 import styles from '../../styles/pages/Protected.module.scss'
+import references from '@assets/referencesHeader.webp'
 
 import React, { FC } from 'react'
+import clsx from 'clsx'
 import { useForm, SubmitHandler } from 'react-hook-form'
 import { Typography, HelperText, FilledTextFieldHF } from '@lukasbriza/lbui-lib'
 import { useTranslation } from 'next-i18next'
 import { formValidationSchema } from './ReferencesForm.validation'
 import { saveImg, removeImg, saveReference } from '@fetchers'
+import { PictureHeader } from '@components'
 
 type ReferencesInputs = {
     name: string;
@@ -38,13 +41,14 @@ export const AddReferencesForm: FC = () => {
         const { property, label } = props
         return (
             <HelperText
-                className={styles[property]}
+                className={clsx([styles[property]], styles.helperText)}
                 text={""}
                 errorText={errors[property]?.message}
                 errorClass={styles.helperError}
                 error={errors[property] && true}
             >
                 <FilledTextFieldHF
+                    rootClass={styles.root}
                     className={styles.input}
                     labelClass={styles.label}
                     labelFocusClass={styles.focusLabel}
@@ -101,11 +105,11 @@ export const AddReferencesForm: FC = () => {
     }
 
     return (
-        <form onSubmit={handleSubmit(onSubmit)}>
-            <Typography type="h4" size="medium">Přidat referenci</Typography>
-            <StandardInput property={"name"} label={"Jméno stroje"} />
-            <StandardInput property={"place"} label={"Označení stroje"} />
-            <StandardInput property={"realization"} label={"Nosnost stroje"} />
+        <form onSubmit={handleSubmit(onSubmit)} className={clsx([styles.form, styles.form2])}>
+            <PictureHeader text={"Přidat referenci"} src={references} className={styles.pictureHeader} />
+            <StandardInput property={"name"} label={"Jméno realizace"} />
+            <StandardInput property={"place"} label={"Místo realizace"} />
+            <StandardInput property={"realization"} label={"Datum realizace"} />
             <HelperText
                 className={styles.detail}
                 text={""}
@@ -113,16 +117,17 @@ export const AddReferencesForm: FC = () => {
                 errorClass={styles.helperError}
                 error={errors.detail && true}
             >
-                <textarea {...register("detail")} className={styles.detail}></textarea>
+                <textarea {...register("detail")} className={styles.detailArea} placeholder={"Detail"}></textarea>
             </HelperText>
             <HelperText
                 className={styles.file}
+                helperClass={styles.helperClass}
                 text={"Při výběru více souborů držte CTRL."}
                 errorText={errors.file?.message}
                 errorClass={styles.helperError}
                 error={errors.file && true}
             >
-                <input type="file" {...register("file")} multiple={true} />
+                <input type="file" {...register("file")} multiple={true} className={styles.fileInput} />
             </HelperText>
             <input type="submit" value={"Odeslat"} className={styles.submit} />
         </form>

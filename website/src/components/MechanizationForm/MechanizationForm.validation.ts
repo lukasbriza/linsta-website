@@ -20,8 +20,14 @@ const schema = (t: TFunction) => {
     capacity: requiredStringValidation("Capacity", 50),
     price: Joi.number()
       .required()
-      .messages({ "any.required": `Price property is required.` }),
-    order: Joi.number().required(),
+      .messages({
+        "any.required": `Price property is required.`,
+        "number.base": "Order must be number.",
+      }),
+    order: Joi.number().required().messages({
+      "any.required": `Order property is required.`,
+      "number.base": "Order must be number.",
+    }),
     type: requiredStringValidation("type", 2),
     file: ExtendedJoi.filelist()
       .ruleset.min(1)

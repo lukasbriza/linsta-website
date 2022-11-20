@@ -1,8 +1,11 @@
 import styles from '../../styles/pages/Protected.module.scss'
+import mechanization from '@assets/mechanizationHeader.webp'
 
 import React, { FC } from 'react'
+import clsx from 'clsx'
 import { useForm, SubmitHandler } from 'react-hook-form'
-import { Typography, HelperText, FilledTextFieldHF } from '@lukasbriza/lbui-lib'
+import { HelperText, FilledTextFieldHF } from '@lukasbriza/lbui-lib'
+import { PictureHeader } from '@components'
 import { useTranslation } from 'next-i18next'
 import { formValidationSchema } from './MechanizationForm.validation'
 import { saveImg, saveMechanization } from '@fetchers'
@@ -46,7 +49,7 @@ export const AddMechanizationForm: FC = () => {
         const { property, label } = props
         return (
             <HelperText
-                className={styles[property]}
+                className={clsx([styles[property]], styles.helperText)}
                 text={""}
                 errorText={errors[property]?.message}
                 errorClass={styles.helperError}
@@ -92,10 +95,13 @@ export const AddMechanizationForm: FC = () => {
         console.log(saveMechanizationResponse)
     }
 
+    const onInvalid = (data: any) => {
+        console.log(data)
+    }
 
     return (
-        <form onSubmit={handleSubmit(onSubmit)} className={styles.form}>
-            <Typography type="h4" size="medium">Přidat mechanizaci</Typography>
+        <form onSubmit={handleSubmit(onSubmit, onInvalid)} className={styles.form}>
+            <PictureHeader text={"Přidat mechanizaci"} src={mechanization} className={styles.pictureHeader} />
             <StandardInput property={"name"} label={"Jméno stroje"} />
             <StandardInput property={"label"} label={"Označení stroje"} />
             <StandardInput property={"capacity"} label={"Nosnost stroje"} />
@@ -103,25 +109,29 @@ export const AddMechanizationForm: FC = () => {
             <StandardInput property={"order"} label={"Pořadí"} />
             <HelperText
                 className={styles.type}
+                helperClass={styles.helperClass}
                 text={"Vyberte typ stroje"}
                 errorText={errors.type?.message}
                 errorClass={styles.helperError}
                 error={errors.type && true}
             >
-                <select {...register("type")}>
-                    <option value="M">Stavební stroje</option>
-                    <option value="SM">Drobná mechanizace</option>
-                    <option value="C">Autodoprava</option>
-                </select>
+                <div className={styles.select}>
+                    <select {...register("type")} className={styles.customSelect}>
+                        <option value="M">Stavební stroje</option>
+                        <option value="SM">Drobná mechanizace</option>
+                        <option value="C">Autodoprava</option>
+                    </select>
+                </div>
             </HelperText>
             <HelperText
                 className={styles.file}
+                helperClass={styles.helperClass}
                 text={"Vyberte svg obrázek stroje"}
                 errorText={errors.file?.message}
                 errorClass={styles.helperError}
                 error={errors.file && true}
             >
-                <input type="file" {...register("file")} />
+                <input type="file" {...register("file")} className={styles.fileInput} />
             </HelperText>
             <input type="submit" value={"Odeslat"} className={styles.submit} />
         </form>

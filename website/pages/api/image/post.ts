@@ -7,7 +7,7 @@ import { Post_response } from "../../../src/abl/image/_models";
 import Joi from "joi";
 
 const schema = Joi.object({
-  type: Joi.string().allow(["svg", "reference"]),
+  type: Joi.string(),
 });
 
 const post = nextConnect({
@@ -29,7 +29,7 @@ const storage = new GridFsStorage({
 
     return {
       bucketName: "binaries",
-      filename: `${Date.now()}-${request.body.type}-${file.originalname}`,
+      filename: `${Date.now()}-${file.originalname}`,
       test: "test",
     };
   },

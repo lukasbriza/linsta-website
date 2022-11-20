@@ -32,7 +32,6 @@ const requiredMessageValidation = (t: TFunction) => {
 const optionalCompanyValidation = (t: TFunction) => {
   return Joi.string()
     .optional()
-    .allow("")
     .ruleset.pattern(/[^$&;=?@#|'<>^*()%]/)
     .rule({ message: t("pages.contact.form.validations.specialCharacters") });
 };

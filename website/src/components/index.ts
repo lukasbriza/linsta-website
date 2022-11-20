@@ -12,3 +12,6 @@ export * from "./MechanizationCard/MechanizationCard";
 export * from "./DynamicHead/DynamicHead";
 export * from "./StatutarCard/StatutarCard";
 export * from "./Form/Form";
+export * from "./MechanizationForm/MechanizationForm";
+export * from "./ReferencesForm/ReferencesForm";
+export * from "./UsersForm/UsersForm";

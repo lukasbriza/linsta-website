@@ -9,4 +9,11 @@ type loginResponseDecoded = {
   exp: number;
 };
 
-export type { PostLogin_request, PostLogin_response, loginResponseDecoded };
+type Authenticate_response = boolean;
+
+export type {
+  Authenticate_response,
+  PostLogin_request,
+  PostLogin_response,
+  loginResponseDecoded,
+};

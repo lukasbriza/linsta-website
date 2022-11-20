@@ -28,6 +28,8 @@ const schema = Joi.object({
   capacity: requiredStringValidation("Capacity", 50),
   price: Joi.number().required(),
   pictures: requiredStringValidation("Pictures", 150),
+  type: Joi.string(),
+  order: Joi.number().required(),
 });
 
 export const postMechanization = async (

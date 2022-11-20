@@ -9,6 +9,7 @@ import {
   removeImg,
   remove,
   sucessResponse,
+  MechanizationObjectExt,
 } from "@utils";
 import type {
   DeleteMechanization_request,
@@ -38,7 +39,11 @@ export const removeMechanization = async (
   }
 
   //GET MECHANIZATION PICTURE IDS
-  const referencePictures = await findById(Mechanization, query.id, "pictures");
+  const referencePictures = await findById<MechanizationObjectExt>(
+    Mechanization,
+    query.id,
+    "pictures"
+  );
 
   if (referencePictures instanceof DatabaseError) {
     return serverErrorResponse(res, referencePictures);

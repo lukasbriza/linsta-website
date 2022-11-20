@@ -1,6 +1,6 @@
 import { ApiError, DatabaseError } from "@utils";
 
-export type Post_request = { type: "svg" | "reference" };
+export type Post_request = { file: File };
 export type Post_response = { id: string } | ApiError;
 
 export type Remove_request = { id: string };

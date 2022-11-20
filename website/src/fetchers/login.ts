@@ -1,12 +1,13 @@
 import axios, { AxiosError } from "axios";
 import jwt from "jsonwebtoken";
-import { PostLogin_response } from "src/abl/Login/_model";
+import {
+  Authenticate_response,
+  PostLogin_response,
+} from "src/abl/Login/_model";
 import { apiRoutes } from "../config/routes";
-import { loginResponseDecoded } from "./_model";
+import { loginResponseDecoded, loginProps } from "./_model";
 
-type login = { token: string };
-
-export const loginRequest = async (data: login) => {
+export const loginRequest = async (data: loginProps) => {
   try {
     const response = await axios.post(apiRoutes.login, data);
     const responseData = response.data as PostLogin_response;
@@ -14,7 +15,8 @@ export const loginRequest = async (data: login) => {
 
     return { sucess: true, token: responseData.token, data: decoded };
   } catch (err) {
-    console.log(err);
+    if (err instanceof AxiosError) {
+    }
     //set modal
     return { sucess: false, token: null, data: null };
   }
@@ -26,22 +28,26 @@ export const logoutRequest = async () => {
     const status = response.status;
 
     if (status === 302) {
-      return { sucess: true, data: null };
+      return { sucess: true };
     }
-    return { sucess: false, data: null };
+    return { sucess: false };
   } catch (err) {
-    console.log(err);
+    if (err instanceof AxiosError) {
+    }
     //set modal
-    return { sucess: false, data: null };
+    return { sucess: false };
   }
 };
 
 export const authenticate = async () => {
   try {
     const response = await axios.get(apiRoutes.login);
-    console.log(response);
+    const responseData: Authenticate_response = response.data;
+    return { sucess: responseData };
   } catch (err) {
-    console.log(err);
-    return { sucess: false, data: null };
+    if (err instanceof AxiosError) {
+    }
+    //set modal
+    return { sucess: false };
   }
 };

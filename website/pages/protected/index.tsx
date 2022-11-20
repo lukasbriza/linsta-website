@@ -1,8 +1,39 @@
+import styles from '../../src/styles/pages/Protected.module.scss'
+
 import type { NextPage } from 'next'
+import { useTranslation } from 'next-i18next'
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
+
+import { authenticate } from '@fetchers'
+import { AddMechanizationForm, DynamicHead, AddReferencesForm, AddUserForm } from '@components';
+import { Typography } from '@lukasbriza/lbui-lib'
+import { siteMetaData } from 'src/config/siteMetadata';
+
+export async function getStaticProps({ locale }: { locale: string }) {
+    return {
+        props: {
+            ...(await serverSideTranslations(locale, ['common'])),
+        },
+    };
+}
 
 const Dashboard: NextPage = () => {
+    const { t } = useTranslation()
+
+
+
     return (
-        <>Protected</>
+        <>
+            <DynamicHead
+                title={t('head.protected.title')}
+                description={t('head.protected.description')}
+                canonicalUrl={siteMetaData.siteUrl + '/dashboard'}
+                ogType="website"
+            />
+            <AddMechanizationForm />
+            <AddReferencesForm />
+            <AddUserForm />
+        </>
     )
 }
 

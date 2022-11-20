@@ -16,6 +16,8 @@ export type MechanizationObject = {
   capacity: string;
   price: number;
   pictures: string;
+  order: number;
+  type: "C" | "SM" | "M";
 };
 
 export type MechanizationObjectExt = MechanizationObject & { _id: string };
@@ -35,6 +37,8 @@ const mechanizationSchema = new Schema<MechanizationObject>({
   capacity: { type: String, required: true },
   price: { type: Number, required: true },
   pictures: { type: String, required: true },
+  order: { type: Number, required: true },
+  type: { type: String, required: true },
 });
 
 const userSchema = new Schema({

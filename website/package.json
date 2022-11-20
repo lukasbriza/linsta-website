@@ -17,6 +17,7 @@
     "clsx": "^1.2.1",
     "cookie": "^0.5.0",
     "joi": "^17.6.4",
+    "joi-filelist": "^1.0.0",
     "jsonwebtoken": "^8.5.1",
     "leaflet": "^1.9.2",
     "mongoose": "^6.7.0",

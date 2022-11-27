@@ -4,10 +4,10 @@ import type { NextPage } from 'next'
 import { useTranslation } from 'next-i18next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 
-import { authenticate } from '@fetchers'
-import { AddMechanizationForm, DynamicHead, AddReferencesForm, AddUserForm } from '@components';
-import { Typography } from '@lukasbriza/lbui-lib'
-import { siteMetaData } from 'src/config/siteMetadata';
+
+import { AddMechanizationForm, DynamicHead, AddReferencesForm, AddUserForm, UpdateMechanizationSection } from '@components';
+
+import { siteMetaData } from '../../src/config/siteMetadata';
 
 export async function getStaticProps({ locale }: { locale: string }) {
     return {
@@ -20,8 +20,6 @@ export async function getStaticProps({ locale }: { locale: string }) {
 const Dashboard: NextPage = () => {
     const { t } = useTranslation()
 
-
-
     return (
         <>
             <DynamicHead
@@ -31,6 +29,7 @@ const Dashboard: NextPage = () => {
                 ogType="website"
             />
             <AddMechanizationForm />
+            <UpdateMechanizationSection />
             <AddReferencesForm />
             <AddUserForm />
         </>

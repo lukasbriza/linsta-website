@@ -3,8 +3,8 @@ import {
   DeleteMechanization_response,
   GetMechanization_response,
   PostMechanization_response,
-} from "src/abl/Mechanization/_models";
-import { apiRoutes } from "src/config/routes";
+} from "../abl/Mechanization/_models";
+import { apiRoutes } from "../config/routes";
 import { saveMechanizationProps } from "./_model";
 
 const errorHandle = (err: unknown) => {
@@ -68,7 +68,7 @@ export const removeMechanization = async (id: string) => {
       return { sucess: false, data: null };
     }
 
-    return { secess: true, data: response.data };
+    return { sucess: true, data: response.data };
   } catch (err) {
     return errorHandle(err);
   }

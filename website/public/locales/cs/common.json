@@ -79,7 +79,14 @@
       "headerAlt": "Nadpis stránky mechanizace",
       "header1": " Nákladní autodoprava",
       "header2": "Stavební stroje",
-      "header3": "Drobná mechanizace"
+      "header3": "Drobná mechanizace",
+      "mechaniztionCard": {
+        "header1": "Označení",
+        "header2": "Nosnost",
+        "header3": "Cena",
+        "from": "od",
+        "currency": "kč/den"
+      }
     },
     "references": {
       "pictureHeader": "Reference",

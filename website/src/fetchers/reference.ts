@@ -4,8 +4,8 @@ import {
   DeleteReferences_response,
   GetReferences_response,
   PostReferences_response,
-} from "src/abl/References/_models";
-import { apiRoutes } from "src/config/routes";
+} from "../abl/References/_models";
+import { apiRoutes } from "../config/routes";
 
 const errorHandle = (err: unknown) => {
   if (err instanceof AxiosError) {

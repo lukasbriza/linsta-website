@@ -1,11 +1,11 @@
 import { saveUserProps } from "./_model";
 import axios, { AxiosResponse, AxiosError } from "axios";
-import { apiRoutes } from "src/config/routes";
+import { apiRoutes } from "../config/routes";
 import {
   DeleteUsers_response,
   GetUsers_response,
   PostUsers_response,
-} from "src/abl/Users/_models";
+} from "../abl/Users/_models";
 
 const errorHandle = (err: unknown) => {
   if (err instanceof AxiosError) {

@@ -4,22 +4,61 @@ import mechanization from '@assets/mechanizationHeader.webp'
 import { useTranslation } from 'next-i18next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import type { NextPage } from 'next'
+import { findByType, connectDB, DatabaseError, findAll, Mechanization as Model, MechanizationObjectExt, handleServerSideError } from '@utils'
 import { MechanizationCard, DynamicHead, PictureHeader } from '@components'
 import { Typography, Underliner } from '@lukasbriza/lbui-lib'
 import { siteMetaData } from '../src/config/siteMetadata'
-import { mechanizationData } from '../src/dummydata'
 
 export async function getStaticProps({ locale }: { locale: string }) {
+    const returnProps = {
+        props: {
+            ...(await serverSideTranslations(locale, ['common'])),
+            data: null
+        },
+    };
+
+    const db = await connectDB();
+    const dbHandle = handleServerSideError(DatabaseError, db, returnProps)
+    if (dbHandle) return dbHandle
+
+    const mechanizations = await findAll<MechanizationObjectExt>(Model);
+    const mechanizationsHandle = handleServerSideError(DatabaseError, mechanizations, returnProps)
+    if (mechanizationsHandle) return mechanizationsHandle
+
+    const data = mechanizations as MechanizationObjectExt[]
+    const machines = findByType(data, "M")
+    const smallMachines = findByType(data, "SM")
+    const cars = findByType(data, "C")
+
+    const result = await Promise.all([machines, smallMachines, cars])
+
     return {
         props: {
             ...(await serverSideTranslations(locale, ['common'])),
+            data: {
+                machines: JSON.stringify(result[0]),
+                smallMachines: JSON.stringify(result[1]),
+                cars: JSON.stringify(result[2])
+            }
         },
     };
 }
 
+type MechanizationProps = {
+    data: {
+        machines: string,
+        smallMachines: string,
+        cars: string
+    } | null
+}
 
-const Mechanization: NextPage = () => {
+const Mechanization: NextPage<MechanizationProps> = (props) => {
     const { t } = useTranslation()
+    const { data } = props
+
+    const machines = data ? JSON.parse(data.machines) as MechanizationObjectExt[] : []
+    const smallMachines = data ? JSON.parse(data.smallMachines) as MechanizationObjectExt[] : []
+    const cars = data ? JSON.parse(data.cars) as MechanizationObjectExt[] : []
 
     return (
         <>
@@ -46,13 +85,13 @@ const Mechanization: NextPage = () => {
                     </Typography>
                 </Underliner>
                 <div className={styles.cardSection}>
-                    {mechanizationData.map((value, index) => {
+                    {cars.map((value, index) => {
                         return (
                             <MechanizationCard
                                 key={index}
-                                src={value.src}
+                                src={value.pictures}
                                 name={value.name}
-                                indication={value.indication}
+                                label={value.label}
                                 capacity={value.capacity}
                                 price={value.price}
                             />
@@ -70,13 +109,13 @@ const Mechanization: NextPage = () => {
                     </Typography>
                 </Underliner>
                 <div className={styles.cardSection}>
-                    {mechanizationData.map((value, index) => {
+                    {machines.map((value, index) => {
                         return (
                             <MechanizationCard
                                 key={index}
-                                src={value.src}
+                                src={value.pictures}
                                 name={value.name}
-                                indication={value.indication}
+                                label={value.label}
                                 capacity={value.capacity}
                                 price={value.price}
                             />
@@ -94,13 +133,13 @@ const Mechanization: NextPage = () => {
                     </Typography>
                 </Underliner>
                 <div className={styles.cardSection}>
-                    {mechanizationData.map((value, index) => {
+                    {smallMachines.map((value, index) => {
                         return (
                             <MechanizationCard
                                 key={index}
-                                src={value.src}
+                                src={value.pictures}
                                 name={value.name}
-                                indication={value.indication}
+                                label={value.label}
                                 capacity={value.capacity}
                                 price={value.price}
                             />

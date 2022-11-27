@@ -9,7 +9,7 @@ import jwt from 'jsonwebtoken'
 import Joi from 'joi';
 import { loginRequest } from '@fetchers'
 import styles from "../src/styles/pages/Login.module.scss"
-import { siteMetaData } from 'src/config/siteMetadata';
+import { siteMetaData } from '../src/config/siteMetadata';
 import { useState, useEffect, useCallback } from 'react'
 import { DynamicHead, PictureHeader } from '@components';
 import { useRedirect } from '@hooks'

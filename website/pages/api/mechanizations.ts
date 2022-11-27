@@ -5,7 +5,7 @@ import {
   getMechanization,
   postMechanization,
   putMechanization,
-  deleteReferences,
+  removeMechanization,
 } from "@abl";
 
 const allowed: Methods = ["DELETE", "GET", "POST", "PUT"];
@@ -28,7 +28,7 @@ export default async function mechanizationApi(
     case "PUT":
       return await putMechanization(req, res);
     case "DELETE":
-      return await deleteReferences(req, res);
+      return await removeMechanization(req, res);
     default:
       return badRequestResponse(res);
   }

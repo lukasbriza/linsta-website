@@ -141,7 +141,7 @@ export const getImg = async (
   const downloadableStream = bucket.openDownloadStream(mongoId);
 
   downloadableStream.on("data", (chunk) => {
-    res.write(chunk);
+    return res.write(chunk);
   });
 
   downloadableStream.on("error", (error) => {

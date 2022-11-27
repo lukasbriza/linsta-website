@@ -1,0 +1,206 @@
+@use "../theme.scss" as theme;
+@use "../mixins" as q;
+
+.updateWrapper {
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+  max-width: 900px;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-bottom: 30px;
+}
+.readOnly {
+  background: theme.$primary-color;
+  display: grid;
+  grid-template-columns: 3fr 2fr 1fr 1fr 1fr 1fr 1fr;
+  grid-template-areas: "name label capacity type price order buttons";
+  max-width: 900px;
+  width: 100%;
+  min-height: 60px;
+  margin: 3px 0px 3px 0px;
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+
+  @include q.until(800px) {
+    grid-template-columns: 3fr 2fr 1fr 1fr 1fr 1fr;
+    grid-template-areas: "name label capacity type price order" "buttons buttons buttons buttons buttons buttons";
+    height: 120px;
+  }
+
+  @include q.until(600px) {
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-areas: "name label capacity" "type price order" "buttons buttons buttons";
+    height: 180px;
+  }
+}
+
+.infoWrapper {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  border: 1px solid grey;
+  height: 100%;
+
+  div:nth-child(1) {
+    font-weight: 600;
+    text-decoration: underline;
+  }
+  div:nth-child(2) {
+    position: relative;
+    margin-top: auto;
+    margin-bottom: auto;
+  }
+}
+
+.infoWrapper:nth-child(1) {
+  grid-area: name;
+}
+.infoWrapper:nth-child(2) {
+  grid-area: label;
+  border-left: none;
+}
+.infoWrapper:nth-child(3) {
+  grid-area: capacity;
+  border-left: none;
+}
+.infoWrapper:nth-child(4) {
+  grid-area: type;
+  border-left: none;
+  @include q.until(600px) {
+    border-left: 1px solid grey;
+  }
+}
+.infoWrapper:nth-child(5) {
+  grid-area: price;
+  border-left: none;
+}
+.infoWrapper:nth-child(6) {
+  grid-area: order;
+  border-left: none;
+}
+
+.buttonWrapper {
+  grid-area: buttons;
+}
+.button {
+  position: relative;
+  height: 50%;
+  width: 100%;
+  cursor: pointer;
+}
+
+.form {
+  margin-top: 20px;
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+  max-width: 900px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.input {
+  height: 60px !important;
+  width: 280px;
+  border-radius: 0px !important;
+  background: theme.$primary-color !important;
+  font-size: 14px !important;
+  color: rgba(0, 0, 0, 0.719);
+
+  @include q.until(620px) {
+    width: 330px;
+  }
+}
+
+.select {
+  width: 280px;
+  position: relative;
+  cursor: pointer;
+
+  @include q.until(620px) {
+    width: 330px;
+  }
+
+  .customSelect {
+    cursor: pointer;
+    width: 100%;
+    height: 60px;
+    border: none;
+    border-bottom: 1px solid rgba(128, 128, 128, 0.645);
+    padding-left: 10px;
+    outline: none;
+    font-size: 14px;
+    color: black;
+    font-weight: 300;
+  }
+
+  .customSelect:focus {
+    border-bottom: 2px solid theme.$secondary-color;
+  }
+  .customSelect:hover {
+    border-bottom: 1px solid rgb(128, 128, 128);
+  }
+}
+
+.label {
+  font-size: 16px !important;
+  cursor: text;
+}
+
+.focusLabel {
+  font-size: 11px !important;
+  color: theme.$secondary-color !important;
+}
+
+.filledLine {
+  background: theme.$secondary-color !important;
+  width: 100% !important;
+}
+
+.errorLine {
+  background: theme.$error-background !important;
+  width: 100% !important;
+}
+
+.errorLabel {
+  color: theme.$error-color !important;
+}
+
+.helperClass {
+  width: 280px;
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.helperText {
+  padding-left: 10px !important;
+  padding-right: 10px !important;
+}
+
+.submit {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  flex-basis: 100%;
+
+  input {
+    height: fit-content;
+    width: fit-content;
+    background: theme.$secondary-color;
+    width: 150px;
+    height: 50px;
+    text-transform: uppercase;
+    font-weight: 700;
+    cursor: pointer;
+    border: none;
+    outline: none;
+    color: theme.$text-secondary-color;
+    position: relative;
+    margin: 15px 15px;
+  }
+}

@@ -3,7 +3,7 @@ import mechanization from '@assets/mechanizationHeader.webp'
 
 import React, { FC } from 'react'
 import clsx from 'clsx'
-import { useForm, SubmitHandler } from 'react-hook-form'
+import { useForm, SubmitHandler, SubmitErrorHandler } from 'react-hook-form'
 import { HelperText, FilledTextFieldHF } from '@lukasbriza/lbui-lib'
 import { PictureHeader } from '@components'
 import { useTranslation } from 'next-i18next'
@@ -29,7 +29,7 @@ type StandardInputProps = {
 export const AddMechanizationForm: FC = () => {
     const { t } = useTranslation()
 
-    const { register, control, handleSubmit, formState: { errors } } = useForm<MechanizationInputs>({
+    const { reset, register, control, handleSubmit, formState: { errors } } = useForm<MechanizationInputs>({
         defaultValues: {
             name: "",
             label: "",
@@ -74,7 +74,6 @@ export const AddMechanizationForm: FC = () => {
     const onSubmit: SubmitHandler<MechanizationInputs> = async (inputData) => {
         const saveImageResponse = await saveImg({ file: inputData.file[0] })
         const { data, sucess } = saveImageResponse
-        console.log({ sucess, data })
 
         if (!sucess || data === null) {
             return
@@ -88,6 +87,9 @@ export const AddMechanizationForm: FC = () => {
         if (saveMechanizationResponse.sucess === true && saveMechanizationResponse.data !== null) {
             //SUCESS MODAL
             console.log(saveMechanizationResponse)
+
+            //RESET FORM
+            reset()
             return
         }
 
@@ -95,7 +97,8 @@ export const AddMechanizationForm: FC = () => {
         console.log(saveMechanizationResponse)
     }
 
-    const onInvalid = (data: any) => {
+    const onInvalid: SubmitErrorHandler<MechanizationInputs> = (data) => {
+        //MODAL
         console.log(data)
     }
 

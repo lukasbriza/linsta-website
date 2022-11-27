@@ -22,7 +22,7 @@ type StandardInputProps = { property: keyof Pick<UsersInputs, "name" | "password
 export const AddUserForm: FC = () => {
     const { t } = useTranslation()
 
-    const { register, control, handleSubmit, formState: { errors } } = useForm<UsersInputs>({
+    const { reset, register, control, handleSubmit, formState: { errors } } = useForm<UsersInputs>({
         defaultValues: {
             name: "",
             password: "",
@@ -68,6 +68,9 @@ export const AddUserForm: FC = () => {
         if (saveUserresponse.sucess === true && saveUserresponse.data === true) {
             //SUCESS MODAL
             console.log(saveUserresponse)
+
+            //RESET FORM
+            reset()
             return
         }
 

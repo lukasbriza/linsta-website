@@ -7,3 +7,5 @@ export * from "./serverResponses";
 export * from "./getParsed";
 export * from "./dbOperations";
 export * from "./hashPassword";
+export * from "./handleServerSideError";
+export * from "./findByType";

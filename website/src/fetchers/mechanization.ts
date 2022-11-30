@@ -3,8 +3,10 @@ import {
   DeleteMechanization_response,
   GetMechanization_response,
   PostMechanization_response,
-} from "src/abl/Mechanization/_models";
-import { apiRoutes } from "src/config/routes";
+  PutMechanization_request,
+  PutMechanization_response,
+} from "../abl/Mechanization/_models";
+import { apiRoutes } from "../config/routes";
 import { saveMechanizationProps } from "./_model";
 
 const errorHandle = (err: unknown) => {
@@ -68,7 +70,26 @@ export const removeMechanization = async (id: string) => {
       return { sucess: false, data: null };
     }
 
-    return { secess: true, data: response.data };
+    return { sucess: true, data: response.data };
+  } catch (err) {
+    return errorHandle(err);
+  }
+};
+
+export const updateMechanization = async (data: PutMechanization_request) => {
+  try {
+    const response = await axios.put<
+      PutMechanization_request,
+      AxiosResponse<PutMechanization_response>
+    >(apiRoutes.mechanization, data);
+
+    if (response.data instanceof Error) {
+      console.log(response.data);
+      //MODAL
+      return { sucess: false, data: null };
+    }
+
+    return { sucess: true, data: response.data };
   } catch (err) {
     return errorHandle(err);
   }

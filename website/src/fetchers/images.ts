@@ -1,7 +1,15 @@
 import axios, { AxiosResponse, AxiosError } from "axios";
 import { Post_response, Remove_response } from "src/abl/image/_models";
 import { apiRoutes } from "../config/routes";
+import { SUCESS_STATUS, TIMEOUT } from "./constants";
 import { imagePostProps } from "./_model";
+
+const errorHandle = (err: unknown) => {
+  if (err instanceof AxiosError) {
+    //MODAL
+  }
+  return { sucess: false, data: null };
+};
 
 export const saveImg = async ({ file }: imagePostProps) => {
   try {
@@ -23,7 +31,7 @@ export const saveImg = async ({ file }: imagePostProps) => {
       return { sucess: false, data: null };
     }
     //STATUS NOK?
-    if (response.status !== 200) {
+    if (response.status !== SUCESS_STATUS) {
       console.log(response.data);
       //MODAL
 
@@ -34,10 +42,7 @@ export const saveImg = async ({ file }: imagePostProps) => {
     //RESPONSE
     return { sucess: true, data: { id: response.data?.id } };
   } catch (err) {
-    if (err instanceof AxiosError) {
-      //MODAL
-    }
-    return { sucess: false, data: null };
+    return errorHandle(err);
   }
 };
 
@@ -57,15 +62,42 @@ export const removeImg = async (id: string) => {
     }
 
     //STATUS NOK?
-    if (response.status !== 200) {
+    if (response.status !== SUCESS_STATUS) {
       return { sucess: false, data: response.data };
     }
 
     return { sucess: true, data: response.data };
   } catch (err) {
-    if (err instanceof AxiosError) {
+    return errorHandle(err);
+  }
+};
+
+export const getImg = async (id: string) => {
+  try {
+    //CALL
+    const { data, status, statusText } = await axios.get(apiRoutes.getImage, {
+      params: { id: id },
+      responseType: "blob",
+      timeout: TIMEOUT,
+    });
+    //RETURN API ERROR?
+    if (data instanceof Error) {
+      console.log(data.message);
       //MODAL
+
+      return { sucess: false, data: null };
     }
-    return { sucess: false, data: null };
+
+    //API ERROR?
+    if (status !== SUCESS_STATUS) {
+      console.log(statusText);
+      //MODAL
+
+      return { sucess: false, data: statusText };
+    }
+
+    return { sucess: true, data: data };
+  } catch (err) {
+    return errorHandle(err);
   }
 };

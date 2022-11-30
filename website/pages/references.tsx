@@ -1,24 +1,49 @@
 import styles from '../src/styles/pages/References.module.scss'
 import references from '@assets/referencesHeader.webp'
+import 'swiper/swiper-bundle.css';
 
 import { useTranslation } from 'next-i18next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import type { NextPage } from 'next'
 import { PictureHeader, ReferenceCard, DynamicHead } from '@components'
 import { siteMetaData } from '../src/config/siteMetadata'
+import { connectDB, DatabaseError, findAll, handleServerSideError, Reference as Model, ReferenceObjectExt } from '@utils';
 
-import { data } from '../src/dummydata'
+
+
 
 export async function getStaticProps({ locale }: { locale: string }) {
-    return {
+    const returnProps = {
         props: {
             ...(await serverSideTranslations(locale, ['common'])),
         },
-    };
+        data: []
+    }
+    const db = await connectDB();
+    const dbHandle = handleServerSideError(DatabaseError, db, returnProps)
+    if (dbHandle) return dbHandle
+
+    const references = await findAll<ReferenceObjectExt>(Model)
+    const referencesHandle = handleServerSideError(DatabaseError, references, returnProps)
+    if (referencesHandle) return referencesHandle
+
+    const data = references as ReferenceObjectExt[]
+
+    return {
+        props: {
+            ...(await serverSideTranslations(locale, ['common'])),
+            data: JSON.stringify(data)
+        }
+    }
 }
 
-const References: NextPage = () => {
+type ReferencesProps = {
+    data: string
+}
+
+const References: NextPage<ReferencesProps> = (props) => {
     const { t } = useTranslation()
+    const data = JSON.parse(props.data) as ReferenceObjectExt[] | []
 
     return (
         <>
@@ -39,7 +64,11 @@ const References: NextPage = () => {
                         return (
                             <ReferenceCard
                                 key={index}
-                                {...item}
+                                src={item.pictures}
+                                header={item.name}
+                                place={item.place}
+                                realization={item.realization}
+                                detail={item.detail}
                             />
                         )
                     })}

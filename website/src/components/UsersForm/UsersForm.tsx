@@ -22,7 +22,7 @@ type StandardInputProps = { property: keyof Pick<UsersInputs, "name" | "password
 export const AddUserForm: FC = () => {
     const { t } = useTranslation()
 
-    const { register, control, handleSubmit, formState: { errors } } = useForm<UsersInputs>({
+    const { reset, register, control, handleSubmit, formState: { errors } } = useForm<UsersInputs>({
         defaultValues: {
             name: "",
             password: "",
@@ -68,6 +68,9 @@ export const AddUserForm: FC = () => {
         if (saveUserresponse.sucess === true && saveUserresponse.data === true) {
             //SUCESS MODAL
             console.log(saveUserresponse)
+
+            //RESET FORM
+            reset()
             return
         }
 
@@ -77,7 +80,7 @@ export const AddUserForm: FC = () => {
 
     return (
         <form onSubmit={handleSubmit(onSubmit)} className={clsx([styles.form, styles.userForm])}>
-            <PictureHeader text={"Přidat referenci"} src={users} className={styles.pictureHeader} />
+            <PictureHeader text={"Přidat uživatele"} src={users} className={styles.pictureHeader} />
             <StandardInput property={"name"} label={"Přihlašovací jméno"} />
             <StandardInput property={"password"} label={"Heslo"} />
             <div className={styles.select} >

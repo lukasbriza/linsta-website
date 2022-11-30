@@ -1,11 +1,13 @@
 import { saveUserProps } from "./_model";
 import axios, { AxiosResponse, AxiosError } from "axios";
-import { apiRoutes } from "src/config/routes";
+import { apiRoutes } from "../config/routes";
 import {
   DeleteUsers_response,
   GetUsers_response,
   PostUsers_response,
-} from "src/abl/Users/_models";
+  PutUsers_request,
+  PutUsers_response,
+} from "../abl/Users/_models";
 
 const errorHandle = (err: unknown) => {
   if (err instanceof AxiosError) {
@@ -62,6 +64,25 @@ export const removeUser = async (id: string) => {
       { id: string },
       AxiosResponse<DeleteUsers_response, any>
     >(apiRoutes.users, { params: { id: id } });
+
+    if (response.data instanceof Error) {
+      console.log(response.data);
+      //MODAL
+      return { sucess: false, data: null };
+    }
+
+    return { sucess: response.data, data: response.data };
+  } catch (err) {
+    return errorHandle(err);
+  }
+};
+
+export const updateUser = async (data: PutUsers_request) => {
+  try {
+    const response = await axios.put<
+      PutUsers_request,
+      AxiosResponse<PutUsers_response, any>
+    >(apiRoutes.users, data);
 
     if (response.data instanceof Error) {
       console.log(response.data);

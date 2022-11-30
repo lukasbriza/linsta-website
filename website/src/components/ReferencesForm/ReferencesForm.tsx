@@ -24,7 +24,7 @@ type StandardInputProps = { property: keyof Pick<ReferencesInputs, "name" | "pla
 export const AddReferencesForm: FC = () => {
     const { t } = useTranslation()
 
-    const { register, control, handleSubmit, formState: { errors } } = useForm<ReferencesInputs>({
+    const { reset, register, control, handleSubmit, formState: { errors } } = useForm<ReferencesInputs>({
         defaultValues: {
             name: "",
             place: "",
@@ -96,6 +96,9 @@ export const AddReferencesForm: FC = () => {
             if (saveReferenceResponse.sucess === true && saveReferenceResponse.data !== null) {
                 //SUCESS MODAL
                 console.log(saveReferenceResponse)
+
+                //RESET FORM
+                reset()
                 return
             }
             //ERROR MODAL

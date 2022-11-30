@@ -14,6 +14,15 @@ module.exports = {
       "@components": path.resolve(__dirname, "../src/components/index.ts"),
       "@assets": path.resolve(__dirname, "../public/assets"),
       "@hooks": path.resolve(__dirname, "../src/hooks/index.ts"),
+      "@fetchers": path.resolve(__dirname, "../src/fetchers/"),
+    };
+    config.resolve.fallback = {
+      stream: require.resolve("stream-browserify"),
+      crypto: require.resolve("crypto-browserify"),
+      path: require.resolve("path-browserify"),
+      fs: false,
+      path: false,
+      os: false,
     };
     return config;
   },

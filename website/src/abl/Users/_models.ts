@@ -1,14 +1,13 @@
 import { UserObject, DatabaseError } from "@utils";
 
 type GetUsers_request = {};
-type GetUsers_response =
-  | {
-      _id: string;
-      name: string;
-      password?: string;
-      permission: "USER" | "ADMIN";
-    }[]
-  | DatabaseError;
+type ReturnUserObject = {
+  _id: string;
+  name: string;
+  password?: string;
+  permission: "USER" | "ADMIN";
+};
+type GetUsers_response = ReturnUserObject[] | DatabaseError;
 
 type PostUsers_request = UserObject;
 type PostUsers_response = boolean | DatabaseError;
@@ -33,4 +32,5 @@ export type {
   PutUsers_response,
   DeleteUsers_request,
   DeleteUsers_response,
+  ReturnUserObject,
 };

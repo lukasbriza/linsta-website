@@ -4,8 +4,10 @@ import {
   DeleteReferences_response,
   GetReferences_response,
   PostReferences_response,
-} from "src/abl/References/_models";
-import { apiRoutes } from "src/config/routes";
+  PutReferences_request,
+  PutReferences_response,
+} from "../abl/References/_models";
+import { apiRoutes } from "../config/routes";
 
 const errorHandle = (err: unknown) => {
   if (err instanceof AxiosError) {
@@ -59,7 +61,26 @@ export const removeReference = async (id: string) => {
     const response = await axios.delete<
       { id: string },
       AxiosResponse<DeleteReferences_response, any>
-    >(id, { params: { id: id } });
+    >(apiRoutes.references, { params: { id: id } });
+
+    if (response.data instanceof Error) {
+      console.log(response.data);
+      //MODAL
+      return { sucess: false, data: null };
+    }
+
+    return { sucess: response.data, data: response.data };
+  } catch (err) {
+    return errorHandle(err);
+  }
+};
+
+export const updateReference = async (data: PutReferences_request) => {
+  try {
+    const response = await axios.put<
+      PutReferences_request,
+      AxiosResponse<PutReferences_response, any>
+    >(apiRoutes.references, data);
 
     if (response.data instanceof Error) {
       console.log(response.data);

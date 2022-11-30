@@ -1,0 +1,25 @@
+@use "../theme.scss" as theme;
+
+.crossWrapper {
+  position: relative;
+  $size: 25px;
+  width: $size;
+  height: $size;
+}
+.line {
+  position: absolute;
+  width: 100%;
+  height: 3px;
+  border-radius: 3px;
+  background: theme.$text-primary-color;
+
+  left: 50%;
+  top: 50%;
+}
+
+.line:first-child {
+  transform: translate(-50%, -50%) rotate(45deg);
+}
+.line:last-child {
+  transform: translate(-50%, -50%) rotate(-45deg);
+}

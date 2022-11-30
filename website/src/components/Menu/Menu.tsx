@@ -7,7 +7,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { useRedirect } from '@hooks'
 import { MenuBar, MenuList, MenuItem, BasicHamburger, useElementSize } from '@lukasbriza/lbui-lib'
-import { Logo } from '@components'
+import { Logo } from '../Logo/Logo'
 import { MenuProps } from './Menu.model'
 import { Routes } from '../../models'
 

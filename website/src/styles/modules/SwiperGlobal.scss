@@ -1,0 +1,25 @@
+.swiper-pagination {
+  grid-area: pagination;
+  position: relative !important;
+  width: 100vw !important;
+  margin-top: 30px;
+  bottom: unset !important;
+  left: unset !important;
+
+  .swiper-pagination-bullet {
+    width: 10px !important;
+    height: 10px !important;
+    background: rgb(175, 175, 175) !important;
+    opacity: 0.8;
+    transition: background 0.3s ease-out;
+  }
+  .swiper-pagination-bullet-active {
+    background: #e35f21 !important;
+    opacity: 1;
+  }
+}
+
+.swiper-wrapper {
+  cursor: pointer;
+  grid-area: slider;
+}

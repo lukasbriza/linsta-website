@@ -80,7 +80,7 @@ export const AddUserForm: FC = () => {
 
     return (
         <form onSubmit={handleSubmit(onSubmit)} className={clsx([styles.form, styles.userForm])}>
-            <PictureHeader text={"Přidat referenci"} src={users} className={styles.pictureHeader} />
+            <PictureHeader text={"Přidat uživatele"} src={users} className={styles.pictureHeader} />
             <StandardInput property={"name"} label={"Přihlašovací jméno"} />
             <StandardInput property={"password"} label={"Heslo"} />
             <div className={styles.select} >

@@ -1,11 +1,17 @@
-import styles from '../../src/styles/pages/Protected.module.scss'
-
 import type { NextPage } from 'next'
 import { useTranslation } from 'next-i18next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 
 
-import { AddMechanizationForm, DynamicHead, AddReferencesForm, AddUserForm, UpdateMechanizationSection } from '@components';
+import {
+    AddMechanizationForm,
+    DynamicHead,
+    AddReferencesForm,
+    AddUserForm,
+    UpdateMechanizationSection,
+    UpdateReferencesSection,
+    UserUpdateSection
+} from '@components';
 
 import { siteMetaData } from '../../src/config/siteMetadata';
 
@@ -31,7 +37,9 @@ const Dashboard: NextPage = () => {
             <AddMechanizationForm />
             <UpdateMechanizationSection />
             <AddReferencesForm />
+            <UpdateReferencesSection />
             <AddUserForm />
+            <UserUpdateSection />
         </>
     )
 }

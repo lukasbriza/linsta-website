@@ -10,11 +10,12 @@
   padding-right: 10px;
   padding-bottom: 30px;
 }
+
 .readOnly {
   background: theme.$primary-color;
   display: grid;
-  grid-template-columns: 3fr 2fr 1fr 1fr 1fr 1fr 1fr;
-  grid-template-areas: "name label capacity type price order buttons";
+  grid-template-columns: 1fr 1fr 150px;
+  grid-template-areas: "name permission  buttons";
   max-width: 900px;
   width: 100%;
   min-height: 60px;
@@ -23,16 +24,10 @@
   left: 50%;
   transform: translateX(-50%);
 
-  @include q.until(800px) {
-    grid-template-columns: 3fr 2fr 1fr 1fr 1fr 1fr;
-    grid-template-areas: "name label capacity type price order" "buttons buttons buttons buttons buttons buttons";
-    height: 120px;
-  }
-
   @include q.until(600px) {
-    grid-template-columns: 1fr 1fr 1fr;
-    grid-template-areas: "name label capacity" "type price order" "buttons buttons buttons";
-    height: 180px;
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas: "name permission" "buttons buttons";
+    min-height: 120px;
   }
 }
 
@@ -57,27 +52,9 @@
 .infoWrapper:nth-child(1) {
   grid-area: name;
 }
+
 .infoWrapper:nth-child(2) {
-  grid-area: label;
-  border-left: none;
-}
-.infoWrapper:nth-child(3) {
-  grid-area: capacity;
-  border-left: none;
-}
-.infoWrapper:nth-child(4) {
-  grid-area: type;
-  border-left: none;
-  @include q.until(600px) {
-    border-left: 1px solid grey;
-  }
-}
-.infoWrapper:nth-child(5) {
-  grid-area: price;
-  border-left: none;
-}
-.infoWrapper:nth-child(6) {
-  grid-area: order;
+  grid-area: permission;
   border-left: none;
 }
 
@@ -105,7 +82,7 @@
 
 .input {
   height: 60px !important;
-  width: 280px;
+  width: 100%;
   border-radius: 0px !important;
   background: theme.$primary-color !important;
   font-size: 14px !important;
@@ -117,7 +94,9 @@
 }
 
 .select {
-  width: 280px;
+  padding-left: 10px;
+  padding-right: 10px;
+  flex-basis: 100%;
   position: relative;
   cursor: pointer;
 
@@ -179,8 +158,13 @@
 
 .helperText {
   height: 87px !important;
+  flex-basis: 50%;
   padding-left: 10px !important;
   padding-right: 10px !important;
+}
+
+.root {
+  width: 100% !important;
 }
 
 .submit {

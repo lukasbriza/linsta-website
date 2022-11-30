@@ -1,16 +1,16 @@
-import styles from '../../styles/modules/UpdateMechanizationSection.module.scss'
+import styles from '../../styles/modules/UserUpdateSection.module.scss'
 
 import { FC, useState } from "react"
-import { EditSectionInputs, EditSectionProps, MechanizationUpdateUnitProps, ReadOnlySectionProps, StandardInputProps } from "./UpdateMechanizationSection.model"
-import { removeMechanization, updateMechanization } from '@fetchers'
 import { useTranslation } from 'next-i18next'
 import { useForm, SubmitHandler, SubmitErrorHandler } from 'react-hook-form'
 import { FilledTextFieldHF, HelperText } from '@lukasbriza/lbui-lib'
 import clsx from 'clsx'
-import { formValidationSchema } from './UpdateMechanizationSection.validation'
+import { formValidationSchema } from './UserUpdateSection.validation'
+import { EditSectionInputs, EditSectionProps, ReadOnlySectionProps, StandardInputProps, UserUpdateUnitProps } from './UserUpdateSection.model'
+import { removeUser, updateUser } from '@fetchers'
 
-export const MechanizationUpdateUnit: FC<MechanizationUpdateUnitProps> = (props) => {
-    const { data, setMechanizations, getActualList, ...rest } = props
+export const UserUpdateUnit: FC<UserUpdateUnitProps> = (props) => {
+    const { data, setUsers, getActualList, ...rest } = props
     const [editing, setEditing] = useState<boolean>(false)
 
     return (
@@ -19,12 +19,12 @@ export const MechanizationUpdateUnit: FC<MechanizationUpdateUnitProps> = (props)
                 editing ?
                     <EditSection
                         getActualList={getActualList}
-                        data={data}
                         setEditing={setEditing}
+                        data={data}
                     /> :
                     <ReadOnlySection
+                        setUsers={setUsers}
                         setEditing={setEditing}
-                        setMechanizations={setMechanizations}
                         data={data}
                     />
             }
@@ -33,12 +33,12 @@ export const MechanizationUpdateUnit: FC<MechanizationUpdateUnitProps> = (props)
 }
 
 const ReadOnlySection: FC<ReadOnlySectionProps> = (props) => {
-    const { setEditing, setMechanizations, data, ...rest } = props
+    const { setEditing, setUsers, data, ...rest } = props
 
     const handleRemove = async () => {
-        const response = await removeMechanization(data._id)
+        const response = await removeUser(data._id)
         if (response.sucess) {
-            setMechanizations((value) => {
+            setUsers((value) => {
                 const newArray = value.filter((unit) => {
                     if (unit._id !== data._id) {
                         return unit
@@ -54,28 +54,12 @@ const ReadOnlySection: FC<ReadOnlySectionProps> = (props) => {
     return (
         <div className={styles.readOnly} {...rest}>
             <div className={styles.infoWrapper}>
-                <div>Jméno</div>
+                <div>Uživatel</div>
                 <div>{data.name}</div>
             </div>
             <div className={styles.infoWrapper}>
-                <div>Označení</div>
-                <div>{data.label}</div>
-            </div>
-            <div className={styles.infoWrapper}>
-                <div>Nosnost</div>
-                <div>{data.capacity}</div>
-            </div>
-            <div className={styles.infoWrapper}>
-                <div>Typ</div>
-                <div>{data.type}</div>
-            </div>
-            <div className={styles.infoWrapper}>
-                <div>Cena</div>
-                <div>{data.price}</div>
-            </div>
-            <div className={styles.infoWrapper}>
-                <div>Pořadí</div>
-                <div>{data.order}</div>
+                <div>Role</div>
+                <div>{data.permission}</div>
             </div>
             <div className={styles.buttonWrapper}>
                 <button className={styles.button} onClick={() => setEditing(true)}>Edit</button>
@@ -88,16 +72,13 @@ const ReadOnlySection: FC<ReadOnlySectionProps> = (props) => {
 const EditSection: FC<EditSectionProps> = (props) => {
     const { t } = useTranslation()
 
-    const { name, label, capacity, price, order, type, pictures, _id } = props.data
+    const { name, permission, _id } = props.data
     const { setEditing, getActualList } = props
     const { control, register, handleSubmit, formState: { errors } } = useForm<EditSectionInputs>({
         defaultValues: {
             name: name,
-            label: label,
-            capacity: capacity,
-            type: type,
-            price: String(price),
-            order: String(order)
+            permission: permission,
+            password: undefined,
         },
         mode: "onBlur",
         reValidateMode: "onBlur",
@@ -115,6 +96,7 @@ const EditSection: FC<EditSectionProps> = (props) => {
                 error={errors[property] && true}
             >
                 <FilledTextFieldHF
+                    rootClass={styles.root}
                     className={styles.input}
                     labelClass={styles.label}
                     labelFocusClass={styles.focusLabel}
@@ -129,17 +111,21 @@ const EditSection: FC<EditSectionProps> = (props) => {
             </HelperText>
         )
     }
-
     const update: SubmitHandler<EditSectionInputs> = async (data) => {
-        const mechanizationObject = {
-            ...data,
-            id: _id,
-            pictures: pictures,
-            price: Number(data.price),
-            order: Number(data.order)
-        }
+        const { password, _id, ...restData } = data
+        const userObject = data.password ?
+            {
+                id: _id,
+                password: password,
+                ...restData
+            } :
+            {
+                id: _id,
+                ...restData
+            }
 
-        const response = await updateMechanization(mechanizationObject)
+        const response = await updateUser(userObject)
+
 
         //HAPPY DAY SCENARIO
         if (response.sucess === true && response.data !== null) {
@@ -151,42 +137,30 @@ const EditSection: FC<EditSectionProps> = (props) => {
             getActualList()
             return
         }
-
         //ERROR MODAL
         console.log(response)
+
     }
     const onInvalid: SubmitErrorHandler<EditSectionInputs> = (data) => {
         //MODAL
         console.log(data)
     }
+
     return (
         <form onSubmit={handleSubmit(update, onInvalid)} className={styles.form}>
-            <StandardInput property={"name"} label={"Jméno stroje"} />
-            <StandardInput property={"label"} label={"Označení stroje"} />
-            <StandardInput property={"capacity"} label={"Nosnost stroje"} />
-            <HelperText
-                className={clsx([styles.type, styles.helperText])}
-                helperClass={styles.helperClass}
-                text={"Vyberte typ stroje"}
-                errorText={errors.type?.message}
-                errorClass={styles.helperError}
-                error={errors.type && true}
-            >
-                <div className={styles.select}>
-                    <select {...register("type")} className={styles.customSelect}>
-                        <option value="M">Stavební stroje</option>
-                        <option value="SM">Drobná mechanizace</option>
-                        <option value="C">Autodoprava</option>
-                    </select>
-                </div>
-            </HelperText>
-            <StandardInput property={"price"} label={"Cena za den"} />
-            <StandardInput property={"order"} label={"Pořadí"} />
+            <StandardInput property={"name"} label={"Uživatelské jméno"} />
+            <StandardInput property={'password'} label={"Nové heslo"} />
+            <div className={styles.select} >
+                <select {...register("permission")} className={styles.customSelect}>
+                    <option value="USER">USER</option>
+                    <option value="ADMIN">ADMIN</option>
+                </select>
+            </div>
             <div className={styles.submit}>
                 <input type="submit" value={"Upravit"} />
                 <input type="button" value={"Zrušit"} onClick={() => { setEditing(false) }} />
             </div>
-
         </form>
     )
 }
+

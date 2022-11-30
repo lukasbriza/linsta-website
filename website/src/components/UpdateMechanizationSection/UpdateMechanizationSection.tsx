@@ -8,12 +8,10 @@ import { MechanizationUpdateUnit } from './MechnazationUpdateUnit'
 export const UpdateMechanizationSection: FC = () => {
     const [mechanizations, setMechanizations] = useState<MechanizationObjectExt[] | []>([])
 
-
     useEffect(() => {
         const response = fetch()
         response.then(data => {
             const sortedArray = sortMechanizations(data)
-            console.log(sortedArray)
             setMechanizations(sortedArray)
         })
     }, [])
@@ -43,7 +41,6 @@ const fetch = async () => {
 }
 
 const sortMechanizations = (mechanizations: MechanizationObjectExt[] | []) => {
-    console.log("rendered")
     if (mechanizations.length === 0) {
         return []
     }

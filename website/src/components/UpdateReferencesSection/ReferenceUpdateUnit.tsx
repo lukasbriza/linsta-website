@@ -1,16 +1,16 @@
-import styles from '../../styles/modules/UpdateMechanizationSection.module.scss'
+import styles from '../../styles/modules/UpdateReferencesSection.module.scss'
 
 import { FC, useState } from "react"
-import { EditSectionInputs, EditSectionProps, MechanizationUpdateUnitProps, ReadOnlySectionProps, StandardInputProps } from "./UpdateMechanizationSection.model"
-import { removeMechanization, updateMechanization } from '@fetchers'
 import { useTranslation } from 'next-i18next'
 import { useForm, SubmitHandler, SubmitErrorHandler } from 'react-hook-form'
 import { FilledTextFieldHF, HelperText } from '@lukasbriza/lbui-lib'
 import clsx from 'clsx'
-import { formValidationSchema } from './UpdateMechanizationSection.validation'
+import { formValidationSchema } from './UpdateReferences.validation'
+import { EditSectionInputs, EditSectionProps, ReadOnlySectionProps, ReferenceUpdateUnitProps, StandardInputProps } from './UpdateReferencesSection.model'
+import { removeReference, updateReference } from '@fetchers'
 
-export const MechanizationUpdateUnit: FC<MechanizationUpdateUnitProps> = (props) => {
-    const { data, setMechanizations, getActualList, ...rest } = props
+export const ReferenceUpdateUnit: FC<ReferenceUpdateUnitProps> = (props) => {
+    const { data, setReferences, getActualList, ...rest } = props
     const [editing, setEditing] = useState<boolean>(false)
 
     return (
@@ -19,12 +19,12 @@ export const MechanizationUpdateUnit: FC<MechanizationUpdateUnitProps> = (props)
                 editing ?
                     <EditSection
                         getActualList={getActualList}
-                        data={data}
                         setEditing={setEditing}
+                        data={data}
                     /> :
                     <ReadOnlySection
+                        setReferences={setReferences}
                         setEditing={setEditing}
-                        setMechanizations={setMechanizations}
                         data={data}
                     />
             }
@@ -33,12 +33,12 @@ export const MechanizationUpdateUnit: FC<MechanizationUpdateUnitProps> = (props)
 }
 
 const ReadOnlySection: FC<ReadOnlySectionProps> = (props) => {
-    const { setEditing, setMechanizations, data, ...rest } = props
+    const { setEditing, setReferences, data, ...rest } = props
 
     const handleRemove = async () => {
-        const response = await removeMechanization(data._id)
+        const response = await removeReference(data._id)
         if (response.sucess) {
-            setMechanizations((value) => {
+            setReferences((value) => {
                 const newArray = value.filter((unit) => {
                     if (unit._id !== data._id) {
                         return unit
@@ -54,28 +54,20 @@ const ReadOnlySection: FC<ReadOnlySectionProps> = (props) => {
     return (
         <div className={styles.readOnly} {...rest}>
             <div className={styles.infoWrapper}>
-                <div>Jméno</div>
+                <div>Název realizace</div>
                 <div>{data.name}</div>
             </div>
             <div className={styles.infoWrapper}>
-                <div>Označení</div>
-                <div>{data.label}</div>
+                <div>Místo realizace</div>
+                <div>{data.place}</div>
             </div>
             <div className={styles.infoWrapper}>
-                <div>Nosnost</div>
-                <div>{data.capacity}</div>
+                <div>Doba realizace</div>
+                <div>{data.realization}</div>
             </div>
             <div className={styles.infoWrapper}>
-                <div>Typ</div>
-                <div>{data.type}</div>
-            </div>
-            <div className={styles.infoWrapper}>
-                <div>Cena</div>
-                <div>{data.price}</div>
-            </div>
-            <div className={styles.infoWrapper}>
-                <div>Pořadí</div>
-                <div>{data.order}</div>
+                <div>Detail realizace</div>
+                <div>{data.detail}</div>
             </div>
             <div className={styles.buttonWrapper}>
                 <button className={styles.button} onClick={() => setEditing(true)}>Edit</button>
@@ -84,20 +76,17 @@ const ReadOnlySection: FC<ReadOnlySectionProps> = (props) => {
         </div>
     )
 }
-
 const EditSection: FC<EditSectionProps> = (props) => {
     const { t } = useTranslation()
 
-    const { name, label, capacity, price, order, type, pictures, _id } = props.data
+    const { name, place, realization, detail, _id } = props.data
     const { setEditing, getActualList } = props
     const { control, register, handleSubmit, formState: { errors } } = useForm<EditSectionInputs>({
         defaultValues: {
             name: name,
-            label: label,
-            capacity: capacity,
-            type: type,
-            price: String(price),
-            order: String(order)
+            place: place,
+            realization: realization,
+            detail: detail,
         },
         mode: "onBlur",
         reValidateMode: "onBlur",
@@ -115,6 +104,7 @@ const EditSection: FC<EditSectionProps> = (props) => {
                 error={errors[property] && true}
             >
                 <FilledTextFieldHF
+                    rootClass={styles.root}
                     className={styles.input}
                     labelClass={styles.label}
                     labelFocusClass={styles.focusLabel}
@@ -131,15 +121,12 @@ const EditSection: FC<EditSectionProps> = (props) => {
     }
 
     const update: SubmitHandler<EditSectionInputs> = async (data) => {
-        const mechanizationObject = {
+        const referenceObject = {
             ...data,
             id: _id,
-            pictures: pictures,
-            price: Number(data.price),
-            order: Number(data.order)
         }
 
-        const response = await updateMechanization(mechanizationObject)
+        const response = await updateReference(referenceObject)
 
         //HAPPY DAY SCENARIO
         if (response.sucess === true && response.data !== null) {
@@ -161,32 +148,22 @@ const EditSection: FC<EditSectionProps> = (props) => {
     }
     return (
         <form onSubmit={handleSubmit(update, onInvalid)} className={styles.form}>
-            <StandardInput property={"name"} label={"Jméno stroje"} />
-            <StandardInput property={"label"} label={"Označení stroje"} />
-            <StandardInput property={"capacity"} label={"Nosnost stroje"} />
+            <StandardInput property={"name"} label={"Název realizace"} />
+            <StandardInput property={"place"} label={"Místo realizace"} />
+            <StandardInput property={'realization'} label={"Datum realizace"} />
             <HelperText
-                className={clsx([styles.type, styles.helperText])}
-                helperClass={styles.helperClass}
-                text={"Vyberte typ stroje"}
-                errorText={errors.type?.message}
+                className={styles.helperText}
+                text={""}
+                errorText={errors.detail?.message}
                 errorClass={styles.helperError}
-                error={errors.type && true}
+                error={errors.detail && true}
             >
-                <div className={styles.select}>
-                    <select {...register("type")} className={styles.customSelect}>
-                        <option value="M">Stavební stroje</option>
-                        <option value="SM">Drobná mechanizace</option>
-                        <option value="C">Autodoprava</option>
-                    </select>
-                </div>
+                <textarea {...register("detail")} className={styles.detail} />
             </HelperText>
-            <StandardInput property={"price"} label={"Cena za den"} />
-            <StandardInput property={"order"} label={"Pořadí"} />
             <div className={styles.submit}>
                 <input type="submit" value={"Upravit"} />
                 <input type="button" value={"Zrušit"} onClick={() => { setEditing(false) }} />
             </div>
-
         </form>
     )
 }

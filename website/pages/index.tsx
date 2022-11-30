@@ -6,7 +6,7 @@ import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import type { NextPage } from 'next'
 import Image from 'next/image'
 import { badgeConfig } from '../src/config/badgeConfig'
-import { siteMetaData } from 'src/config/siteMetadata';
+import { siteMetaData } from '../src/config/siteMetadata';
 import { Badge, DynamicHead } from '@components'
 import { Typography } from '@lukasbriza/lbui-lib'
 

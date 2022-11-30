@@ -5,6 +5,8 @@ import {
   DeleteUsers_response,
   GetUsers_response,
   PostUsers_response,
+  PutUsers_request,
+  PutUsers_response,
 } from "../abl/Users/_models";
 
 const errorHandle = (err: unknown) => {
@@ -62,6 +64,25 @@ export const removeUser = async (id: string) => {
       { id: string },
       AxiosResponse<DeleteUsers_response, any>
     >(apiRoutes.users, { params: { id: id } });
+
+    if (response.data instanceof Error) {
+      console.log(response.data);
+      //MODAL
+      return { sucess: false, data: null };
+    }
+
+    return { sucess: response.data, data: response.data };
+  } catch (err) {
+    return errorHandle(err);
+  }
+};
+
+export const updateUser = async (data: PutUsers_request) => {
+  try {
+    const response = await axios.put<
+      PutUsers_request,
+      AxiosResponse<PutUsers_response, any>
+    >(apiRoutes.users, data);
 
     if (response.data instanceof Error) {
       console.log(response.data);

@@ -7,6 +7,11 @@ export const routes = {
   login: "/login",
   gdpr: "/gdpr",
   administration: "/protected",
+  demolition: "/services/demolition",
+  communications: "/services/communications",
+  machinerent: "/services/machinerent",
+  sewersconstruction: "/services/sewersconstruction",
+  transport: "/services/transport",
 } as const;
 
 export const apiRoutes = {

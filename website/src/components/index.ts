@@ -21,3 +21,4 @@ export * from "./Cross/Cross";
 export * from "./UpdateMechanizationSection/UpdateMechanizationSection";
 export * from "./UpdateReferencesSection/UpdateReferencesSection";
 export * from "./UserUpdateSection/UserUpdateSection";
+export * from "./Eye/Eye";

@@ -27,6 +27,26 @@
     "protected": {
       "title": "Dashboard",
       "description": "Administrativní rozhraní."
+    },
+    "demolition": {
+      "title": "Zemní práce a demolice",
+      "description": "-"
+    },
+    "communications": {
+      "title": "Výstavba komunikací",
+      "description": "-"
+    },
+    "machinerent": {
+      "title": "Pronájem stavebních strojů",
+      "description": "-"
+    },
+    "sewersconstruction": {
+      "title": "Výstavba vodovodních kanalizací",
+      "description": "-"
+    },
+    "transport": {
+      "title": "Nákladní autodoprava",
+      "description": "-"
     }
   },
   "menu": {
@@ -59,10 +79,11 @@
       "email": "lista@lista.cz",
       "ico": "IČO.: 090 43 667",
       "dic": "DIČ: CZ09043667",
-      "line1": "Hvozdecká 1488/1, 268 01 Hořovice,",
-      "line2": "Česká republika",
-      "line3": "Zapsaná v OR vedeném Městským soudem",
-      "line4": "v Praze, oddíl C, vložka 329672"
+      "line1": "Hvozdecká 1488/1,",
+      "line2": "268 01 Hořovice",
+      "line3": "Česká republika",
+      "line4": "Zap. v OR vedeném Měs. soudem",
+      "line5": "v Praze, oddíl C, vložka 329672"
     }
   },
   "pages": {
@@ -156,6 +177,33 @@
         "specialCharacters": "Speciální znaky jsou zakázány.",
         "required": "Povinné"
       }
+    },
+    "serviceName": {
+      "content": {
+        "header": {
+          "demolition": "Zemní práce a demolice",
+          "communications": "Výstavba komunikací",
+          "machinerent": "Pronájem stavebních strojů",
+          "sewersconstruction": "Výstavba vodovodních kanalizací",
+          "transport": "Nákladní autodoprava"
+        },
+        "main": {
+          "demolition": "xxx",
+          "communications": "xxx",
+          "machinerent": "xxx",
+          "sewersconstruction": "xxx",
+          "transport": "xxx"
+        },
+        "secondary": {
+          "demolition": "xxx",
+          "communications": "xxx",
+          "machinerent": "xxx",
+          "sewersconstruction": "xxx",
+          "transport": "xxx"
+        }
+      },
+      "banner": "Máte zájem o některou z našich služeb?",
+      "button": "KONTAKTOVAT"
     }
   }
 }

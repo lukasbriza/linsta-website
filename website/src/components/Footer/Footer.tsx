@@ -56,11 +56,12 @@ export const Footer: FC<FooterProps> = () => {
                     <FooterTypography>{t('footer.col3.ico')}</FooterTypography>
                 </FooterPoint>
                 <FooterPoint className={styles.officePoint}>
-                    <FooterTypography>
+                    <FooterTypography className={styles.office}>
                         {t('footer.col3.line1')}<br />
                         {t('footer.col3.line2')}<br />
                         {t('footer.col3.line3')}<br />
-                        {t('footer.col3.line4')}
+                        {t('footer.col3.line4')}<br />
+                        {t('footer.col3.line5')}
                     </FooterTypography>
                 </FooterPoint>
             </section>

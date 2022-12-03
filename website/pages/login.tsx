@@ -10,8 +10,8 @@ import Joi from 'joi';
 import { loginRequest } from '@fetchers'
 import styles from "../src/styles/pages/Login.module.scss"
 import { siteMetaData } from '../src/config/siteMetadata';
-import { useState, useEffect, useCallback } from 'react'
-import { DynamicHead, PictureHeader } from '@components';
+import { useState, } from 'react'
+import { DynamicHead, Eye } from '@components';
 import { useRedirect } from '@hooks'
 
 export async function getStaticProps({ locale }: { locale: string }) {
@@ -64,6 +64,7 @@ const formValidationSchema = (t: TFunction) => {
 };
 
 const Login: NextPage = () => {
+    const [hidePassword, setHidePassword] = useState<boolean>(true)
     const { t } = useTranslation()
     const { control, handleSubmit, formState: { errors } } = useForm<FormInputs>({
         defaultValues: {
@@ -126,18 +127,22 @@ const Login: NextPage = () => {
                         errorClass={styles.helperError}
                         error={errors.password && true}
                     >
-                        <FilledTextFieldHF
-                            className={styles.input}
-                            labelClass={styles.label}
-                            labelFocusClass={styles.focusLabel}
-                            labelFilledClass={styles.focusLabel}
-                            lineFilledClass={styles.filledLine}
-                            errorLineClass={styles.errorLine}
-                            errorLabelClass={styles.errorLabel}
-                            control={control}
-                            name={"password"}
-                            label={t('pages.login.password')}
-                        />
+                        <>
+                            <FilledTextFieldHF
+                                password={hidePassword}
+                                className={styles.input}
+                                labelClass={styles.label}
+                                labelFocusClass={styles.focusLabel}
+                                labelFilledClass={styles.focusLabel}
+                                lineFilledClass={styles.filledLine}
+                                errorLineClass={styles.errorLine}
+                                errorLabelClass={styles.errorLabel}
+                                control={control}
+                                name={"password"}
+                                label={t('pages.login.password')}
+                            />
+                            <Eye showPassword={hidePassword} onClick={() => setHidePassword(value => !value)} />
+                        </>
                     </HelperText>
                     <input type="submit" value={t('pages.contact.form.submit')} className={styles.submit} />
                 </form>

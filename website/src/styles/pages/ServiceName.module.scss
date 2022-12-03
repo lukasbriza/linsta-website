@@ -1,0 +1,286 @@
+@use "../theme.scss" as theme;
+@use "../mixins" as q;
+
+//PAGE
+.serviceName {
+  height: 100%;
+}
+
+.content {
+  width: 100%;
+  height: 100vh;
+  min-height: 500px;
+  max-height: 650px;
+  display: grid;
+  grid-template-columns: 100px 1fr 100px;
+  grid-template-areas: "arrow1 mainContent arrow2";
+
+  @include q.until(1035px) {
+    grid-template-columns: unset;
+    grid-template-rows: unset;
+    grid-template-areas: unset;
+    position: relative;
+    max-height: unset;
+    height: unset;
+  }
+}
+
+//BANNER
+.contactBanner {
+  width: 100%;
+  height: 100%;
+  background: theme.$primary-color;
+  height: 100px;
+
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-areas: "text button";
+  align-items: center;
+  justify-items: center;
+
+  @include q.until(1035px) {
+    width: unset;
+    height: unset;
+    margin: 0px 30px 20px 20px;
+    display: flex;
+    flex-direction: column;
+    padding-top: 40px;
+    padding-bottom: 20px;
+  }
+
+  @include q.until(500px) {
+    margin: 0px;
+    margin-bottom: 20px;
+    padding-left: 20px;
+    padding-right: 20px;
+    text-align: center;
+  }
+}
+
+.text {
+  grid-area: text;
+  text-transform: uppercase;
+  @include q.until(1035px) {
+    padding-bottom: 20px;
+  }
+}
+.button {
+  grid-area: button;
+  height: fit-content;
+  width: fit-content;
+  background: theme.$secondary-color;
+  width: 150px;
+  height: 50px;
+  text-transform: uppercase;
+  font-weight: 700;
+  cursor: pointer;
+  border: none;
+  outline: none;
+  color: theme.$text-secondary-color;
+  position: relative;
+  margin: 15px 15px;
+
+  p {
+    width: fit-content;
+    position: relative;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+  }
+}
+
+//CONTENT
+.mainWrapper {
+  position: relative;
+  top: 49%;
+  left: 49%;
+  transform: translate(-50%, -50%);
+  width: 85%;
+  height: 80%;
+  max-width: 1100px;
+
+  @include q.desktop {
+    width: 95%;
+  }
+  @include q.until(1035px) {
+    width: 100%;
+    left: 50%;
+    height: fit-content;
+  }
+}
+.main {
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+  grid-template-columns: 1fr 1fr;
+  grid-template-areas:
+    "mainServiceInformation image"
+    "secondaryServiceInformation image";
+
+  @include q.until(1035px) {
+    padding: 20px;
+    padding-right: 30px;
+    padding-bottom: 0px;
+    display: flex;
+    flex-direction: column;
+  }
+  @include q.until(500px) {
+    padding: 0px;
+    padding-top: 20px;
+  }
+}
+
+.mainServiceInformation {
+  grid-area: mainServiceInformation;
+  background: theme.$primary-color;
+  z-index: 2;
+  min-height: 150px;
+
+  display: grid;
+  grid-template-rows: min-content 1fr;
+  justify-items: center;
+  align-items: center;
+  padding: 15px;
+
+  @include q.until(1035px) {
+    min-height: 250px;
+  }
+}
+.secondaryServiceInformation {
+  grid-area: secondaryServiceInformation;
+  background: theme.$bckg-secondary-color;
+  z-index: 2;
+  min-height: 150px;
+
+  justify-items: center;
+  align-items: center;
+  display: grid;
+  padding: 15px;
+
+  @include q.until(1035px) {
+    min-height: 250px;
+  }
+}
+.header {
+  text-transform: uppercase;
+  text-align: center;
+}
+.underliner {
+  background: theme.$secondary-color !important;
+}
+
+.image {
+  grid-area: image;
+  position: relative;
+  z-index: 2;
+
+  @include q.until(1035px) {
+    height: 450px;
+  }
+
+  @include q.until(700px) {
+    height: 350px;
+  }
+}
+
+//LAYERS
+$offset: 12px;
+.layer1 {
+  width: 100%;
+  height: 100%;
+  min-height: 300px;
+  top: $offset;
+  left: $offset;
+  position: absolute;
+
+  z-index: 1;
+  background: theme.$secondary-color;
+
+  @include q.until(1035px) {
+    display: none;
+  }
+}
+.layer2 {
+  width: 100%;
+  height: 100%;
+  min-height: 300px;
+  top: calc(2 * $offset);
+  left: calc(2 * $offset);
+  position: absolute;
+
+  z-index: 0;
+  background: rgba(134, 134, 134, 1);
+
+  @include q.until(1035px) {
+    display: none;
+  }
+}
+
+//ARROW
+$size: 80px;
+
+.arrowWrapper:nth-child(1) {
+  grid-area: arrow1;
+  transform: translate(-50%, -50%) rotate(0deg);
+}
+
+.arrowWrapper {
+  position: relative;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(180deg);
+  grid-area: arrow2;
+  width: $size;
+  height: $size;
+  cursor: pointer;
+
+  @include q.until(1035px) {
+    display: none;
+  }
+}
+
+.arrowWrapper::before {
+  opacity: 0;
+  content: " ";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 110%;
+  height: 110%;
+  background: rgba(164, 164, 164, 0.629);
+  border-radius: 50%;
+  transition: opacity 0.25s ease-in-out;
+
+  @include q.until(1035px) {
+    display: none;
+  }
+}
+.arrowWrapper:hover::before {
+  opacity: 1;
+}
+.arrowWrapper:active::before {
+  opacity: 0;
+  transition-duration: 0.1s;
+}
+
+.line {
+  background: theme.$primary-color;
+  position: absolute;
+  width: calc($size/2);
+  height: 6px;
+}
+.line1 {
+  left: 54%;
+  top: 48%;
+  transform: translate(-50%, -50%) rotate(45deg);
+  transform-origin: left center;
+}
+.line2 {
+  left: 54%;
+  top: 52%;
+  transform: translate(-50%, -50%) rotate(-45deg);
+  transform-origin: left center;
+}

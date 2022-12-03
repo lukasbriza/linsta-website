@@ -7,20 +7,20 @@ import { ServiceCardProps, CardBodyProps } from './ServiceCard.model'
 import clsx from 'clsx'
 
 export const ServiceCard: FC<ServiceCardProps> = (props) => {
-    const { src, text, className } = props
+    const { src, text, className, onClick } = props
 
     return (
         <PictureCard
             src={src}
             square={true}
             className={clsx([styles.card, className])}
-            body={<CardBody text={text} />}
+            body={<CardBody text={text} onClick={onClick} />}
         />
     )
 }
 
 const CardBody: FC<CardBodyProps> = (props) => {
-    const { text } = props
+    const { text, onClick } = props
     return (
         <div className={styles.body}>
             <div className={styles.layer}></div>
@@ -36,7 +36,7 @@ const CardBody: FC<CardBodyProps> = (props) => {
                 modificationClass={styles.button}
                 hoverClass={styles.hovered}
                 label={"Více"}
-                onClick={() => { console.log("click") }}
+                onClick={onClick}
             />
             <div className={clsx([styles.line, styles.leftTopTop])}></div>
             <div className={clsx([styles.line, styles.leftTopLeft])}></div>

@@ -1,14 +1,22 @@
 @use "../mixins" as q;
+@use "../theme.scss" as theme;
 
 .services {
 }
-.servicesText {
-  padding-top: 30px;
+
+.textWrapper {
   position: relative;
   left: 50%;
   transform: translateX(-50%);
+  width: 60% !important;
+  background: theme.$primary-color;
+  padding: 25px;
+  margin-top: 40px;
+}
+
+.servicesText {
   text-align: center;
-  width: 60%;
+  width: 100%;
 
   @include q.tablet {
     width: 80%;

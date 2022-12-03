@@ -19,7 +19,7 @@ export const Form: FC<FormProps> = () => {
             name: "",
             surname: "",
             email: "",
-            company: undefined,
+            company: "",
             message: "",
             gdpr: false
         },

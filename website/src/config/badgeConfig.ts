@@ -5,12 +5,12 @@ import steamroller from "@assets/steamroller.svg";
 import { routes } from "./routes";
 
 export const badgeConfig = [
-  { icon: steamroller, text: "badge1", url: routes.services },
+  { icon: steamroller, text: "badge1", url: routes.communications },
   {
     icon: canalization,
     text: "badge2",
-    url: routes.services,
+    url: routes.sewersconstruction,
   },
-  { icon: demolition, text: "badge3", url: routes.services },
-  { icon: transport, text: "badge4", url: routes.services },
+  { icon: demolition, text: "badge3", url: routes.demolition },
+  { icon: transport, text: "badge4", url: routes.transport },
 ];

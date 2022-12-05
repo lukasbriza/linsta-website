@@ -51,6 +51,8 @@ const ReadOnlySection: FC<ReadOnlySectionProps> = (props) => {
         }
     }
 
+    const handleEdit = () => setEditing(true)
+
     return (
         <div className={styles.readOnly} {...rest}>
             <div className={styles.infoWrapper}>
@@ -78,7 +80,7 @@ const ReadOnlySection: FC<ReadOnlySectionProps> = (props) => {
                 <div>{data.order}</div>
             </div>
             <div className={styles.buttonWrapper}>
-                <button className={styles.button} onClick={() => setEditing(true)}>Edit</button>
+                <button className={styles.button} onClick={handleEdit}>Edit</button>
                 <button className={styles.button} onClick={handleRemove}>X</button>
             </div>
         </div>

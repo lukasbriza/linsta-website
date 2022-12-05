@@ -42,9 +42,9 @@ export async function middleware(req: NextRequest) {
 
 export const config = {
   matcher: [
+    "/protected",
     "/api/users",
     "/api/mechanization",
     "/api/references",
-    "/protected",
   ],
 };

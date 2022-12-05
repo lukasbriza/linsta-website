@@ -43,11 +43,12 @@ export const authenticate = async () => {
   try {
     const response = await axios.get(apiRoutes.login);
     const responseData: Authenticate_response = response.data;
-    return { sucess: responseData };
+    return { sucess: true, data: responseData };
   } catch (err) {
     if (err instanceof AxiosError) {
+      console.log(err);
+      //SET MODAL
     }
-    //set modal
-    return { sucess: false };
+    return { sucess: false, data: null };
   }
 };

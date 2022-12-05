@@ -38,7 +38,7 @@ export const authenticate = async (
       const expiredBool = decoded.exp < (new Date().getTime() + 1) / 1000;
       const expired = expiredBool
         ? sucessResponse(res, false)
-        : sucessResponse(res, true);
+        : sucessResponse(res, decoded);
 
       return expired;
     }

@@ -7,7 +7,7 @@ import { FilledTextFieldHF, HelperText } from '@lukasbriza/lbui-lib'
 import clsx from 'clsx'
 import { formValidationSchema } from './UserUpdateSection.validation'
 import { EditSectionInputs, EditSectionProps, ReadOnlySectionProps, StandardInputProps, UserUpdateUnitProps } from './UserUpdateSection.model'
-import { removeUser, updateUser } from '@fetchers'
+import { authenticate, removeUser, updateUser } from '@fetchers'
 
 export const UserUpdateUnit: FC<UserUpdateUnitProps> = (props) => {
     const { data, setUsers, getActualList, ...rest } = props
@@ -36,6 +36,12 @@ const ReadOnlySection: FC<ReadOnlySectionProps> = (props) => {
     const { setEditing, setUsers, data, ...rest } = props
 
     const handleRemove = async () => {
+        const auth = await authenticate()
+        if (auth.sucess === false || auth.data === null || auth.data.permission === "USER") {
+            //AUTH FAILED
+            return
+        }
+
         const response = await removeUser(data._id)
         if (response.sucess) {
             setUsers((value) => {
@@ -51,6 +57,17 @@ const ReadOnlySection: FC<ReadOnlySectionProps> = (props) => {
         }
     }
 
+    const handleEdit = async () => {
+        const auth = await authenticate()
+        if (auth.sucess === false || auth.data === null) {
+            //AUTH FAILED
+            return
+        }
+        if (auth.data._id === data._id || auth.data.permission === "ADMIN") {
+            setEditing(true)
+        }
+    }
+
     return (
         <div className={styles.readOnly} {...rest}>
             <div className={styles.infoWrapper}>
@@ -62,7 +79,7 @@ const ReadOnlySection: FC<ReadOnlySectionProps> = (props) => {
                 <div>{data.permission}</div>
             </div>
             <div className={styles.buttonWrapper}>
-                <button className={styles.button} onClick={() => setEditing(true)}>Edit</button>
+                <button className={styles.button} onClick={handleEdit}>Edit</button>
                 <button className={styles.button} onClick={handleRemove}>X</button>
             </div>
         </div>

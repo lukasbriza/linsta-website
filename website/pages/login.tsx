@@ -1,4 +1,5 @@
 import type { NextPage } from 'next'
+import { useEffect, useRef } from 'react'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import { useTranslation } from 'next-i18next'
 import { useForm, SubmitHandler } from 'react-hook-form'
@@ -7,7 +8,7 @@ import { joiResolver } from '@hookform/resolvers/joi';
 import { TFunction } from 'next-i18next';
 import jwt from 'jsonwebtoken'
 import Joi from 'joi';
-import { loginRequest } from '@fetchers'
+import { authenticate, loginRequest } from '@fetchers'
 import styles from "../src/styles/pages/Login.module.scss"
 import { siteMetaData } from '../src/config/siteMetadata';
 import { useState, } from 'react'
@@ -63,6 +64,7 @@ const formValidationSchema = (t: TFunction) => {
     return joiResolver(schema(t));
 };
 
+
 const Login: NextPage = () => {
     const [hidePassword, setHidePassword] = useState<boolean>(true)
     const { t } = useTranslation()
@@ -75,7 +77,19 @@ const Login: NextPage = () => {
         reValidateMode: "onBlur",
         resolver: formValidationSchema(t)
     })
+    const render = useRef(false)
     const redirect = useRedirect()
+
+    useEffect(() => {
+        if (render.current === false) {
+            authenticate().then(value => {
+                const { sucess, data } = value
+                sucess && data !== null && redirect({ path: '/protected' })
+            })
+        }
+        render.current = true
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [])
 
     const onSubmit: SubmitHandler<FormInputs> = (data) => {
         const token = jwt.sign({ name: data.username, password: data.password }, process.env.NEXT_PUBLIC_JWT_REGISTRATION_KEY!)

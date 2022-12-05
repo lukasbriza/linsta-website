@@ -59,7 +59,8 @@
   "header": {
     "phone": "+420 606 095 352",
     "email": "linsta@linsta.cz",
-    "login": "Přihlásit"
+    "login": "Přihlásit",
+    "logout": "Odhlásit"
   },
   "footer": {
     "col1": {

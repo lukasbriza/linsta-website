@@ -8,11 +8,16 @@ import Link from 'next/link'
 import { useRedirect } from '@hooks'
 import { HeaderProps } from './Header.model'
 import { MenuItem, MenuList } from '@lukasbriza/lbui-lib'
+import { useRouter } from 'next/router'
+import { routes } from '../../config/routes'
 
 export const Header: FC<HeaderProps> = (props) => {
     const { t } = useTranslation()
     const { leftItems, rightItems } = props
+    const { administration, login } = routes
     const redirect = useRedirect()
+    const router = useRouter()
+
     return (
         <section className={styles.header}>
             <MenuList className={styles.leftSection}>
@@ -35,9 +40,10 @@ export const Header: FC<HeaderProps> = (props) => {
             </MenuList>
             <MenuList className={styles.rightSection}>
                 {rightItems.map((item, index) => {
+
                     return (
-                        <Link key={index} href={item.url} >
-                            <p className={clsx([styles.label, styles.login])}>{t('header.login')}</p>
+                        <Link key={index} href={router.pathname === administration ? login : item.url} >
+                            <p className={clsx([styles.label, styles.login])}>{router.pathname === administration ? t('header.logout') : t('header.login')}</p>
                         </Link>
                     )
                 })}

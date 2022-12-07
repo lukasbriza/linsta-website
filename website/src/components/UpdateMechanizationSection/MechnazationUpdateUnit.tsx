@@ -8,6 +8,7 @@ import { useForm, SubmitHandler, SubmitErrorHandler } from 'react-hook-form'
 import { FilledTextFieldHF, HelperText } from '@lukasbriza/lbui-lib'
 import clsx from 'clsx'
 import { formValidationSchema } from './UpdateMechanizationSection.validation'
+import { useModal } from '@hooks'
 
 export const MechanizationUpdateUnit: FC<MechanizationUpdateUnitProps> = (props) => {
     const { data, setMechanizations, getActualList, ...rest } = props
@@ -89,7 +90,7 @@ const ReadOnlySection: FC<ReadOnlySectionProps> = (props) => {
 
 const EditSection: FC<EditSectionProps> = (props) => {
     const { t } = useTranslation()
-
+    const { show } = useModal()
     const { name, label, capacity, price, order, type, pictures, _id } = props.data
     const { setEditing, getActualList } = props
     const { control, register, handleSubmit, formState: { errors } } = useForm<EditSectionInputs>({
@@ -147,6 +148,7 @@ const EditSection: FC<EditSectionProps> = (props) => {
         if (response.sucess === true && response.data !== null) {
             //SUCESS MODAL
             console.log(response)
+            show({ sucess: true, text: t('modal.mechanizationUpdate.sucess'), button: false })
 
             //TOGLE NON EDIT MODE
             setEditing(false)
@@ -156,10 +158,12 @@ const EditSection: FC<EditSectionProps> = (props) => {
 
         //ERROR MODAL
         console.log(response)
+        show({ sucess: false, text: t('modal.mechanizationUpdate.failure'), button: false })
     }
     const onInvalid: SubmitErrorHandler<EditSectionInputs> = (data) => {
         //MODAL
         console.log(data)
+        show({ sucess: false, text: t('modal.mechanizationUpdate.invalid'), button: false })
     }
     return (
         <form onSubmit={handleSubmit(update, onInvalid)} className={styles.form}>

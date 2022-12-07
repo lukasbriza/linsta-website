@@ -22,3 +22,5 @@ export * from "./UpdateMechanizationSection/UpdateMechanizationSection";
 export * from "./UpdateReferencesSection/UpdateReferencesSection";
 export * from "./UserUpdateSection/UserUpdateSection";
 export * from "./Eye/Eye";
+export * from "./Modal/ModalHandler";
+export * from "./Modal/Modal";

@@ -11,7 +11,7 @@ import { saveMechanizationProps } from "./_model";
 
 const errorHandle = (err: unknown) => {
   if (err instanceof AxiosError) {
-    //MODAL
+    console.error(err);
   }
   return { sucess: false, data: null };
 };
@@ -26,9 +26,7 @@ export const saveMechanization = async (data: saveMechanizationProps) => {
 
     //RETURN API ERROR?
     if (response.data instanceof Error) {
-      console.log(response.data);
-      //MODAL
-
+      console.error(response.data);
       return { sucess: false, data: null };
     }
 
@@ -46,8 +44,7 @@ export const getMechanization = async (id?: string) => {
     >(apiRoutes.mechanization, id ? { params: { id: id } } : undefined);
 
     if (response.data instanceof Error) {
-      console.log(response.data);
-      //MODAL
+      console.error(response.data);
       return { sucess: false, data: null };
     }
 
@@ -65,8 +62,7 @@ export const removeMechanization = async (id: string) => {
     >(apiRoutes.mechanization, { params: { id: id } });
 
     if (response.data instanceof Error) {
-      console.log(response.data);
-      //MODAL
+      console.error(response.data);
       return { sucess: false, data: null };
     }
 
@@ -84,8 +80,7 @@ export const updateMechanization = async (data: PutMechanization_request) => {
     >(apiRoutes.mechanization, data);
 
     if (response.data instanceof Error) {
-      console.log(response.data);
-      //MODAL
+      console.error(response.data);
       return { sucess: false, data: null };
     }
 

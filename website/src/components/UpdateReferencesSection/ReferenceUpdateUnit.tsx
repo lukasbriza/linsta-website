@@ -8,6 +8,7 @@ import clsx from 'clsx'
 import { formValidationSchema } from './UpdateReferences.validation'
 import { EditSectionInputs, EditSectionProps, ReadOnlySectionProps, ReferenceUpdateUnitProps, StandardInputProps } from './UpdateReferencesSection.model'
 import { removeReference, updateReference } from '@fetchers'
+import { useModal } from '@hooks'
 
 export const ReferenceUpdateUnit: FC<ReferenceUpdateUnitProps> = (props) => {
     const { data, setReferences, getActualList, ...rest } = props
@@ -78,7 +79,7 @@ const ReadOnlySection: FC<ReadOnlySectionProps> = (props) => {
 }
 const EditSection: FC<EditSectionProps> = (props) => {
     const { t } = useTranslation()
-
+    const { show } = useModal()
     const { name, place, realization, detail, _id } = props.data
     const { setEditing, getActualList } = props
     const { control, register, handleSubmit, formState: { errors } } = useForm<EditSectionInputs>({
@@ -132,6 +133,7 @@ const EditSection: FC<EditSectionProps> = (props) => {
         if (response.sucess === true && response.data !== null) {
             //SUCESS MODAL
             console.log(response)
+            show({ sucess: true, text: t('modal.referenceUpdate.sucess'), button: false })
 
             //TOGLE NON EDIT MODE
             setEditing(false)
@@ -141,10 +143,12 @@ const EditSection: FC<EditSectionProps> = (props) => {
 
         //ERROR MODAL
         console.log(response)
+        show({ sucess: false, text: t('modal.referenceUpdate.failure'), button: false })
     }
     const onInvalid: SubmitErrorHandler<EditSectionInputs> = (data) => {
         //MODAL
         console.log(data)
+        show({ sucess: false, text: t('modal.referenceUpdate.invalid'), button: false })
     }
     return (
         <form onSubmit={handleSubmit(update, onInvalid)} className={styles.form}>

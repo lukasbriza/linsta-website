@@ -11,7 +11,7 @@ import {
 
 const errorHandle = (err: unknown) => {
   if (err instanceof AxiosError) {
-    //MODAL
+    console.error(err);
   }
   return { sucess: false, data: null };
 };
@@ -26,8 +26,7 @@ export const saveUser = async (user: saveUserProps) => {
 
     //RETURN API RESPONSE?
     if (response.data instanceof Error) {
-      console.log(response.data);
-      //MODAL
+      console.error(response.data);
       return { sucess: false, data: null };
     }
 
@@ -47,8 +46,7 @@ export const getUsers = async () => {
 
     //RETURN API RESPONSE?
     if (response.data instanceof Error) {
-      console.log(response.data);
-      //MODAL
+      console.error(response.data);
       return { sucess: false, data: null };
     }
 
@@ -66,8 +64,7 @@ export const removeUser = async (id: string) => {
     >(apiRoutes.users, { params: { id: id } });
 
     if (response.data instanceof Error) {
-      console.log(response.data);
-      //MODAL
+      console.error(response.data);
       return { sucess: false, data: null };
     }
 
@@ -85,8 +82,7 @@ export const updateUser = async (data: PutUsers_request) => {
     >(apiRoutes.users, data);
 
     if (response.data instanceof Error) {
-      console.log(response.data);
-      //MODAL
+      console.error(response.data);
       return { sucess: false, data: null };
     }
 

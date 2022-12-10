@@ -206,5 +206,41 @@
       "banner": "Máte zájem o některou z našich služeb?",
       "button": "KONTAKTOVAT"
     }
+  },
+  "modal": {
+    "login": {
+      "invalidToken": "Vypršela platnost tokenu.",
+      "invalidCredentials": "Zadány nevalidní údaje."
+    },
+    "mechanizationForm": {
+      "sucess": "Uloženo.",
+      "failure": "Něco se nepodařilo.",
+      "invalid": "Zadány nevalidní data."
+    },
+    "referenceForm": {
+      "sucess": "Uloženo.",
+      "failure": "Něco se nepodařilo.",
+      "invalid": "Zadány nevalidní data."
+    },
+    "mechanizationUpdate": {
+      "sucess": "Aktualizováno.",
+      "failure": "Něco se nepodařilo.",
+      "invalid": "Zadány nevalidní data."
+    },
+    "referenceUpdate": {
+      "sucess": "Aktualizováno.",
+      "failure": "Něco se nepodařilo.",
+      "invalid": "Zadány nevalidní data."
+    },
+    "userForm": {
+      "sucess": "Uloženo.",
+      "failure": "Něco se nepodařilo.",
+      "invalid": "Zadány nevalidní data."
+    },
+    "userUpdate": {
+      "sucess": "Aktualizováno.",
+      "failure": "Něco se nepodařilo.",
+      "invalid": "Zadány nevalidní data."
+    }
   }
 }

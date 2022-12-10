@@ -11,7 +11,7 @@ import { apiRoutes } from "../config/routes";
 
 const errorHandle = (err: unknown) => {
   if (err instanceof AxiosError) {
-    //MODAL
+    console.error(err);
   }
   return { sucess: false, data: null };
 };
@@ -26,8 +26,7 @@ export const saveReference = async (data: saveReferenceProps) => {
 
     //RETURN API ERROR?
     if (response.data instanceof Error) {
-      console.log(response.data);
-      //MODAL
+      console.error(response.data);
       return { sucess: false, data: null };
     }
 
@@ -45,8 +44,7 @@ export const getReference = async (id?: string) => {
     >(apiRoutes.references, id ? { params: { id: id } } : undefined);
 
     if (response.data instanceof Error) {
-      console.log(response.data);
-      //MODAL
+      console.error(response.data);
       return { sucess: false, data: null };
     }
 
@@ -64,8 +62,7 @@ export const removeReference = async (id: string) => {
     >(apiRoutes.references, { params: { id: id } });
 
     if (response.data instanceof Error) {
-      console.log(response.data);
-      //MODAL
+      console.error(response.data);
       return { sucess: false, data: null };
     }
 
@@ -83,8 +80,7 @@ export const updateReference = async (data: PutReferences_request) => {
     >(apiRoutes.references, data);
 
     if (response.data instanceof Error) {
-      console.log(response.data);
-      //MODAL
+      console.error(response.data);
       return { sucess: false, data: null };
     }
 

@@ -16,8 +16,8 @@ export const loginRequest = async (data: loginProps) => {
     return { sucess: true, token: responseData.token, data: decoded };
   } catch (err) {
     if (err instanceof AxiosError) {
+      console.error(err);
     }
-    //set modal
     return { sucess: false, token: null, data: null };
   }
 };
@@ -33,8 +33,8 @@ export const logoutRequest = async () => {
     return { sucess: false };
   } catch (err) {
     if (err instanceof AxiosError) {
+      console.error(err);
     }
-    //set modal
     return { sucess: false };
   }
 };
@@ -46,8 +46,7 @@ export const authenticate = async () => {
     return { sucess: true, data: responseData };
   } catch (err) {
     if (err instanceof AxiosError) {
-      console.log(err);
-      //SET MODAL
+      console.error(err);
     }
     return { sucess: false, data: null };
   }

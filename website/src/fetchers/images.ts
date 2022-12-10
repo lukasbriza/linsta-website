@@ -6,7 +6,7 @@ import { imagePostProps } from "./_model";
 
 const errorHandle = (err: unknown) => {
   if (err instanceof AxiosError) {
-    //MODAL
+    console.error(err);
   }
   return { sucess: false, data: null };
 };
@@ -26,15 +26,12 @@ export const saveImg = async ({ file }: imagePostProps) => {
 
     //RETURN API ERROR?
     if (response.data instanceof Error) {
-      console.log(response.data);
-      //MODAL
+      console.error(response.data);
       return { sucess: false, data: null };
     }
     //STATUS NOK?
     if (response.status !== SUCESS_STATUS) {
-      console.log(response.data);
-      //MODAL
-
+      console.error(response.data);
       response.data.id ? removeImg(response.data.id) : null;
 
       return { sucess: false, data: null };
@@ -58,11 +55,13 @@ export const removeImg = async (id: string) => {
 
     //RETURN API ERROR?
     if (response.data instanceof Error) {
+      console.error(response.data);
       return { sucess: false, data: null };
     }
 
     //STATUS NOK?
     if (response.status !== SUCESS_STATUS) {
+      console.error(response.data);
       return { sucess: false, data: response.data };
     }
 
@@ -82,17 +81,13 @@ export const getImg = async (id: string) => {
     });
     //RETURN API ERROR?
     if (data instanceof Error) {
-      console.log(data.message);
-      //MODAL
-
+      console.error(data.message);
       return { sucess: false, data: null };
     }
 
     //API ERROR?
     if (status !== SUCESS_STATUS) {
-      console.log(statusText);
-      //MODAL
-
+      console.error(data.message);
       return { sucess: false, data: statusText };
     }
 

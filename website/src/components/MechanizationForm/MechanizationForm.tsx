@@ -9,6 +9,7 @@ import { PictureHeader } from '@components'
 import { useTranslation } from 'next-i18next'
 import { formValidationSchema } from './MechanizationForm.validation'
 import { saveImg, saveMechanization } from '@fetchers'
+import { useModal } from '@hooks'
 
 
 type MechanizationInputs = {
@@ -28,6 +29,7 @@ type StandardInputProps = {
 
 export const AddMechanizationForm: FC = () => {
     const { t } = useTranslation()
+    const { show } = useModal()
 
     const { reset, register, control, handleSubmit, formState: { errors } } = useForm<MechanizationInputs>({
         defaultValues: {
@@ -87,19 +89,21 @@ export const AddMechanizationForm: FC = () => {
         if (saveMechanizationResponse.sucess === true && saveMechanizationResponse.data !== null) {
             //SUCESS MODAL
             console.log(saveMechanizationResponse)
-
+            show({ sucess: true, text: t('modal.mechanizationForm.sucess'), button: false })
             //RESET FORM
             reset()
             return
         }
 
         //ERROR MODAL
-        console.log(saveMechanizationResponse)
+        console.error(saveMechanizationResponse)
+        show({ sucess: false, text: t('modal.mechanizationForm.failure'), button: false })
     }
 
     const onInvalid: SubmitErrorHandler<MechanizationInputs> = (data) => {
         //MODAL
-        console.log(data)
+        console.info(data)
+        show({ sucess: false, text: t('modal.mechanizationForm.invalid'), button: false })
     }
 
     return (

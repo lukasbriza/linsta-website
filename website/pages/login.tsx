@@ -13,7 +13,8 @@ import styles from "../src/styles/pages/Login.module.scss"
 import { siteMetaData } from '../src/config/siteMetadata';
 import { useState, } from 'react'
 import { DynamicHead, Eye } from '@components';
-import { useRedirect } from '@hooks'
+import { useModal, useRedirect } from '@hooks'
+import { useRouter } from 'next/router';
 
 export async function getStaticProps({ locale }: { locale: string }) {
     return {
@@ -79,6 +80,9 @@ const Login: NextPage = () => {
     })
     const render = useRef(false)
     const redirect = useRedirect()
+    const router = useRouter()
+    const paramError = router.query.error
+    const { show } = useModal()
 
     useEffect(() => {
         if (render.current === false) {
@@ -91,6 +95,13 @@ const Login: NextPage = () => {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
+    useEffect(() => {
+        if (paramError === "true") {
+            show({ sucess: false, button: false, text: t('modal.login.invalidToken'), timeout: 2000 })
+        }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [paramError])
+
     const onSubmit: SubmitHandler<FormInputs> = (data) => {
         const token = jwt.sign({ name: data.username, password: data.password }, process.env.NEXT_PUBLIC_JWT_REGISTRATION_KEY!)
 
@@ -100,6 +111,7 @@ const Login: NextPage = () => {
             }
             if (response.sucess === false) {
                 console.error(response)
+                show({ sucess: false, button: false, text: t('modal.login.invalidCredentials'), timeout: 2000 })
             }
         })
     }

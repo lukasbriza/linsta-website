@@ -9,6 +9,7 @@ import { useTranslation } from 'next-i18next'
 import { formValidationSchema } from './ReferencesForm.validation'
 import { saveImg, removeImg, saveReference } from '@fetchers'
 import { PictureHeader } from '@components'
+import { useModal } from '@hooks'
 
 type ReferencesInputs = {
     name: string;
@@ -23,7 +24,7 @@ type StandardInputProps = { property: keyof Pick<ReferencesInputs, "name" | "pla
 
 export const AddReferencesForm: FC = () => {
     const { t } = useTranslation()
-
+    const { show } = useModal()
     const { reset, register, control, handleSubmit, formState: { errors } } = useForm<ReferencesInputs>({
         defaultValues: {
             name: "",
@@ -80,7 +81,7 @@ export const AddReferencesForm: FC = () => {
             if (loopedThrough) {
                 const actualFile = file.item(i)
                 const response = actualFile && await saveImg({ file: actualFile })
-                console.log()
+
                 if (response && response.sucess === false) {
                     loopedThrough = false
                     clearArray(arrayOfPicturesIds)
@@ -96,6 +97,7 @@ export const AddReferencesForm: FC = () => {
             if (saveReferenceResponse.sucess === true && saveReferenceResponse.data !== null) {
                 //SUCESS MODAL
                 console.log(saveReferenceResponse)
+                show({ sucess: true, text: t('modal.referenceForm.sucess'), button: false })
 
                 //RESET FORM
                 reset()
@@ -103,8 +105,10 @@ export const AddReferencesForm: FC = () => {
             }
             //ERROR MODAL
             console.log(saveReferenceResponse)
+            show({ sucess: false, text: t('modal.referenceForm.failure'), button: false })
         }
         //ERROR MODAL
+        show({ sucess: false, text: t('modal.referenceForm.failure'), button: false })
     }
 
     return (

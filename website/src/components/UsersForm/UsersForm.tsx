@@ -2,13 +2,14 @@ import styles from '../../styles/pages/Protected.module.scss'
 import users from '@assets/usersHeader.webp'
 
 import React, { FC } from 'react'
-import { useForm, SubmitHandler } from 'react-hook-form'
+import { useForm, SubmitHandler, SubmitErrorHandler } from 'react-hook-form'
 import { HelperText, FilledTextFieldHF } from '@lukasbriza/lbui-lib'
 import { useTranslation } from 'next-i18next'
 import { formValidationSchema } from './UsersForm.validation'
 import { saveUser } from '@fetchers'
 import { PictureHeader } from '@components'
 import clsx from 'clsx'
+import { useModal } from '@hooks'
 
 type UsersInputs = {
     name: string;
@@ -21,7 +22,7 @@ type StandardInputProps = { property: keyof Pick<UsersInputs, "name" | "password
 
 export const AddUserForm: FC = () => {
     const { t } = useTranslation()
-
+    const { show } = useModal()
     const { reset, register, control, handleSubmit, formState: { errors } } = useForm<UsersInputs>({
         defaultValues: {
             name: "",
@@ -68,7 +69,7 @@ export const AddUserForm: FC = () => {
         if (saveUserresponse.sucess === true && saveUserresponse.data === true) {
             //SUCESS MODAL
             console.log(saveUserresponse)
-
+            show({ sucess: true, text: t('modal.userForm.sucess'), button: false })
             //RESET FORM
             reset()
             return
@@ -76,10 +77,16 @@ export const AddUserForm: FC = () => {
 
         //ERROR MODAL
         console.log(saveUserresponse)
+        show({ sucess: false, text: t('modal.userForm.failure'), button: false })
+    }
+    const onInvalid: SubmitErrorHandler<UsersInputs> = (data) => {
+        //MODAL
+        console.log(data)
+        show({ sucess: false, text: t('modal.userForm.invalid'), button: false })
     }
 
     return (
-        <form onSubmit={handleSubmit(onSubmit)} className={clsx([styles.form, styles.userForm])}>
+        <form onSubmit={handleSubmit(onSubmit, onInvalid)} className={clsx([styles.form, styles.userForm])}>
             <PictureHeader text={"Přidat uživatele"} src={users} className={styles.pictureHeader} />
             <StandardInput property={"name"} label={"Přihlašovací jméno"} />
             <StandardInput property={"password"} label={"Heslo"} />

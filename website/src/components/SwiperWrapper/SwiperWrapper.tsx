@@ -1,19 +1,40 @@
 import styles from '../../styles/modules/SwiperWrapper.module.scss'
 
-import { FC, useState } from 'react'
+import { removeAnimation, initAnimation } from './animations'
+import { FC, useState, useEffect, useRef } from 'react'
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay, Navigation, Pagination } from 'swiper';
 import { Cross } from '@components'
 import Image from 'next/image';
 import { ImageLoadingProps, SwiperWrapperProps } from './SwiperWrapper.model'
 
-
+let mounted = false
 export const SwiperWrapper: FC<SwiperWrapperProps> = (props) => {
     const { src, description, onCancel } = props
+    const root = useRef<HTMLDivElement>(null)
+
+    const handleCancel = () => {
+        if (root.current) {
+            const remove = removeAnimation(root.current)
+            remove.then(() => { onCancel() })
+        }
+    }
+
+    useEffect(() => {
+        if (!mounted) {
+            root.current && initAnimation(root.current)
+        }
+        mounted = true
+
+        return () => {
+            mounted = false
+        }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [])
 
     return (
-        <div className={styles.wrapper}>
-            <Cross className={styles.cross} onClick={onCancel} />
+        <div className={styles.wrapper} ref={root}>
+            <Cross className={styles.cross} onClick={handleCancel} />
             <Swiper
                 className={styles.swiper}
                 modules={[Navigation, Pagination, Autoplay]}

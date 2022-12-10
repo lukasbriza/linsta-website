@@ -5,51 +5,50 @@ import React, { FC, useState, useRef, useEffect } from 'react'
 import clsx from 'clsx'
 import Image from 'next/image'
 import Link from 'next/link'
-import { useRedirect } from '@hooks'
+import { useRedirect, useDisableScroll } from '@hooks'
 import { MenuBar, MenuList, MenuItem, BasicHamburger, useElementSize } from '@lukasbriza/lbui-lib'
-import { Logo } from '../Logo/Logo'
+import { Logo, ImperativeReference } from '../Logo/Logo'
 import { MenuProps } from './Menu.model'
 import { Routes } from '../../models'
 
+let rendered = false
 
 export const Menu: FC<MenuProps> = (props) => {
     const { t } = useTranslation()
     const { items } = props
     const [hmbShow, setHmbShow] = useState<boolean>(false)
     const [showslider, setShowSlider] = useState<boolean>(false)
+    const [disabled, setDisabled] = useDisableScroll()
     const menuBarRef = useRef<HTMLElement>(null)
     const hmbRef = useRef<HTMLDivElement>(null)
+    const logoRef = useRef<ImperativeReference>(null)
     const { width } = useElementSize(menuBarRef)
     const redirect = useRedirect()
 
-    const preventScroll = (e: WheelEvent) => {
-        console.log('scroll')
-        e.preventDefault();
-        e.stopPropagation();
-        return false;
-    }
-
     useEffect(() => {
-        if (showslider) {
-            document.addEventListener('wheel', preventScroll, { passive: false })
-        }
-        document.removeEventListener('wheel', preventScroll)
+        showslider ? setDisabled(true) : setDisabled(false)
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [showslider])
 
     const handleHmbClick = () => setShowSlider(value => !value)
 
     useEffect(() => {
         if (width !== null) {
-            width <= 870 ? setHmbShow(true) : setHmbShow(false)
+            width <= 950 ? setHmbShow(true) : setHmbShow(false)
         }
     }, [menuBarRef, width])
+
+    useEffect(() => {
+        !rendered && logoRef.current?.initialAnimation()
+        rendered = true
+    }, [])
 
 
     return (
         <>
             <MenuBar className={styles.menu} ref={menuBarRef}>
                 <div className={styles.logoWrapper}>
-                    <Logo className={styles.logo} />
+                    <Logo ref={logoRef} />
                 </div>
                 <MenuList className={clsx([styles.menuList, hmbShow && styles.hide])}>
                     {items.map((item, index) => {

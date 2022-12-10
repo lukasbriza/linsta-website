@@ -38,6 +38,7 @@ const Home: NextPage = () => {
           layout="fill"
           objectFit="cover"
           objectPosition="center"
+          priority={true}
         />
         <div className={styles.layer}>
           <section className={styles.hero}>

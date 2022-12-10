@@ -1,4 +1,5 @@
 import type { NextPage } from 'next'
+import { Logo } from '@components'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 
 export async function getStaticProps({ locale }: { locale: string }) {
@@ -11,7 +12,8 @@ export async function getStaticProps({ locale }: { locale: string }) {
 
 const Gdpr: NextPage = () => {
     return (
-        <>GDPR</>
+        <section>
+        </section>
     )
 }
 

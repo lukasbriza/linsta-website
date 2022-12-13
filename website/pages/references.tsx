@@ -1,4 +1,3 @@
-import styles from '../src/styles/pages/References.module.scss'
 import references from '@assets/referencesHeader.webp'
 import 'swiper/swiper-bundle.css';
 
@@ -8,9 +7,9 @@ import type { NextPage } from 'next'
 import { PictureHeader, ReferenceCard, DynamicHead } from '@components'
 import { siteMetaData } from '../src/config/siteMetadata'
 import { connectDB, DatabaseError, findAll, handleServerSideError, Reference as Model, ReferenceObjectExt } from '@utils';
-
-
-
+import { routes } from '../src/config/routes'
+import { StylesContext } from './_app';
+import { useContext } from 'react';
 
 export async function getStaticProps({ locale }: { locale: string }) {
     const returnProps = {
@@ -43,6 +42,7 @@ type ReferencesProps = {
 
 const References: NextPage<ReferencesProps> = (props) => {
     const { t } = useTranslation()
+    const styles = useContext(StylesContext).reference
     const data = JSON.parse(props.data) as ReferenceObjectExt[] | []
 
     return (
@@ -53,7 +53,7 @@ const References: NextPage<ReferencesProps> = (props) => {
                 canonicalUrl={siteMetaData.siteUrl + '/references'}
                 ogType="website"
             />
-            <section className={styles.references}>
+            <section className={styles.references} data-route={routes.references}>
                 <PictureHeader
                     src={references}
                     alt={t('pages.references.headerAlt')}

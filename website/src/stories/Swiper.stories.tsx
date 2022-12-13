@@ -17,7 +17,8 @@ const Template: ComponentStory<typeof SwiperWrapper> = (args) => (
 );
 
 export const Default = Template.bind({})
+
 Default.args = {
-    src: ["id1", "id2"],
+    src: undefined,
     description: "Description"
 }

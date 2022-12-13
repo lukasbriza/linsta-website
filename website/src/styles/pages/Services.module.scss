@@ -5,6 +5,7 @@
 }
 
 .textWrapper {
+  text-align: center;
   position: relative;
   left: 50%;
   transform: translateX(-50%);
@@ -12,15 +13,12 @@
   background: theme.$primary-color;
   padding: 25px;
   margin-top: 40px;
+  min-width: 280px;
 }
 
 .servicesText {
   text-align: center;
   width: 100%;
-
-  @include q.tablet {
-    width: 80%;
-  }
 }
 
 $gap: 25px;

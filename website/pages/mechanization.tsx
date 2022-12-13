@@ -1,4 +1,3 @@
-import styles from '../src/styles/pages/Mechanization.module.scss'
 import mechanization from '@assets/mechanizationHeader.webp'
 
 import { useTranslation } from 'next-i18next'
@@ -8,6 +7,9 @@ import { findByType, connectDB, DatabaseError, findAll, Mechanization as Model, 
 import { MechanizationCard, DynamicHead, PictureHeader } from '@components'
 import { Typography, Underliner } from '@lukasbriza/lbui-lib'
 import { siteMetaData } from '../src/config/siteMetadata'
+import { routes } from '../src/config/routes'
+import { StylesContext } from './_app';
+import { useContext } from 'react';
 
 export async function getStaticProps({ locale }: { locale: string }) {
     const returnProps = {
@@ -55,6 +57,7 @@ type MechanizationProps = {
 const Mechanization: NextPage<MechanizationProps> = (props) => {
     const { t } = useTranslation()
     const { data } = props
+    const styles = useContext(StylesContext).mechanization
 
     const machines = data ? JSON.parse(data.machines) as MechanizationObjectExt[] : []
     const smallMachines = data ? JSON.parse(data.smallMachines) as MechanizationObjectExt[] : []
@@ -68,7 +71,7 @@ const Mechanization: NextPage<MechanizationProps> = (props) => {
                 canonicalUrl={siteMetaData.siteUrl + '/mechanization'}
                 ogType="website"
             />
-            <section className={styles.mechanization}>
+            <section className={styles.mechanization} data-route={routes.mechanization}>
                 <PictureHeader
                     src={mechanization}
                     alt={t('pages.mechanization.headerAlt')}

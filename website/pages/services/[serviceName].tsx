@@ -1,7 +1,7 @@
 import styles from '../../src/styles/pages/ServiceName.module.scss'
 
 import { useRouter } from "next/router"
-import { FC, useRef, useState } from "react"
+import { FC, useContext } from "react"
 import { useTranslation } from 'next-i18next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import { NextPage } from "next";
@@ -12,6 +12,7 @@ import { siteMetaData } from "src/config/siteMetadata";
 import clsx from 'clsx';
 import Link from 'next/link';
 import { useRedirect } from '@hooks';
+import { StylesContext } from '../_app';
 
 type ServiceNames = 'demolition' | 'communications' | 'machinerent' | 'sewersconstruction' | 'transport'
 type ArrowProps = {
@@ -59,8 +60,9 @@ const ServiceDetail: NextPage = () => {
     const router = useRouter()
     const redirect = useRedirect()
     const { t } = useTranslation()
+    const styles = useContext(StylesContext).serviceName
     const serviceName = router.query.serviceName as ServiceNames
-    const actualIndex = getActualId(serviceName)
+    const actualIndex = serviceName ? getActualId(serviceName) : 0
 
     const handleNext = () => {
         if ((ids.length - 1) === actualIndex) {
@@ -88,7 +90,7 @@ const ServiceDetail: NextPage = () => {
                 canonicalUrl={siteMetaData.siteUrl + '/services/' + serviceName}
                 ogType="website"
             />
-            <section className={styles.serviceName}>
+            <section className={styles.serviceName} data-route={router.basePath}>
                 <section className={styles.content}>
                     <Arrow onClick={handlePrevious} />
                     <MainContent route={serviceName} className={styles.mainWrapper} />

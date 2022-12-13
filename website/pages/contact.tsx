@@ -1,17 +1,19 @@
-import styles from '../src/styles/pages/Contact.module.scss'
 import contact from '@assets/contactHeader.webp'
 import { googleMap } from '../src/config/googleMap'
 
 import { useTranslation } from 'next-i18next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
-import { PictureHeader, DynamicHead, StatutarCard, Logo, Form } from '@components'
+import { PictureHeader, DynamicHead, StatutarCard, Logo, Form, LogoPlacable } from '@components'
 import { Typography, Divider, Underliner } from '@lukasbriza/lbui-lib'
 import { siteMetaData } from '../src/config/siteMetadata'
+import { routes } from '../src/config/routes'
 import type { NextPage } from 'next'
 
 
 //NOT SSR COMP
 import Map from '../src/components/Map'
+import { useContext } from 'react';
+import { StylesContext } from './_app';
 
 export async function getStaticProps({ locale }: { locale: string }) {
     return {
@@ -23,6 +25,7 @@ export async function getStaticProps({ locale }: { locale: string }) {
 
 const Contact: NextPage = () => {
     const { t } = useTranslation()
+    const styles = useContext(StylesContext).contact
 
     return (
         <>
@@ -32,7 +35,7 @@ const Contact: NextPage = () => {
                 canonicalUrl={siteMetaData.siteUrl + '/contact'}
                 ogType="website"
             />
-            <section className={styles.contact}>
+            <section className={styles.contact} data-route={routes.contact}>
                 <PictureHeader
                     src={contact}
                     alt={t('pages.contact.headerAlt')}
@@ -62,7 +65,7 @@ const Contact: NextPage = () => {
                     <Divider depth={4} className={styles.divider} />
                     <div className={styles.flag}>
                         <div className={styles.logoWrapper}>
-                            <Logo fill2={"#fff"} />
+                            <LogoPlacable />
                         </div>
                         <div className={styles.typographyWrapper}>
                             <Typography type="body1" size="small">{t('pages.contact.map.line1')}</Typography>

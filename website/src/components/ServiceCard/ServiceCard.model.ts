@@ -4,9 +4,9 @@ export type ServiceCardProps = {
   src: any;
   text: string;
   className?: string;
-  onClick: () => void;
+  url: string;
 };
 export type CardBodyProps = {
   text: string;
-  onClick: () => void;
+  url: string;
 };

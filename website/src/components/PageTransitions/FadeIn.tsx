@@ -1,38 +1,72 @@
-import React, { FC, useEffect, useRef } from "react"
+import styles from '../../styles/modules/FadeIn.module.scss'
+
+import React, { FC, useMemo, useRef, useState } from "react"
 import { Transition } from 'react-transition-group'
 import { gsap, Power2 } from 'gsap'
 import { useElementOnScreen } from "@hooks"
 import { Props } from "@lukasbriza/lbui-lib"
+import clsx from "clsx"
 
-const onEnterAnimation = (e: unknown) => {
-    gsap.fromTo(e as gsap.TweenTarget, { opacity: 0 }, { opacity: 1, duration: 1, ease: Power2.easeIn })
+const onEnterAnimation = (e: unknown, timeout: number, delay: number, cb: React.Dispatch<React.SetStateAction<boolean>>) => {
+    gsap.fromTo(
+        e as gsap.TweenTarget,
+        {
+            opacity: 0,
+            y: 15
+        },
+        {
+            opacity: 1,
+            y: 0,
+            duration: timeout / 1000,
+            delay: delay,
+            ease: Power2.easeIn,
+            onComplete: () => { cb(true) }
+        }
+    )
 }
 const onExitAnimation = (e: unknown) => { console.log(e) }
 
 type FadeInPops = {
-    children: React.ReactNode
-    canAnimate?: boolean
+    children: React.ReactNode | React.ReactNode[];
+    canAnimate?: boolean;
+    delay?: number;
+    stagger?: number;
+    timeout?: number;
 } & Props<HTMLDivElement>
 
-export const FadeIn: FC<FadeInPops> = (props) => {
-    const { children, canAnimate, ...otherProps } = props
-    const element = useRef(null)
-    const isObservable = useElementOnScreen(element)
+export const FadeIn: FC<FadeInPops> = (props): any => {
+    const {
+        children,
+        canAnimate,
+        className,
+        delay = 0,
+        stagger = 0,
+        timeout = 600,
+        ...otherProps
+    } = props
 
-    useEffect(() => {
+    const [animated, setAnimated] = useState(false)
+    const el = useRef(null)
+    const isObservable = useElementOnScreen(el)
+    const isAnimatable = useMemo(() => {
+        if (animated) {
+            return true
+        } else {
+            return canAnimate !== undefined ? canAnimate && isObservable : isObservable
+        }
+    }, [animated, canAnimate, isObservable])
 
-    }, [isObservable])
+    const totalDelay = delay + stagger
 
     return (
-
         <Transition
-            in={canAnimate !== undefined ? canAnimate && isObservable : isObservable}
-            timeout={1000}
-            nodeRef={element}
-            onEnter={() => onEnterAnimation(element.current)}
-            onExit={() => onExitAnimation(element.current)}
+            in={isAnimatable}
+            timeout={timeout}
+            nodeRef={el}
+            onEnter={() => onEnterAnimation(el.current, timeout, totalDelay, setAnimated)}
+            onExit={() => onExitAnimation(el.current)}
         >
-            <div ref={element} {...otherProps}>
+            <div className={clsx([styles.defaultState, className])} ref={el} {...otherProps}>
                 {props.children}
             </div>
         </Transition>

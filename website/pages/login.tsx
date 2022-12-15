@@ -169,7 +169,7 @@ const Login: NextPage = () => {
                                 name={"password"}
                                 label={t('pages.login.password')}
                             />
-                            <Eye showPassword={hidePassword} onClick={() => setHidePassword(value => !value)} />
+                            <Eye showPassword={!hidePassword} onClick={() => setHidePassword(value => !value)} />
                         </>
                     </HelperText>
                     <input type="submit" value={t('pages.contact.form.submit')} className={styles.submit} />

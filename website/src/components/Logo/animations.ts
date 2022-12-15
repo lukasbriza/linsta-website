@@ -60,8 +60,7 @@ const resetAnimationState = (
   downPath: SVGPathElement,
   round: SVGPathElement,
   layer: HTMLDivElement,
-  svgContainer: HTMLDivElement,
-  setAnimated: React.Dispatch<React.SetStateAction<boolean>>
+  svgContainer: HTMLDivElement
 ) => {
   gsap.set(svgRoot, {
     width: "unset",
@@ -82,9 +81,6 @@ const resetAnimationState = (
     verticalAlign: "middle",
   });
 
-  setTimeout(() => {
-    setAnimated(true);
-  }, 200);
   setTimeout(() => {
     svgContainer.removeAttribute("style");
     svgRoot.removeAttribute("style");
@@ -123,17 +119,10 @@ export const initialAnimation = (
     .add(fillElement(upPath), "fillAndShrink")
     .add(fillElement(downPath), "fillAndShrink")
     .add(moveToInitialState(svgRoot, text, layer), 3.75)
+    .call(() => setAnimated(true))
     .addLabel("clear")
     //CLEAR PROPERTIES
     .call(() =>
-      resetAnimationState(
-        svgRoot,
-        upPath,
-        downPath,
-        round,
-        layer,
-        svgContainer,
-        setAnimated
-      )
+      resetAnimationState(svgRoot, upPath, downPath, round, layer, svgContainer)
     );
 };

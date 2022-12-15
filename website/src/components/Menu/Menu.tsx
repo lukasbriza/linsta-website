@@ -78,7 +78,7 @@ export const Menu: FC<MenuProps> = (props) => {
                                     icon={<Image src={item.src} width="22" height="22" alt="menu icon" />}
                                     underliner={false}
                                     underlinerOrigin="center"
-                                    onClick={() => redirect({ path: item.url, callback: () => { hmbRef.current?.click() } })}
+                                    onClick={() => redirect({ path: item.url, callback: () => { setTimeout(() => { hmbRef.current?.click() }, 1000) } })}
                                 />
                             </Link>
                         )

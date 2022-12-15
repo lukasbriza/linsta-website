@@ -28,3 +28,4 @@ export * from "./Modal/Modal";
 export * from "./PageTransitions/PageTransitions";
 export * from "./PageTransitions/FadeIn";
 export * from "./TransitionLayer/TransitionLayer";
+export * from "./PageTransitions/TransitionHandler";

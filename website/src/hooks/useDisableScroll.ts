@@ -1,18 +1,21 @@
-import { useState } from "react";
 import { gsap } from "gsap";
+import { useEffect, useState } from "react";
 
-let disabled = false;
 export const useDisableScroll = (): [boolean, (state: boolean) => void] => {
-  const disable = (state: boolean) => {
-    const html = document.getElementsByTagName("html");
-    if (state) {
+  const [disabled, setDisabled] = useState(false);
+
+  useEffect(() => {
+    const html = document.getElementsByTagName("html")[0];
+    console.log(html);
+    if (disabled) {
       gsap.set(html, { overflowY: "hidden" });
-      disabled = state;
     }
-    if (!state) {
+    if (!disabled) {
       gsap.set(html, { overflowY: "initial" });
-      disabled = state;
     }
-  };
+  }, [disabled]);
+
+  const disable = (state: boolean) => setDisabled(state);
+
   return [disabled, disable];
 };

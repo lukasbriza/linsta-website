@@ -18,7 +18,7 @@ import Router from "next/router";
 import { appWithTranslation } from 'next-i18next'
 import { createContext } from 'react'
 import type { AppProps } from 'next/app'
-import { Footer, Header, Menu, Layout, SwiperProvider, ModalHandler, Pagetransitions, TransitionLayer, LogoAnimationHandler } from '@components'
+import { Footer, Header, Menu, Layout, SwiperProvider, ModalHandler, Pagetransitions, TransitionLayer, LogoAnimationHandler, TransitionHandler } from '@components'
 import { TypographyProvider } from '@lukasbriza/lbui-lib'
 import { menuConfig } from '../src/config/menuConfig'
 import { headerConfig } from '../src/config/headerConfig'
@@ -46,18 +46,20 @@ function MyApp({ Component, pageProps }: AppProps) {
       <ModalHandler>
         <SwiperProvider>
           <StylesContext.Provider value={criticalStyles} >
-            <LogoAnimationHandler>
-              <TransitionLayer />
-              <Layout
-                header={<Header leftItems={headerConfig.leftItems} rightItems={headerConfig.rightItems} />}
-                menu={<Menu items={menuConfig.items} />}
-                footer={<Footer />}
-              >
-                <Pagetransitions>
-                  <Component {...pageProps} />
-                </Pagetransitions>
-              </Layout>
-            </LogoAnimationHandler>
+            <TransitionHandler>
+              <LogoAnimationHandler>
+                <TransitionLayer />
+                <Layout
+                  header={<Header leftItems={headerConfig.leftItems} rightItems={headerConfig.rightItems} />}
+                  menu={<Menu items={menuConfig.items} />}
+                  footer={<Footer />}
+                >
+                  <Pagetransitions>
+                    <Component {...pageProps} />
+                  </Pagetransitions>
+                </Layout>
+              </LogoAnimationHandler>
+            </TransitionHandler>
           </StylesContext.Provider>
         </SwiperProvider>
       </ModalHandler>

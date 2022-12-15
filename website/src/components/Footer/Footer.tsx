@@ -39,10 +39,10 @@ export const Footer: FC<FooterProps> = () => {
             </section>
             <section className={clsx([styles.column, styles.column2])}>
                 <FooterHeader variant={['bold', 'underline']}>{t('footer.col2.header')}</FooterHeader>
-                <Reference text={t('footer.col2.ref1')} url={"/mechanization"} />
-                <Reference text={t('footer.col2.ref2')} url={"/mechanization"} />
+                <Reference text={t('footer.col2.ref1')} url={"/gdpr"} />
+                <Reference text={t('footer.col2.ref2')} url={"/services"} />
                 <Reference text={t('footer.col2.ref3')} url={"/mechanization"} />
-                <Reference text={t('footer.col2.ref4')} url={"/mechanization"} />
+                <Reference text={t('footer.col2.ref4')} url={"/references"} />
             </section>
             <section className={clsx([styles.column, styles.column3])}>
                 <FooterHeader variant={['bold', 'underline']}>{t('footer.col3.header')}</FooterHeader>

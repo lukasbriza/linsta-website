@@ -184,6 +184,15 @@
   font-weight: 700;
   margin: 30px;
   cursor: pointer;
+  transition: background ease-in-out 200ms;
+}
+
+.submit:hover {
+  background: rgb(203, 78, 20);
+}
+
+.submit:active {
+  background: theme.$secondary-color;
 }
 
 .helperError {

@@ -1,9 +1,9 @@
 import styles from '../../styles/modules/Logo.module.scss'
 
-import React, { useContext } from "react"
+import React from "react"
 import clsx from 'clsx'
 import { initialAnimation } from './animations'
-import { useDisableScroll, useLogoContext } from '@hooks'
+import { useDisableScroll, useLogoContext, useTransitionContext } from '@hooks'
 import { SVGProps, forwardRef, useRef, useImperativeHandle, useEffect, useState } from "react"
 
 type LogoProps = {
@@ -15,7 +15,7 @@ export type ImperativeReference = {
 
 export const Logo = forwardRef<ImperativeReference, LogoProps & SVGProps<SVGSVGElement>>((props, ref) => {
     const [, setDisabled] = useDisableScroll()
-    const context = useLogoContext()
+    const { animated, setAnimated } = useLogoContext()
     const round = useRef<SVGPathElement>(null)
     const downPath = useRef<SVGPathElement>(null)
     const upPath = useRef<SVGPathElement>(null)
@@ -24,17 +24,9 @@ export const Logo = forwardRef<ImperativeReference, LogoProps & SVGProps<SVGSVGE
     const layer = useRef<HTMLDivElement>(null)
     const text = useRef<SVGPathElement>(null)
 
-    const [animated, setAnimated] = useState<boolean>(false)
-
     useEffect(() => {
-        if (!animated) {
-            setDisabled(true)
-        }
-        if (animated) {
-            context.setAnimated(true)
-            setDisabled(false)
-        }
-    }, [animated, context, setDisabled])
+        animated ? setDisabled(false) : setDisabled(true)
+    }, [animated, setDisabled])
 
     useImperativeHandle(ref, () => ({
         initialAnimation: () => {
@@ -56,7 +48,7 @@ export const Logo = forwardRef<ImperativeReference, LogoProps & SVGProps<SVGSVGE
                     setAnimated
                 )
         }
-    }), [])
+    }), [setAnimated])
 
     return (
         <>

@@ -10,6 +10,7 @@ import { HeaderProps } from './Header.model'
 import { MenuItem, MenuList } from '@lukasbriza/lbui-lib'
 import { useRouter } from 'next/router'
 import { routes } from '../../config/routes'
+import { logoutRequest } from '@fetchers'
 
 export const Header: FC<HeaderProps> = (props) => {
     const { t } = useTranslation()
@@ -18,6 +19,15 @@ export const Header: FC<HeaderProps> = (props) => {
     const redirect = useRedirect()
     const router = useRouter()
 
+    const handleClick = async (e: React.SyntheticEvent, route: string) => {
+        e.preventDefault()
+        if (router.pathname === administration) {
+            const response = await logoutRequest()
+            router.push(login)
+            return
+        }
+        router.push(route)
+    }
     return (
         <section className={styles.header}>
             <MenuList className={styles.leftSection}>
@@ -40,12 +50,13 @@ export const Header: FC<HeaderProps> = (props) => {
             </MenuList>
             <MenuList className={styles.rightSection}>
                 {rightItems.map((item, index) => {
-
-                    return (
-                        <Link key={index} href={router.pathname === administration ? login : item.url} >
-                            <p className={clsx([styles.label, styles.login])}>{router.pathname === administration ? t('header.logout') : t('header.login')}</p>
-                        </Link>
-                    )
+                    if (item.name === 'login') {
+                        return (
+                            <div key={index} onClick={(e: React.SyntheticEvent) => { handleClick(e, item.url) }} >
+                                <p className={clsx([styles.label, styles.login])}>{router.pathname === administration ? t('header.logout') : t('header.login')}</p>
+                            </div>
+                        )
+                    }
                 })}
             </MenuList>
         </section>

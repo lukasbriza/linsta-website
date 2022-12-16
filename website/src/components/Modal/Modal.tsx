@@ -6,7 +6,7 @@ import { Paper } from '@lukasbriza/lbui-lib'
 import { ModalProps } from './Modal.model'
 import { useModal } from '@hooks'
 
-let rendered = false
+
 export const Modal: FC<ModalProps> = (props) => {
     const { text, sucess, closeText, button = true, timeout = 5000 } = props
     const { close } = useModal()
@@ -16,19 +16,14 @@ export const Modal: FC<ModalProps> = (props) => {
 
     useEffect(() => {
         const { current } = ref
-        if (!rendered) {
-            gsap.effects.showFromTop(current)
-            rendered = true
-        }
-    }, [])
-
-    useEffect(() => {
+        gsap.effects.showFromTop(current)
         if (!button) {
             setTimeout(() => {
                 handleClose()
             }, timeout)
         }
-    }, [button, handleClose, timeout])
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [])
 
     return (
         <Paper ref={ref} className={styles.modal} elevation={8}>

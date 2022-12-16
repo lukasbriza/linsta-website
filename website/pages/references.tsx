@@ -1,16 +1,16 @@
-import styles from '../src/styles/pages/References.module.scss'
 import references from '@assets/referencesHeader.webp'
 import 'swiper/swiper-bundle.css';
 
 import { useTranslation } from 'next-i18next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import type { NextPage } from 'next'
-import { PictureHeader, ReferenceCard, DynamicHead } from '@components'
+import { PictureHeader, ReferenceCard, DynamicHead, FadeIn } from '@components'
 import { siteMetaData } from '../src/config/siteMetadata'
 import { connectDB, DatabaseError, findAll, handleServerSideError, Reference as Model, ReferenceObjectExt } from '@utils';
-
-
-
+import { routes } from '../src/config/routes'
+import { StylesContext } from './_app';
+import { useContext } from 'react';
+import { useLogoContext, useTransitionContext } from '@hooks';
 
 export async function getStaticProps({ locale }: { locale: string }) {
     const returnProps = {
@@ -43,6 +43,9 @@ type ReferencesProps = {
 
 const References: NextPage<ReferencesProps> = (props) => {
     const { t } = useTranslation()
+    const styles = useContext(StylesContext).reference
+    const { animated } = useLogoContext()
+    const { transitioning } = useTransitionContext()
     const data = JSON.parse(props.data) as ReferenceObjectExt[] | []
 
     return (
@@ -53,7 +56,7 @@ const References: NextPage<ReferencesProps> = (props) => {
                 canonicalUrl={siteMetaData.siteUrl + '/references'}
                 ogType="website"
             />
-            <section className={styles.references}>
+            <section className={styles.references} data-route={routes.references}>
                 <PictureHeader
                     src={references}
                     alt={t('pages.references.headerAlt')}
@@ -62,14 +65,15 @@ const References: NextPage<ReferencesProps> = (props) => {
                 <section className={styles.referencesWrapper}>
                     {data.map((item, index) => {
                         return (
-                            <ReferenceCard
-                                key={index}
-                                src={item.pictures}
-                                header={item.name}
-                                place={item.place}
-                                realization={item.realization}
-                                detail={item.detail}
-                            />
+                            <FadeIn canAnimate={animated && !transitioning} className={styles.demolition} key={index}>
+                                <ReferenceCard
+                                    src={item.pictures}
+                                    header={item.name}
+                                    place={item.place}
+                                    realization={item.realization}
+                                    detail={item.detail}
+                                />
+                            </FadeIn>
                         )
                     })}
                 </section>

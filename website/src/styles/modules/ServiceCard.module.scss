@@ -42,10 +42,15 @@
   height: 40px;
   width: 150px;
   background: theme.$bckg-secondary-color !important;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: theme.$text-secondary-color;
 }
-.hovered {
+.button:hover {
   background: #353535 !important;
 }
+
 .text {
   text-transform: uppercase;
   position: relative;

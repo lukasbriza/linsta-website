@@ -1,6 +1,6 @@
 import type { NextPage } from 'next'
-import { Logo } from '@components'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
+import { routes } from '../src/config/routes'
 
 export async function getStaticProps({ locale }: { locale: string }) {
     return {
@@ -12,7 +12,7 @@ export async function getStaticProps({ locale }: { locale: string }) {
 
 const Gdpr: NextPage = () => {
     return (
-        <section>
+        <section data-route={routes.gdpr}>
         </section>
     )
 }

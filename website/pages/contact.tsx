@@ -1,12 +1,15 @@
-import styles from '../src/styles/pages/Contact.module.scss'
 import contact from '@assets/contactHeader.webp'
 import { googleMap } from '../src/config/googleMap'
 
+import { useContext } from 'react';
+import { StylesContext } from './_app';
+import { useLogoContext, useTransitionContext } from '@hooks';
 import { useTranslation } from 'next-i18next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
-import { PictureHeader, DynamicHead, StatutarCard, Logo, Form } from '@components'
+import { PictureHeader, DynamicHead, StatutarCard, Logo, Form, LogoPlacable, FadeIn } from '@components'
 import { Typography, Divider, Underliner } from '@lukasbriza/lbui-lib'
 import { siteMetaData } from '../src/config/siteMetadata'
+import { routes } from '../src/config/routes'
 import type { NextPage } from 'next'
 
 
@@ -23,6 +26,9 @@ export async function getStaticProps({ locale }: { locale: string }) {
 
 const Contact: NextPage = () => {
     const { t } = useTranslation()
+    const styles = useContext(StylesContext).contact
+    const { animated } = useLogoContext()
+    const { transitioning } = useTransitionContext()
 
     return (
         <>
@@ -32,41 +38,53 @@ const Contact: NextPage = () => {
                 canonicalUrl={siteMetaData.siteUrl + '/contact'}
                 ogType="website"
             />
-            <section className={styles.contact}>
+            <section className={styles.contact} data-route={routes.contact}>
                 <PictureHeader
                     src={contact}
                     alt={t('pages.contact.headerAlt')}
                     text={t('pages.contact.pictureHeader')}
                 />
                 <section className={styles.statutars}>
-                    <StatutarCard
-                        header={t('pages.contact.contact1.name')}
-                        subtitle={t('pages.contact.contact1.role')}
-                        phone={t('pages.contact.contact1.tel')}
-                        mail={t('pages.contact.contact1.email')}
-                    />
-                    <StatutarCard
-                        header={t('pages.contact.contact2.name')}
-                        subtitle={t('pages.contact.contact2.role')}
-                        phone={t('pages.contact.contact2.tel')}
-                        mail={t('pages.contact.contact2.email')}
-                    />
-                    <StatutarCard
-                        header={t('pages.contact.contact3.name')}
-                        subtitle={t('pages.contact.contact3.role')}
-                        phone={t('pages.contact.contact3.tel')}
-                        mail={t('pages.contact.contact3.email')}
-                    />
+                    <FadeIn canAnimate={animated && !transitioning}>
+                        <StatutarCard
+                            header={t('pages.contact.contact1.name')}
+                            subtitle={t('pages.contact.contact1.role')}
+                            phone={t('pages.contact.contact1.tel')}
+                            mail={t('pages.contact.contact1.email')}
+                        />
+                    </FadeIn>
+                    <FadeIn canAnimate={animated && !transitioning} delay={0.3}>
+                        <StatutarCard
+                            header={t('pages.contact.contact2.name')}
+                            subtitle={t('pages.contact.contact2.role')}
+                            phone={t('pages.contact.contact2.tel')}
+                            mail={t('pages.contact.contact2.email')}
+                        />
+                    </FadeIn>
+                    <FadeIn canAnimate={animated && !transitioning} delay={0.3}>
+                        <StatutarCard
+                            header={t('pages.contact.contact3.name')}
+                            subtitle={t('pages.contact.contact3.role')}
+                            phone={t('pages.contact.contact3.tel')}
+                            mail={t('pages.contact.contact3.email')}
+                        />
+                    </FadeIn>
                 </section>
                 <section className={styles.map}>
                     <Divider depth={4} className={styles.divider} />
                     <div className={styles.flag}>
                         <div className={styles.logoWrapper}>
-                            <Logo fill2={"#fff"} />
+                            <FadeIn canAnimate={animated && !transitioning} delay={0.3}>
+                                <LogoPlacable />
+                            </FadeIn>
                         </div>
                         <div className={styles.typographyWrapper}>
-                            <Typography type="body1" size="small">{t('pages.contact.map.line1')}</Typography>
-                            <Typography type="body1" size="small">{t('pages.contact.map.line2')}</Typography>
+                            <FadeIn canAnimate={animated && !transitioning} delay={0.3}>
+                                <Typography type="body1" size="small">{t('pages.contact.map.line1')}</Typography>
+                            </FadeIn>
+                            <FadeIn canAnimate={animated && !transitioning} delay={0.3}>
+                                <Typography type="body1" size="small">{t('pages.contact.map.line2')}</Typography>
+                            </FadeIn>
                         </div>
                         <a className={styles.link} href={googleMap}>{t('pages.contact.map.link')}</a>
                     </div>
@@ -74,17 +92,21 @@ const Contact: NextPage = () => {
                     <Divider depth={4} className={styles.divider} />
                 </section>
                 <section className={styles.form}>
-                    <Underliner underlinerClass={styles.underliner} className={styles.typography}>
-                        <Typography
-                            type="h4"
-                            size="small"
-                            variant={["bold"]}
-                            className={styles.header}
-                        >
-                            {t('pages.contact.form.header')}
-                        </Typography>
-                    </Underliner>
-                    <Form />
+                    <FadeIn canAnimate={animated && !transitioning} delay={0.3}>
+                        <Underliner underlinerClass={styles.underliner} className={styles.typography}>
+                            <Typography
+                                type="h4"
+                                size="small"
+                                variant={["bold"]}
+                                className={styles.header}
+                            >
+                                {t('pages.contact.form.header')}
+                            </Typography>
+                        </Underliner>
+                    </FadeIn>
+                    <FadeIn canAnimate={animated && !transitioning} delay={0.3}>
+                        <Form />
+                    </FadeIn>
                 </section>
 
             </section>

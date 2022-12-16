@@ -1,3 +1,6 @@
+@use "./theme.scss" as theme;
+@use "./mixins" as q;
+
 $breakpoints: (
   mobile: 320px,
   tablet: 768px,
@@ -41,4 +44,56 @@ html {
 
 ::-webkit-scrollbar-thumb:hover {
   background: #6a6a6a;
+}
+
+.transitionLayer {
+  position: fixed;
+  width: 0%;
+  z-index: 5;
+  height: calc(100% - 110px);
+  top: 110px;
+  right: 0px;
+  background: theme.$bckg-secondary-color;
+}
+
+.wrapper {
+  position: relative;
+  width: min-content;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  svg {
+    height: 148.1px;
+  }
+}
+.textWrapper {
+  margin-top: 15px;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-items: flex-end;
+
+  opacity: 0;
+  display: none;
+}
+.transitionSvg {
+  opacity: 0;
+  display: none;
+}
+.transitiontext {
+  font-size: 20px;
+  color: white;
+  padding-right: 2px;
+}
+.dot {
+  width: 3px;
+  height: 3px;
+  background: white;
+  margin-left: 1px;
+  margin-right: 1px;
+  margin-bottom: 5px;
+  border-radius: 50%;
 }

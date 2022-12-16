@@ -44,7 +44,7 @@ gsap.registerEffect({
   name: "show",
   effect: (target: HTMLElement, config: showConfig) => {
     const tl = gsap.timeline();
-    tl.to(target, { duration: 0.001, display: "initial", opacity: 0 }).to(
+    tl.to(target, { duration: 0.001, display: config.display, opacity: 0 }).to(
       target,
       {
         duration: config.duration,

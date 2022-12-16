@@ -1,5 +1,5 @@
 import type { NextPage } from 'next'
-import { useEffect, useRef } from 'react'
+import { useContext, useEffect, useRef } from 'react'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import { useTranslation } from 'next-i18next'
 import { useForm, SubmitHandler } from 'react-hook-form'
@@ -9,12 +9,13 @@ import { TFunction } from 'next-i18next';
 import jwt from 'jsonwebtoken'
 import Joi from 'joi';
 import { authenticate, loginRequest } from '@fetchers'
-import styles from "../src/styles/pages/Login.module.scss"
 import { siteMetaData } from '../src/config/siteMetadata';
 import { useState, } from 'react'
 import { DynamicHead, Eye } from '@components';
 import { useModal, useRedirect } from '@hooks'
 import { useRouter } from 'next/router';
+import { routes } from '../src/config/routes'
+import { StylesContext } from './_app';
 
 export async function getStaticProps({ locale }: { locale: string }) {
     return {
@@ -69,6 +70,7 @@ const formValidationSchema = (t: TFunction) => {
 const Login: NextPage = () => {
     const [hidePassword, setHidePassword] = useState<boolean>(true)
     const { t } = useTranslation()
+    const styles = useContext(StylesContext).login
     const { control, handleSubmit, formState: { errors } } = useForm<FormInputs>({
         defaultValues: {
             username: "",
@@ -124,7 +126,7 @@ const Login: NextPage = () => {
                 canonicalUrl={siteMetaData.siteUrl + '/login'}
                 ogType="website"
             />
-            <section className={styles.login}>
+            <section className={styles.login} data-route={routes.login}>
                 <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
                     <HelperText
                         className={styles.username}
@@ -167,7 +169,7 @@ const Login: NextPage = () => {
                                 name={"password"}
                                 label={t('pages.login.password')}
                             />
-                            <Eye showPassword={hidePassword} onClick={() => setHidePassword(value => !value)} />
+                            <Eye showPassword={!hidePassword} onClick={() => setHidePassword(value => !value)} />
                         </>
                     </HelperText>
                     <input type="submit" value={t('pages.contact.form.submit')} className={styles.submit} />

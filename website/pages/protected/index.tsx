@@ -1,8 +1,6 @@
 import type { NextPage } from 'next'
 import { useTranslation } from 'next-i18next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
-
-
 import {
     AddMechanizationForm,
     DynamicHead,
@@ -12,8 +10,9 @@ import {
     UpdateReferencesSection,
     UserUpdateSection
 } from '@components';
-
 import { siteMetaData } from '../../src/config/siteMetadata';
+import { useContext } from 'react';
+import { StylesContext } from '../_app';
 
 export async function getStaticProps({ locale }: { locale: string }) {
     return {
@@ -25,6 +24,7 @@ export async function getStaticProps({ locale }: { locale: string }) {
 
 const Dashboard: NextPage = () => {
     const { t } = useTranslation()
+    const styles = useContext(StylesContext).administration
 
     return (
         <>

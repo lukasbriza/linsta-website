@@ -24,7 +24,13 @@ const onEnterAnimation = (e: unknown, timeout: number, delay: number, cb: React.
         }
     )
 }
-const onExitAnimation = (e: unknown) => { console.log(e) }
+const onExitAnimation = (e: unknown, timeout: number) => {
+    gsap.to(e as gsap.TweenTarget, {
+        opacity: 0,
+        duration: timeout / 1000,
+        ease: Power2.easeIn,
+    })
+}
 
 type FadeInPops = {
     children: React.ReactNode | React.ReactNode[];
@@ -64,7 +70,7 @@ export const FadeIn: FC<FadeInPops> = (props): any => {
             timeout={timeout}
             nodeRef={el}
             onEnter={() => onEnterAnimation(el.current, timeout, totalDelay, setAnimated)}
-            onExit={() => onExitAnimation(el.current)}
+            onExit={() => onExitAnimation(el.current, timeout)}
         >
             <div className={clsx([styles.defaultState, className])} ref={el} {...otherProps}>
                 {props.children}

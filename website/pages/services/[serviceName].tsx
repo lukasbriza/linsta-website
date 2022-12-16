@@ -112,6 +112,7 @@ const ServiceDetail: NextPage = () => {
         return () => {
             router.events.off('routeChangeComplete', () => { enterAnimation(refs?.ref1, refs?.ref2, refs?.ref3) })
         }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
     useEffect(() => {

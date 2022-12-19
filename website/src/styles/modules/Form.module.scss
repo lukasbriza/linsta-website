@@ -195,6 +195,11 @@
   background: theme.$secondary-color;
 }
 
+.submit:disabled {
+  background: rgb(78, 78, 78);
+  cursor: initial;
+}
+
 .helperError {
   color: theme.$error-color;
 }

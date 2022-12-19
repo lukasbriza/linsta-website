@@ -205,3 +205,7 @@
     margin: 15px 15px;
   }
 }
+.submit:disabled {
+  background: rgb(78, 78, 78);
+  cursor: initial;
+}

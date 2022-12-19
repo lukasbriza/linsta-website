@@ -158,6 +158,10 @@
   margin-bottom: 30px;
   cursor: pointer;
 }
+.submit:disabled {
+  background: rgb(78, 78, 78);
+  cursor: initial;
+}
 
 .form {
   position: relative;

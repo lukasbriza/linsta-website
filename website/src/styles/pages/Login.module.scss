@@ -65,6 +65,10 @@
 .submit:active {
   background: theme.$secondary-color;
 }
+.submit:disabled {
+  background: rgb(78, 78, 78);
+  cursor: initial;
+}
 
 .login {
   position: relative;

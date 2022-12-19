@@ -26,7 +26,6 @@ export async function middleware(req: NextRequest) {
   if (cookieObj?.Authorization) {
     const token = cookieObj?.Authorization;
     const decoded = jwt.decode(token);
-
     const validation = decodedSchema.validate(decoded);
 
     if (validation.error) {
@@ -41,10 +40,5 @@ export async function middleware(req: NextRequest) {
 }
 
 export const config = {
-  matcher: [
-    "/protected",
-    "/api/users",
-    "/api/mechanization",
-    "/api/references",
-  ],
+  matcher: ["/api/users", "/api/mechanization", "/api/references"],
 };

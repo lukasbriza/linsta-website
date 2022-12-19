@@ -6,7 +6,6 @@ export const useDisableScroll = (): [boolean, (state: boolean) => void] => {
 
   useEffect(() => {
     const html = document.getElementsByTagName("html")[0];
-    console.log(html);
     if (disabled) {
       gsap.set(html, { overflowY: "hidden" });
     }

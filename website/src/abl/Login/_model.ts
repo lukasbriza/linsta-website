@@ -9,7 +9,7 @@ type loginResponseDecoded = {
   exp: number;
 };
 
-type Authenticate_response = loginResponseDecoded;
+type Authenticate_response = loginResponseDecoded | boolean;
 
 export type {
   Authenticate_response,

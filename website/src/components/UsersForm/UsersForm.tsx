@@ -96,7 +96,7 @@ export const AddUserForm: FC = () => {
                     <option value="ADMIN">ADMIN</option>
                 </select>
             </div>
-            <input type="submit" value={"Odeslat"} className={styles.submit} />
+            <input type="submit" value={"Odeslat"} className={styles.submit} disabled={true} />
         </form>
     )
 }

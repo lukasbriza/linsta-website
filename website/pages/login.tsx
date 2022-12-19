@@ -90,7 +90,16 @@ const Login: NextPage = () => {
         if (render.current === false) {
             authenticate().then(value => {
                 const { sucess, data } = value
-                sucess && data !== null && redirect({ path: '/protected' })
+
+                if (data !== null && typeof data !== "boolean") {
+                    const { permission, _id } = data
+                    sessionStorage.setItem('permission', permission ? permission : "");
+                    sessionStorage.setItem('id', _id ? _id : "")
+                    redirect({ path: '/protected' })
+                } else {
+                    //MODAL
+                    show({ sucess: false, button: false, text: t('modal.login.invalidToken'), timeout: 2000 })
+                }
             })
         }
         render.current = true
@@ -108,7 +117,10 @@ const Login: NextPage = () => {
         const token = jwt.sign({ name: data.username, password: data.password }, process.env.NEXT_PUBLIC_JWT_REGISTRATION_KEY!)
 
         loginRequest({ token: token }).then((response) => {
-            if (response.sucess === true && response.token !== null) {
+            const { data } = response
+            if (response.sucess === true && response.token !== null && data !== null) {
+                sessionStorage.setItem('permission', data.permission ? data.permission : "");
+                sessionStorage.setItem('id', data._id ? data._id : "")
                 redirect({ path: '/protected' })
             }
             if (response.sucess === false) {

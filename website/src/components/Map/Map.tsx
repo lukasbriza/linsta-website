@@ -5,7 +5,7 @@ import { MapContainer, TileLayer, Marker } from 'react-leaflet'
 import { LatLngExpression, icon } from 'leaflet'
 
 function Map() {
-    const POSITION: LatLngExpression = [49.840728544087, 13.911588997373741]
+    const POSITION: LatLngExpression = [49.82792974753923, 13.900512955720863]
     const pinIcon = icon({
         iconUrl: 'assets/pin.svg',
         iconSize: [40, 40]

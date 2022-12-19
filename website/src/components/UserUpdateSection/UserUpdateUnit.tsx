@@ -1,6 +1,6 @@
 import styles from '../../styles/modules/UserUpdateSection.module.scss'
 
-import { FC, useState } from "react"
+import { FC, useEffect, useState } from "react"
 import { useTranslation } from 'next-i18next'
 import { useForm, SubmitHandler, SubmitErrorHandler } from 'react-hook-form'
 import { FilledTextFieldHF, HelperText } from '@lukasbriza/lbui-lib'
@@ -34,12 +34,25 @@ export const UserUpdateUnit: FC<UserUpdateUnitProps> = (props) => {
 }
 
 const ReadOnlySection: FC<ReadOnlySectionProps> = (props) => {
+    const { t } = useTranslation()
     const { setEditing, setUsers, data, ...rest } = props
+    const { show } = useModal()
+    const [disabled, setDisabled] = useState(false)
+
+    useEffect(() => {
+        const sessionPermission = sessionStorage.getItem('permission')
+        const id = sessionStorage.getItem('id')
+        if (data._id !== id && sessionPermission === 'USER') {
+            setDisabled(true)
+        }
+    }, [data._id])
 
     const handleRemove = async () => {
         const auth = await authenticate()
-        if (auth.sucess === false || auth.data === null || auth.data.permission === "USER") {
+        const isUser = auth.data !== null && typeof auth.data !== 'boolean' && auth.data.permission === 'USER'
+        if (auth.sucess === false || isUser || auth.data === null) {
             //AUTH FAILED
+            show({ sucess: false, text: t('modal.noPermission'), button: false })
             return
         }
 
@@ -60,12 +73,22 @@ const ReadOnlySection: FC<ReadOnlySectionProps> = (props) => {
 
     const handleEdit = async () => {
         const auth = await authenticate()
-        if (auth.sucess === false || auth.data === null) {
+        if (auth.sucess === false || auth.data === null || auth.data === false) {
             //AUTH FAILED
+            show({ sucess: false, text: t('modal.failure'), button: false })
             return
         }
-        if (auth.data._id === data._id || auth.data.permission === "ADMIN") {
-            setEditing(true)
+
+        const responseDataObject = auth.data
+        if (responseDataObject !== true) {
+            const { _id, permission } = responseDataObject
+            //CAN EDIT ONLY OWNER OR ADMIN
+            if (_id === data._id || permission === "ADMIN") {
+                setEditing(true)
+            } else {
+                //AUTH FAILED
+                show({ sucess: false, text: t('modal.noPermission'), button: false })
+            }
         }
     }
 
@@ -80,8 +103,8 @@ const ReadOnlySection: FC<ReadOnlySectionProps> = (props) => {
                 <div>{data.permission}</div>
             </div>
             <div className={styles.buttonWrapper}>
-                <button className={styles.button} onClick={handleEdit}>Edit</button>
-                <button className={styles.button} onClick={handleRemove}>X</button>
+                <button className={styles.button} onClick={handleEdit} disabled={disabled}>Edit</button>
+                <button className={styles.button} onClick={handleRemove} disabled={disabled}>X</button>
             </div>
         </div>
     )

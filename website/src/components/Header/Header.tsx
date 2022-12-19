@@ -23,6 +23,7 @@ export const Header: FC<HeaderProps> = (props) => {
         e.preventDefault()
         if (router.pathname === administration) {
             const response = await logoutRequest()
+            console.log(response)
             router.push(login)
             return
         }

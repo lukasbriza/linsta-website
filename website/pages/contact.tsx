@@ -48,7 +48,6 @@ const Contact: NextPage = () => {
                     <FadeIn canAnimate={animated && !transitioning}>
                         <StatutarCard
                             header={t('pages.contact.contact1.name')}
-                            subtitle={t('pages.contact.contact1.role')}
                             phone={t('pages.contact.contact1.tel')}
                             mail={t('pages.contact.contact1.email')}
                         />
@@ -56,7 +55,6 @@ const Contact: NextPage = () => {
                     <FadeIn canAnimate={animated && !transitioning} delay={0.3}>
                         <StatutarCard
                             header={t('pages.contact.contact2.name')}
-                            subtitle={t('pages.contact.contact2.role')}
                             phone={t('pages.contact.contact2.tel')}
                             mail={t('pages.contact.contact2.email')}
                         />
@@ -64,7 +62,6 @@ const Contact: NextPage = () => {
                     <FadeIn canAnimate={animated && !transitioning} delay={0.3}>
                         <StatutarCard
                             header={t('pages.contact.contact3.name')}
-                            subtitle={t('pages.contact.contact3.role')}
                             phone={t('pages.contact.contact3.tel')}
                             mail={t('pages.contact.contact3.email')}
                         />

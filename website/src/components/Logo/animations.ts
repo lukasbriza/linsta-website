@@ -111,6 +111,7 @@ export const initialAnimation = (
     //SET DEFAULT PATH STATE
     .set(upPath, { opacity: 1 })
     .set(downPath, { opacity: 1 })
+    .set(text, { display: "none", opacity: 0 })
     //ANIMATE PATHS
     .add(strokeElement(upPath, 3.5), "paths")
     .add(strokeElement(downPath, 2, 1), 1)

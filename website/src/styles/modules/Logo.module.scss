@@ -1,0 +1,53 @@
+@use "../theme.scss" as theme;
+
+.svgContainer {
+  top: 50%;
+  transform: translateY(-50%);
+  position: absolute;
+  display: inline-block;
+  width: 180px;
+  min-width: 180px;
+  padding-bottom: 38px;
+  vertical-align: middle;
+  overflow: hidden;
+}
+
+.intialAnState {
+  padding-bottom: unset;
+  transform: unset;
+  vertical-align: unset;
+  position: fixed;
+  background: transparent;
+  z-index: 3;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  height: 100vh;
+
+  svg {
+    left: 52%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    height: 50%;
+  }
+
+  path {
+    opacity: 0;
+  }
+}
+.layer {
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  width: 100vw;
+  height: 100vh;
+  background: theme.$primary-color;
+  z-index: 2;
+}
+.svgRoot {
+  display: inline-block;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  height: 38px;
+}

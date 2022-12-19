@@ -9,9 +9,12 @@ export type MetaData = {
 
 export const siteMetaData: MetaData = {
   companyName: "LINSTA stavební s.r.o.",
-  phoneNumber: "+420774876504",
-  siteUrl: "https://linsta.cz",
-  email: "linstastavebni@email.cz",
+  phoneNumber: "+420606095352",
+  siteUrl:
+    process.env.NODE_ENV === "development"
+      ? "http://localhost:3000"
+      : "https://linsta.cz",
+  email: "linsta@linsta.cz",
   linkedin: "",
   facebook: "",
 };

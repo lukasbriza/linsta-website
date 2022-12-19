@@ -39,10 +39,10 @@ export const Footer: FC<FooterProps> = () => {
             </section>
             <section className={clsx([styles.column, styles.column2])}>
                 <FooterHeader variant={['bold', 'underline']}>{t('footer.col2.header')}</FooterHeader>
-                <Reference text={t('footer.col2.ref1')} url={"/mechanization"} />
-                <Reference text={t('footer.col2.ref2')} url={"/mechanization"} />
+                <Reference text={t('footer.col2.ref1')} url={"/gdpr"} />
+                <Reference text={t('footer.col2.ref2')} url={"/services"} />
                 <Reference text={t('footer.col2.ref3')} url={"/mechanization"} />
-                <Reference text={t('footer.col2.ref4')} url={"/mechanization"} />
+                <Reference text={t('footer.col2.ref4')} url={"/references"} />
             </section>
             <section className={clsx([styles.column, styles.column3])}>
                 <FooterHeader variant={['bold', 'underline']}>{t('footer.col3.header')}</FooterHeader>
@@ -50,13 +50,18 @@ export const Footer: FC<FooterProps> = () => {
                     <FooterTypography>{t('footer.col3.tel')}</FooterTypography>
                 </FooterPoint>
                 <FooterPoint>
+                    <FooterTypography>{t('footer.col3.email')}</FooterTypography>
+                </FooterPoint>
+                <FooterPoint>
                     <FooterTypography>{t('footer.col3.ico')}</FooterTypography>
                 </FooterPoint>
                 <FooterPoint className={styles.officePoint}>
-                    <FooterTypography>
-                        {t('footer.col3.place')}<br />
+                    <FooterTypography className={styles.office}>
                         {t('footer.col3.line1')}<br />
-                        {t('footer.col3.line2')}
+                        {t('footer.col3.line2')}<br />
+                        {t('footer.col3.line3')}<br />
+                        {t('footer.col3.line4')}<br />
+                        {t('footer.col3.line5')}
                     </FooterTypography>
                 </FooterPoint>
             </section>

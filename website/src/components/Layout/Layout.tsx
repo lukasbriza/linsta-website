@@ -1,6 +1,6 @@
 import styles from '../../styles/modules/Layout.module.scss'
 
-import { FC } from 'react'
+import { FC, useEffect } from 'react'
 
 import clsx from 'clsx'
 
@@ -16,8 +16,19 @@ export const Layout: FC<LayoutProps> = (props) => {
         layoutClass,
         headerClass,
         footerClass,
-        pageClass
+        pageClass,
+        scrollTopBeforeUnload = true
     } = props
+
+    useEffect(() => {
+        const scrollTotop = () => { window.scrollTo(0, 0) }
+
+        !scrollTopBeforeUnload && window.removeEventListener('beforeunload', scrollTotop)
+        scrollTopBeforeUnload && window.addEventListener('beforeunload', scrollTotop)
+        return () => {
+            window.removeEventListener('beforeunload', scrollTotop)
+        }
+    }, [scrollTopBeforeUnload])
 
     return (
         <section id={styles.layout} className={layoutClass ? layoutClass : ""}>

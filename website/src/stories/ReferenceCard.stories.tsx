@@ -13,9 +13,8 @@ const Template: ComponentStory<typeof ReferenceCard> = (args) => (<ReferenceCard
 
 export const Default = Template.bind({})
 Default.args = {
-    src: img,
+    src: [""],
     header: "Název stavby",
     place: "Nová Ves",
     realization: "2022",
-    url: "/"
 }

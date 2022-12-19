@@ -1,0 +1,277 @@
+@use "../theme.scss" as theme;
+@use "../mixins" as q;
+
+//BASE
+.helperText {
+  height: 87px !important;
+  padding-left: 10px !important;
+  padding-right: 10px !important;
+}
+
+.input {
+  height: 60px !important;
+  width: 350px;
+  border-radius: 0px !important;
+  background: theme.$primary-color !important;
+  font-size: 14px !important;
+  color: rgba(0, 0, 0, 0.719);
+
+  @include q.until(760px) {
+    width: 300px;
+  }
+}
+
+.label {
+  font-size: 16px !important;
+  cursor: text;
+}
+
+.focusLabel {
+  font-size: 11px !important;
+  color: theme.$secondary-color !important;
+}
+
+.filledLine {
+  background: theme.$secondary-color !important;
+  width: 100% !important;
+}
+
+.errorLine {
+  background: theme.$error-background !important;
+  width: 100% !important;
+}
+
+.errorLabel {
+  color: theme.$error-color !important;
+}
+
+.type {
+  height: 87px !important;
+  padding-left: 10px !important;
+  padding-right: 10px !important;
+  display: flex !important;
+  flex-direction: column;
+  flex-wrap: nowrap;
+}
+
+.select {
+  width: 350px;
+  position: relative;
+  cursor: pointer;
+
+  @include q.until(760px) {
+    width: 300px;
+  }
+
+  .customSelect {
+    cursor: pointer;
+    width: 100%;
+    height: 60px;
+    border: none;
+    border-bottom: 1px solid rgba(128, 128, 128, 0.645);
+    padding-left: 10px;
+    outline: none;
+    font-size: 17px;
+    color: black;
+    font-weight: 300;
+  }
+  .customSelect:focus {
+    border-bottom: 2px solid theme.$secondary-color;
+  }
+  .customSelect:hover {
+    border-bottom: 1px solid rgb(128, 128, 128);
+  }
+}
+
+.helperClass {
+  width: 350px;
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+
+  @include q.until(760px) {
+    width: 300px;
+  }
+}
+
+.file {
+  padding-top: 20px;
+  flex-basis: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  display: flex !important;
+  flex-direction: column;
+  flex-wrap: nowrap;
+}
+
+.fileInput {
+  width: 350px;
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+
+  @include q.until(760px) {
+    width: 300px;
+  }
+}
+
+.detail {
+  flex-basis: 100%;
+  padding-left: 30px !important;
+  padding-right: 30px !important;
+}
+
+.detailArea {
+  width: 100%;
+  height: 150px;
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+  resize: none;
+  border: none;
+  border-bottom: 1px solid rgba(128, 128, 128, 0.734);
+  padding-left: 15px;
+  padding-top: 15px;
+  font-size: 16px;
+  font-weight: 300;
+  outline: none;
+  overflow-y: auto;
+}
+
+.detailArea:focus {
+  border-bottom: 2px solid theme.$secondary-color;
+}
+
+.submit {
+  height: fit-content;
+  width: fit-content;
+  background: theme.$secondary-color;
+  border: none;
+  outline: none;
+  color: theme.$text-secondary-color;
+  width: 150px;
+  height: 50px;
+  text-transform: uppercase;
+  font-weight: 700;
+  margin: auto;
+  margin-top: 30px;
+  margin-bottom: 30px;
+  cursor: pointer;
+}
+.submit:disabled {
+  background: rgb(78, 78, 78);
+  cursor: initial;
+}
+
+.form {
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  max-width: 900px;
+}
+
+.form2 {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  max-width: 900px;
+
+  @include q.until(640px) {
+    flex-direction: column;
+    align-items: center;
+
+    .input,
+    .detailArea {
+      width: 300px !important;
+    }
+
+    .name,
+    .place,
+    .realization {
+      flex-basis: unset !important;
+    }
+  }
+
+  .name,
+  .place {
+    flex-basis: 50%;
+  }
+
+  .realization {
+    flex-basis: 100%;
+  }
+
+  .name,
+  .place,
+  .realization {
+    padding-left: 30px !important;
+    padding-right: 30px !important;
+
+    .root {
+      width: 100%;
+    }
+    .input {
+      width: 100%;
+    }
+  }
+}
+
+.userForm {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  max-width: 900px;
+
+  .name,
+  .password {
+    flex-basis: 50%;
+    padding-left: 30px !important;
+    padding-right: 30px !important;
+
+    .root {
+      width: 100%;
+    }
+    .input {
+      width: 100%;
+    }
+  }
+
+  .select {
+    width: 100%;
+    padding-left: 30px !important;
+    padding-right: 30px !important;
+
+    @include q.until(640px) {
+      .customSelect {
+        width: 300px;
+        position: relative;
+        left: 50%;
+        transform: translateX(-50%);
+      }
+    }
+  }
+
+  @include q.until(640px) {
+    flex-direction: column;
+    align-items: center;
+
+    .input {
+      width: 300px !important;
+    }
+  }
+}
+
+.pictureHeader {
+  height: 170px;
+
+  h2 {
+    white-space: nowrap;
+    font-size: 2.5rem !important;
+  }
+  margin-bottom: 20px;
+}

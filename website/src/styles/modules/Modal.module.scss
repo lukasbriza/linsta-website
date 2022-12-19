@@ -1,0 +1,74 @@
+@use "../theme.scss" as theme;
+@use "../mixins" as q;
+
+.modal {
+  position: fixed !important;
+  left: 50%;
+  transform: translateX(-50%);
+  background: white;
+  opacity: 0;
+  bottom: 100vh !important;
+
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-items: center;
+
+  min-width: 350px !important;
+  max-width: 90% !important;
+  min-height: 110px !important;
+
+  padding: 15px;
+}
+
+.state {
+  position: relative;
+  width: 60px;
+  svg {
+    position: relative;
+  }
+}
+
+.section {
+  width: 100%;
+}
+
+.text {
+  padding-bottom: 15px;
+  text-align: center;
+}
+.sucess {
+  path {
+    fill: rgb(0, 146, 0);
+  }
+}
+
+.failure {
+  path {
+    fill: rgb(213, 0, 0);
+  }
+}
+
+.button {
+  height: fit-content;
+  width: fit-content;
+  background: theme.$bckg-secondary-color;
+  padding: 10px;
+  padding-left: 20px;
+  padding-right: 20px;
+  text-transform: uppercase;
+  font-weight: 600;
+  cursor: pointer;
+  border: none;
+  outline: none;
+  color: theme.$text-secondary-color;
+
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+
+  transition: background 0.1s ease-in-out;
+}
+.button:hover {
+  background: rgb(27, 27, 27);
+}

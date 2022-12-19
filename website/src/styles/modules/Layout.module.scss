@@ -3,10 +3,11 @@
 
 #layout {
   width: 100%;
-  max-width: 1500px;
+  max-width: 2000px;
   height: 100%;
   min-height: 100vh;
   position: relative;
+  overflow-x: clip;
   left: 50%;
   transform: translateX(-50%);
   background: theme.$bckg-primary-color;
@@ -16,8 +17,8 @@
   grid-template-columns: 1fr;
   grid-template-areas: "header" "menu" "page" "footer";
 
-  @include q.from(1500px) {
-    grid-template-columns: 1500px;
+  @include q.from(2000px) {
+    grid-template-columns: 2000px;
   }
 }
 
@@ -59,7 +60,7 @@
   transform: translateX(-50%);
   content: "";
   position: absolute;
-  background: theme.$bckg-primary-color;
+  background: theme.$bckg-secondary-color;
 }
 
 #footerWrapper {

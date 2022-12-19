@@ -7,7 +7,7 @@ import Image from 'next/image'
 import { StatutarCardProps } from './StatutarCard.model'
 
 export const StatutarCard: FC<StatutarCardProps> = (props) => {
-    const { src, alt, header, subtitle, phone, mail } = props
+    const { src, alt, header, phone, mail } = props
 
     return (
         <div className={styles.card}>
@@ -23,9 +23,6 @@ export const StatutarCard: FC<StatutarCardProps> = (props) => {
             <div className={styles.infoSection}>
                 <Typography type="h5" variant={["bold"]} size="medium" className={styles.cardHeader}>
                     {header}
-                </Typography>
-                <Typography type="subtitle1" variant={["bold"]} size="small" className={styles.cardSubtitle}>
-                    {subtitle}
                 </Typography>
                 <div className={styles.contacts}>
                     <div className={styles.phone}>

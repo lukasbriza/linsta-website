@@ -1,9 +1,7 @@
-import { StaticImageData } from "next/image";
-
 export type MechanizationCardProps = {
   name: string;
-  src: string | StaticImageData;
-  indication: string;
-  capacity: number;
+  src: string;
+  label: string;
+  capacity: string;
   price: number;
 };

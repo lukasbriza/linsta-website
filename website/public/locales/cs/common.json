@@ -77,7 +77,7 @@
     "col3": {
       "header": "Kontakt",
       "tel": "Tel.: +420 606 095 352",
-      "email": "lista@lista.cz",
+      "email": "linsta@linsta.cz",
       "ico": "IČO.: 090 43 667",
       "dic": "DIČ: CZ09043667",
       "line1": "Hvozdecká 1488/1,",
@@ -130,19 +130,16 @@
       "headerAlt": "Nadpis stránky kontakty",
       "contact1": {
         "name": "Ing. Šimon Mytyzek",
-        "role": "Majitel",
         "tel": "+420 606 095 352",
         "email": "mytyzek.simon@gmail.com"
       },
       "contact2": {
         "name": "Hana Humlová",
-        "role": "Majitelka",
         "tel": "+420 602 124 182",
         "email": "h.humlova@cbox.cz"
       },
       "contact3": {
         "name": "Jan Huml",
-        "role": "Majitel",
         "tel": "+420 731 184 310",
         "email": "Jan.huml@seznam.cz"
       },
@@ -206,6 +203,71 @@
       },
       "banner": "Máte zájem o některou z našich služeb?",
       "button": "KONTAKTOVAT"
+    },
+    "gdpr": {
+      "header": "Zásady ochrany osobních údajů",
+      "section1": {
+        "header": "Základní ustanovení",
+        "1": "Správcem osobních údajů podle čl. 4 bod 7 nařízení Evropského parlamentu a Rady (EU) 2016/679 o ochraně fyzických osob v souvislosti se zpracováním osobních údajů a o volném pohybu těchto údajů (dále jen: „GDPR”) je LINSTA stavební s.r.o. IČ 09043667 se sídlem Hvozdecká 1488/1, Hořovice (dále jen: „správce“).",
+        "2": "Kontaktní údaje správce jsou",
+        "2a": "   adresa: Hvozdecká 1488/1, Hořovice",
+        "2b": "   email: mytyzek.simon@gmail.com",
+        "2c": "   telefon: 606 095 352",
+        "3": "Osobními údaji se rozumí veškeré informace o identifikované nebo identifikovatelné fyzické osobě; identifikovatelnou fyzickou osobou je fyzická osoba, kterou lze přímo či nepřímo identifikovat, zejména odkazem na určitý identifikátor, například jméno, identifikační číslo, lokační údaje, síťový identifikátor nebo na jeden či více zvláštních prvků fyzické, fyziologické, genetické, psychické, ekonomické, kulturní nebo společenské identity této fyzické osoby.",
+        "4": "Správce nejmenoval pověřence pro ochranu osobních údajů."
+      },
+      "section2": {
+        "header": "Zdroje a kategorie zpracovávaných osobních údajů",
+        "1": "Správce zpracovává osobní údaje, které jste mu poskytl/a nebo osobní údaje, které správce získal na základě plnění Vaší objednávky.",
+        "2": "Správce zpracovává Vaše identifikační a kontaktní údaje a údaje nezbytné pro plnění smlouvy. "
+      },
+      "section3": {
+        "header": "Zákonný důvod a účel zpracování osobních údajů",
+        "1": "Zákonným důvodem zpracování osobních údajů je plnění smlouvy mezi Vámi a správcem podle čl. 6 odst. 1 písm. b) GDPR.",
+        "2": "Účelem zpracování osobních údajů je",
+        "2a": "vyřízení Vaší objednávky a výkon práv a povinností vyplývajících ze smluvního vztahu mezi Vámi a správcem; při objednávce jsou vyžadovány osobní údaje, které jsou nutné pro úspěšné vyřízení objednávky (jméno a adresa, kontakt), poskytnutí osobních údajů je nutným požadavkem pro uzavření a plnění smlouvy, bez poskytnutí osobních údajů není možné smlouvu uzavřít či jí ze strany správce plnit,",
+        "2b": "zasílání obchodních sdělení a činění dalších marketingových aktivit.",
+        "3": "Ze strany správce nedochází k automatickému individuálnímu rozhodování ve smyslu čl. 22 GDPR. S takovým zpracováním jste poskytl/a svůj výslovný souhlas."
+      },
+      "section4": {
+        "header": "Doba uchovávání údajů",
+        "1": "Správce uchovává osobní údaje",
+        "1a": "po dobu nezbytnou k výkonu práv a povinností vyplývajících ze smluvního vztahu mezi Vámi a správcem a uplatňování nároků z těchto smluvních vztahů (po dobu 15 let od ukončení smluvního vztahu).",
+        "1b": "po dobu, než je odvolán souhlas se zpracováním osobních údajů pro účely marketingu, nejdéle 5 let, jsou-li osobní údaje zpracovávány na základě souhlasu.",
+        "2": "Po uplynutí doby uchovávání osobních údajů správce osobní údaje vymaže."
+      },
+      "section5": {
+        "header": "Příjemci osobních údajů (subdodavatelé správce)",
+        "1": "Příjemci osobních údajů jsou osoby",
+        "1a": "podílející se na dodání zboží / služeb / realizaci plateb na základě smlouvy,",
+        "1b": "podílející se na zajištění provozu služeb,",
+        "1c": "zajišťující marketingové služby.",
+        "2": "Správce nemá v úmyslu předat osobní údaje do třetí země (do země mimo EU) nebo mezinárodní organizaci. Příjemci osobních údajů ve třetích zemích jsou poskytovatelé mailingových služeb / cloudových služeb."
+      },
+      "section6": {
+        "header": "Vaše práva",
+        "1": "Za podmínek stanovených v GDPR máte",
+        "1a": "právo na přístup ke svým osobním údajům dle čl. 15 GDPR,",
+        "1b": "právo opravu osobních údajů dle čl. 16 GDPR, popřípadě omezení zpracování dle čl. 18 GDPR.",
+        "1c": "právo na výmaz osobních údajů dle čl. 17 GDPR.",
+        "1d": "právo vznést námitku proti zpracování dle čl. 21 GDPR a",
+        "1e": "právo na přenositelnost údajů dle čl. 20 GDPR.",
+        "1f": "právo odvolat souhlas se zpracováním písemně nebo elektronicky na adresu nebo email správce uvedený v čl. III těchto podmínek.",
+        "2": "Dále máte právo podat stížnost u Úřadu pro ochranu osobních údajů v případě, že se domníváte, že bylo porušeno Vaší právo na ochranu osobních údajů."
+      },
+      "section7": {
+        "header": "Podmínky zabezpečení osobních údajů",
+        "1": "Správce prohlašuje, že přijal veškerá vhodná technická a organizační opatření k zabezpečení osobních údajů.",
+        "2": "Správce přijal technická opatření k zabezpečení datových úložišť a úložišť osobních údajů v listinné podobě.",
+        "3": "Správce prohlašuje, že k osobním údajům mají přístup pouze jím pověřené osoby."
+      },
+      "section8": {
+        "header": "Závěrečná ustanovení",
+        "1": "Odesláním poptávky z internetového poptávkového formuláře potvrzujete, že jste seznámen/a s podmínkami ochrany osobních údajů a že je v celém rozsahu přijímáte.",
+        "2": "S těmito podmínkami souhlasíte zaškrtnutím souhlasu prostřednictvím internetového formuláře. Zaškrtnutím souhlasu potvrzujete, že jste seznámen/a s podmínkami ochrany osobních údajů a že je v celém rozsahu přijímáte.",
+        "3": "Správce je oprávněn tyto podmínky změnit. Novou verzi podmínek ochrany osobních údajů zveřejní na svých internetových stránkách, případně Vám zašle novou verzi těchto podmínek na e-mailovou adresu, kterou jste správci poskytl/a."
+      },
+      "ending": "Tyto podmínky nabývají účinnosti dnem 1. 1. 2023."
     }
   },
   "modal": {
@@ -241,7 +303,8 @@
     "userUpdate": {
       "sucess": "Aktualizováno.",
       "failure": "Něco se nepodařilo.",
-      "invalid": "Zadány nevalidní data."
+      "invalid": "Zadány nevalidní data.",
+      "noPermission": "Nemáte oprávnění k akci."
     }
   }
 }

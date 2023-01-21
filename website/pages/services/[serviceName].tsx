@@ -176,7 +176,8 @@ const ServiceDetail: NextPage = () => {
                     <Link href="/contact">
                         <div className={styles.button}>
                             <p>{t("pages.serviceName.button")}</p>
-                        </div></Link>
+                        </div>
+                    </Link>
                 </section>
             </section>
         </>)
@@ -197,7 +198,11 @@ const MainContent = forwardRef<MainContentref, MainContentProps>((props, ref) =>
     const ref2 = useRef<HTMLDivElement>(null)
     const ref3 = useRef<HTMLDivElement>(null)
     const { t } = useTranslation()
-    const imageSrc = "/assets/demolition.webp"
+    const imageSrc = route === "demolition" ? "/assets/demolition.webp" :
+        route === "communications" ? "/assets/buildingCommunications.webp" :
+            route === "machinerent" ? "/assets/machineRent.webp" :
+                route === "sewersconstruction" ? "/assets/sewersConstruction.webp" :
+                    "/assets/transport.webp"
 
     useImperativeHandle(ref, () => ({
         getRefs: {

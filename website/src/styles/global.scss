@@ -8,7 +8,7 @@ $breakpoints: (
   desktop: 1200px,
 );
 
-$show-breakpoints: (mobile, tablet, laptop, desktop);
+$show-breakpoints: ();
 
 @use "../../node_modules/sass-mq/mq" with (
   $breakpoints: $breakpoints,

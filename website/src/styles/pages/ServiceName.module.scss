@@ -69,6 +69,7 @@
   height: fit-content;
   width: fit-content;
   background: theme.$secondary-color;
+  transition: background 0.2s ease-in-out;
   width: 150px;
   height: 50px;
   text-transform: uppercase;
@@ -89,6 +90,9 @@
   }
 }
 
+.button:hover {
+  background: rgb(203, 78, 20);
+}
 //CONTENT
 .mainWrapper {
   position: relative;

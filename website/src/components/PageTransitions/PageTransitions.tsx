@@ -104,7 +104,7 @@ export const Pagetransitions: FC<{ children: React.ReactNode }> = ({ children })
         <SwitchTransition>
             <Transition
                 key={router.pathname}
-                timeout={2000}
+                timeout={1000}
                 in={true}
                 mountOnEnter={true}
                 unmountOnExit={true}

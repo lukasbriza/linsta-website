@@ -16,8 +16,8 @@ export async function getStaticProps({ locale }: { locale: string }) {
     const returnProps = {
         props: {
             ...(await serverSideTranslations(locale, ['common'])),
+            data: JSON.stringify([])
         },
-        data: []
     }
     const db = await connectDB();
     const dbHandle = handleServerSideError(DatabaseError, db, returnProps)

@@ -11,7 +11,7 @@ import {
 } from "@utils";
 import jwt from "jsonwebtoken";
 import cookie from "cookie";
-import bcrypt from "bcrypt";
+import bcryptjs from "bcryptjs";
 import { PostLogin_request, PostLogin_response } from "./_model";
 import Joi from "joi";
 
@@ -79,7 +79,7 @@ export const login = async (
 
   if (userToCompare.length === 1) {
     //COMPARE PASSWORDS
-    const compareResult = await bcrypt.compare(
+    const compareResult = await bcryptjs.compare(
       body.password,
       userToCompare[0].password
     );

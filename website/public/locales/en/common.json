@@ -164,6 +164,10 @@
           "specialCharacters": "Speciální znaky jsou zakázány.",
           "required": "Povinné",
           "invalidEmail": "Nevalidní email"
+        },
+        "modal": {
+          "success": "Zpráva byla odeslána. Brzy se Vám ozveme.",
+          "failure": "Něco se nezdařilo. Zkuste znovu, nebo nás kontaktujte telefonicky."
         }
       }
     },

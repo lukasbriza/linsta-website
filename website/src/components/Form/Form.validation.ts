@@ -7,8 +7,6 @@ const requiredStringValidtion = (t: TFunction) => {
     .ruleset.max(40)
     .min(1)
     .rule({ message: t("pages.contact.form.validations.max40") })
-    .ruleset.alphanum()
-    .rule({ message: t("pages.contact.form.validations.specialCharacters") })
     .required()
     .messages({ "string.empty": t("pages.contact.form.validations.required") });
 };

@@ -22,4 +22,5 @@ export const apiRoutes = {
   removeImage: "/api/image/remove",
   mechanization: "/api/mechanizations",
   references: "/api/references",
+  mail: "/api/mail",
 } as const;

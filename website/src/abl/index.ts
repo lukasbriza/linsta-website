@@ -16,3 +16,5 @@ export * from "./Users/putUsers";
 export * from "./Login/login";
 export * from "./Login/authenticate";
 export * from "./Login/logout";
+
+export * from "./Mail/sendMail";

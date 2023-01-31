@@ -16,6 +16,16 @@ $linePadding: 8px;
   justify-items: center;
 
   @include q.tablet {
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: min-content min-content min-content min-content;
+    grid-template-areas:
+      "divider divider"
+      "c1 c1"
+      "c2 c3"
+      "copy copy";
+  }
+
+  @include q.until(570px) {
     grid-template-columns: 1fr;
     grid-template-rows: min-content min-content min-content min-content min-content;
     grid-template-areas:
@@ -43,6 +53,9 @@ $linePadding: 8px;
   }
 }
 .column1 {
+  .header {
+    width: 100%;
+  }
   grid-area: c1;
   @include q.tablet {
     width: 100%;
@@ -54,9 +67,35 @@ $linePadding: 8px;
 }
 .column2 {
   grid-area: c2;
+  @include q.tablet {
+    justify-self: end;
+    margin-right: 40px;
+  }
+  @include q.until(570px) {
+    width: 100%;
+    .header {
+      width: 100%;
+    }
+    justify-self: left;
+    padding-left: 80px;
+    padding-right: 80px;
+  }
 }
 .column3 {
   grid-area: c3;
+  @include q.until(570px) {
+    width: 100%;
+    .header {
+      width: 100%;
+    }
+    padding-left: 80px;
+    padding-right: 80px;
+  }
+  @include q.tablet {
+    justify-self: left;
+    margin-bottom: 20px;
+    padding-left: 80px;
+  }
 }
 .copyright {
   justify-self: center;
@@ -70,6 +109,7 @@ $linePadding: 8px;
   font-size: 17px !important;
 
   @include q.tablet {
+    width: fit-content;
     text-align: center;
   }
 }

@@ -10,10 +10,13 @@ import { FormProps, FormInputs } from './Form.model'
 import { formValidationSchema } from './Form.validation'
 import { routes } from '../../config/routes'
 import clsx from 'clsx'
+import { sendEmail } from '@fetchers'
+import { useModal } from '@hooks'
 
 
 export const Form: FC<FormProps> = () => {
     const { t } = useTranslation()
+    const { show, close } = useModal()
     const { register, control, handleSubmit, formState: { errors } } = useForm<FormInputs>({
         defaultValues: {
             name: "",
@@ -28,9 +31,16 @@ export const Form: FC<FormProps> = () => {
         resolver: formValidationSchema(t)
     })
 
-    const onSubmit: SubmitHandler<FormInputs> = (data) => {
-        //TODO
-        console.log(data)
+    const onSubmit: SubmitHandler<FormInputs> = async (data) => {
+        const result = await sendEmail(data)
+        console.log(result)
+        if (!result.sucess) {
+            show({ sucess: false, button: false, text: t('pages.contact.form.modal.failure') })
+            return
+        }
+
+        show({ sucess: true, button: false, text: t('pages.contact.form.modal.success') })
+        return
     }
 
 

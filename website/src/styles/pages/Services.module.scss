@@ -4,21 +4,29 @@
 .services {
 }
 
-.textWrapper {
-  text-align: center;
-  position: relative;
+.servicesText {
+  position: relative !important;
+  text-align: center !important;
+  position: relative !important;
+  text-align: center !important;
+  margin-top: 40px !important;
   left: 50%;
   transform: translateX(-50%);
-  width: 60% !important;
-  background: theme.$primary-color;
-  padding: 25px;
-  margin-top: 40px;
-  min-width: 280px;
-}
+  padding-left: 50px;
+  padding-right: 50px;
+  max-width: 1200px;
+  font-size: 1.1rem !important;
+  font-weight: 500 !important;
 
-.servicesText {
-  text-align: center;
-  width: 100%;
+  @include q.laptop {
+    width: 525px;
+    padding-left: 0px;
+    padding-right: 0px;
+  }
+
+  @include q.until(650px) {
+    width: 280px;
+  }
 }
 
 $gap: 25px;

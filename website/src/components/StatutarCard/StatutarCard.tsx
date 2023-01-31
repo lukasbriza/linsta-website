@@ -27,11 +27,11 @@ export const StatutarCard: FC<StatutarCardProps> = (props) => {
                 <div className={styles.contacts}>
                     <div className={styles.phone}>
                         <Image src={"/assets/phone2.svg"} width="15px" height="15px" alt={"telephone"} />
-                        <Typography type="body1" size="small">{"+420 774 876 504"}</Typography>
+                        <Typography type="body1" size="small">{phone}</Typography>
                     </div>
                     <div className={styles.mail}>
                         <Image src={"/assets/email2.svg"} width="15px" height="15px" alt={"telephone"} />
-                        <Typography type="body1" size="small">{"name@linstastavebni.cz"}</Typography>
+                        <Typography type="body1" size="small">{mail}</Typography>
                     </div>
                 </div>
             </div>

@@ -5,12 +5,13 @@ import Image from 'next/image'
 import { badgeConfig } from '../src/config/badgeConfig'
 import { siteMetaData } from '../src/config/siteMetadata';
 import { Badge, DynamicHead, FadeIn } from '@components'
-import { Typography } from '@lukasbriza/lbui-lib'
+import { Typography, useElementSize } from '@lukasbriza/lbui-lib'
 import { routes } from '../src/config/routes'
 import background from '@assets/home.webp'
+import backgroundMobile from '@assets/home_mob.webp'
 import clsx from 'clsx';
 import { StylesContext } from './_app';
-import { useContext } from 'react';
+import { useContext, useRef } from 'react';
 import { useLogoContext, useTransitionContext } from '@hooks';
 
 export async function getServerSideProps({ locale }: { locale: string }) {
@@ -26,6 +27,8 @@ const Home: NextPage = () => {
   const { animated } = useLogoContext()
   const { transitioning } = useTransitionContext()
   const styles = useContext(StylesContext).home
+  const ref = useRef<HTMLElement>(null)
+  const { width, height } = useElementSize(ref)
   return (
     <>
       <DynamicHead
@@ -34,9 +37,9 @@ const Home: NextPage = () => {
         canonicalUrl={siteMetaData.siteUrl}
         ogType="website"
       />
-      <section className={styles.home} data-route={routes.home}>
+      <section className={styles.home} data-route={routes.home} ref={ref}>
         <Image
-          src={background}
+          src={(width && width < 760) ? backgroundMobile : background}
           alt="Home image"
           layout="fill"
           objectFit="cover"

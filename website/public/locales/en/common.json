@@ -65,7 +65,7 @@
   "footer": {
     "col1": {
       "header": "LINSTA stavební s.r.o.",
-      "subtitle": "Demolice, výkopové práce, autodoprava a pronájem stavebních strojů."
+      "subtitle": "Zemní práce a demolice, výstavba komunikací, výstavba vodovodních kanalizací, nákladní autodoprava,pronájem stavebních strojů."
     },
     "col2": {
       "header": "Odkazy",
@@ -80,10 +80,10 @@
       "email": "linsta@linsta.cz",
       "ico": "IČO.: 090 43 667",
       "dic": "DIČ: CZ09043667",
-      "line1": "Hvozdecká 1488/1,",
+      "line1": "Hvozdecká 1488/1 ",
       "line2": "268 01 Hořovice",
       "line3": "Česká republika",
-      "line4": "Zap. v OR vedeném Měs. soudem",
+      "line4": "Zapsán v OR vedeném Měs. soudem",
       "line5": "v Praze, oddíl C, vložka 329672"
     }
   },

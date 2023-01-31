@@ -1,5 +1,4 @@
 import services from '@assets/serviceHeader.webp'
-import demolition from '@assets/demolition.webp'
 
 import { useTranslation } from 'next-i18next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
@@ -52,12 +51,10 @@ const Services: NextPage = () => {
                     text={t('pages.services.pictureHeader')}
                 />
                 <FadeIn canAnimate={animated && !transitioning} className={styles.demolition}>
-                    <Paper className={styles.textWrapper} elevation={4} square>
-                        <Typography type="body1" className={styles.servicesText}>
-                            {t('pages.services.subtitle1')}<br /><br />
-                            {t('pages.services.subtitle2')}
-                        </Typography>
-                    </Paper>
+                    <Typography type="body1" className={styles.servicesText}>
+                        {t('pages.services.subtitle1')}<br /><br />
+                        {t('pages.services.subtitle2')}
+                    </Typography>
                 </FadeIn>
                 <section className={styles.servicesWrapper}>
                     <FadeIn canAnimate={animated && !transitioning} className={styles.demolition} delay={0.5}>

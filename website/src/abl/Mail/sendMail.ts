@@ -13,7 +13,7 @@ const schema = Joi.object({
   gdpr: Joi.boolean().required(),
 });
 
-const TOKEN = "e154b775c1944483fcf4cd91b9e718ef"; //process.env.EMAIL_TOKEN;
+const TOKEN = process.env.EMAIL_TOKEN;
 const ENDPOINT = process.env.EMAIL_ENDPOINT;
 const RECIPIENT = process.env.EMAIL;
 
@@ -32,10 +32,10 @@ export const sendMail = async (
   if (body.gdpr === false) {
     return serverErrorResponse(res, "Gdpr must be true.");
   }
-
+  console.log("here");
   const client = new MailtrapClient({
     endpoint: ENDPOINT,
-    token: TOKEN,
+    token: TOKEN as string,
   });
 
   const sender = {

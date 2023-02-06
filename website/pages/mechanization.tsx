@@ -12,7 +12,7 @@ import { StylesContext } from './_app';
 import { useContext } from 'react';
 import { useLogoContext, useTransitionContext } from '@hooks';
 
-export async function getStaticProps({ locale }: { locale: string }) {
+export async function getServerSideProps({ locale }: { locale: string }) {
     const returnProps = {
         props: {
             ...(await serverSideTranslations(locale, ['common'])),

@@ -10,7 +10,7 @@ import { useTranslation } from 'next-i18next'
 
 export const MechanizationCard: FC<MechanizationCardProps> = (props) => {
     const { t } = useTranslation()
-    const { name, src, label, capacity, price } = props
+    const { name, src, label, capacity, price, type } = props
 
     const [loading, setLoading] = useState<boolean>(true)
     const [img, setImg] = useState<string>('')
@@ -50,7 +50,7 @@ export const MechanizationCard: FC<MechanizationCardProps> = (props) => {
                 <div>
                     {t('pages.mechanization.mechaniztionCard.from')}
                     {` ${price} `}
-                    {t('pages.mechanization.mechaniztionCard.currency')}
+                    {type === "SM" ? t('pages.mechanization.mechaniztionCard.currency2') : t('pages.mechanization.mechaniztionCard.currency')}
                 </div>
             </div>
             <div className={clsx([styles.underliner1, styles.underliner])}></div>

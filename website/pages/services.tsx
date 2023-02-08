@@ -3,7 +3,7 @@ import services from '@assets/serviceHeader.webp'
 import { useTranslation } from 'next-i18next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import { PictureHeader, ServiceCard, DynamicHead, FadeIn } from '@components'
-import { Typography, Paper } from '@lukasbriza/lbui-lib'
+import { Typography } from '@lukasbriza/lbui-lib'
 import { siteMetaData } from '../src/config/siteMetadata'
 import type { NextPage } from 'next'
 import { useRouter } from 'next/router'

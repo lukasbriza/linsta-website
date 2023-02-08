@@ -4,4 +4,5 @@ export type MechanizationCardProps = {
   label: string;
   capacity: string;
   price: number;
+  type: string;
 };

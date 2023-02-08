@@ -107,8 +107,8 @@
         "header2": "Nosnost",
         "header3": "Cena",
         "from": "od",
-        "currency": "kč/den",
-        "currency2": "kč/hod"
+        "currency": "kč/hod",
+        "currency2": "kč/den"
       }
     },
     "references": {

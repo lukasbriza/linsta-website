@@ -102,6 +102,7 @@ const Mechanization: NextPage<MechanizationProps> = (props) => {
                                     label={value.label}
                                     capacity={value.capacity}
                                     price={value.price}
+                                    type={value.type}
                                 />
                             </FadeIn>
                         )
@@ -129,6 +130,7 @@ const Mechanization: NextPage<MechanizationProps> = (props) => {
                                     label={value.label}
                                     capacity={value.capacity}
                                     price={value.price}
+                                    type={value.type}
                                 />
                             </FadeIn>
                         )
@@ -156,6 +158,7 @@ const Mechanization: NextPage<MechanizationProps> = (props) => {
                                     label={value.label}
                                     capacity={value.capacity}
                                     price={value.price}
+                                    type={value.type}
                                 />
                             </FadeIn>
                         )

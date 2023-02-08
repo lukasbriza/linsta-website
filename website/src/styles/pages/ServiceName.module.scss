@@ -145,12 +145,17 @@
 
   display: grid;
   grid-template-rows: min-content 1fr;
+  grid-template-columns: 1fr 300px 1fr;
+  grid-template-areas:
+    ". header ."
+    ". content .";
   justify-items: center;
   align-items: center;
   padding: 15px;
 
   @include q.until(1035px) {
     min-height: 250px;
+    grid-template-columns: 1fr 500px 1fr;
   }
 }
 .secondaryServiceInformation {
@@ -168,12 +173,22 @@
     min-height: 250px;
   }
 }
+
+.secondaryTypography {
+  color: white;
+  font-size: 1.1rem !important;
+  text-align: center;
+  max-width: 300px;
+}
 .header {
   text-transform: uppercase;
   text-align: center;
 }
 .underliner {
   background: theme.$secondary-color !important;
+}
+.headerRoot {
+  grid-area: header;
 }
 
 .image {
@@ -290,4 +305,23 @@ $size: 80px;
   top: 52%;
   transform: translate(-50%, -50%) rotate(-45deg);
   transform-origin: left center;
+}
+
+.contentWrapper {
+  grid-area: content;
+  margin-top: 15px;
+}
+
+.pointTypography {
+  font-size: 0.9rem !important;
+}
+
+.serviceNamePoint {
+  margin-left: 50px;
+  transform: scale(1.2);
+  div {
+    div {
+      background: black;
+    }
+  }
 }

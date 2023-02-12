@@ -41,7 +41,7 @@ const onPageExit = () => {
             left: 'unset',
             right: '0px',
             width: '100%',
-            duration: 0.5,
+            duration: 0.3,
             ease: Power1.easeOut
         })
         .addLabel('fullWidth')
@@ -66,7 +66,7 @@ const onPageEnter = (cb: () => void) => {
             right: 'unset',
             left: '0px',
             width: '0%',
-            duration: 0.5,
+            duration: 0.3,
             ease: Power1.easeOut,
             onComplete: () => cb()
         }, 'startEndAnimation').then(() => {

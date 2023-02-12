@@ -82,23 +82,30 @@
 
 .phone {
   width: 162px;
-  display: flex;
-  flex-direction: row;
-  flex-wrap: nowrap;
-  white-space: nowrap;
+  display: grid;
+  grid-template-columns: 15px 1fr;
+  grid-template-areas: "icon content";
   padding-bottom: 10px;
-  p {
-    padding-left: 10px;
-  }
+  justify-items: center;
+}
+.phone:first-child {
+  grid-area: icon;
+}
+.phone:last-child {
+  grid-area: content;
 }
 
 .mail {
   width: 162px;
-  display: flex;
-  flex-direction: row;
-  flex-wrap: nowrap;
+  display: grid;
+  grid-template-columns: 15px 1fr;
+  grid-template-areas: "icon content";
   text-transform: lowercase !important;
-  p {
-    padding-left: 10px;
-  }
+  justify-items: center;
+}
+.mail:first-child {
+  grid-area: icon;
+}
+.mail:last-child {
+  grid-area: content;
 }

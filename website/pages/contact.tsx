@@ -6,7 +6,7 @@ import { StylesContext } from './_app';
 import { useLogoContext, useTransitionContext } from '@hooks';
 import { useTranslation } from 'next-i18next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
-import { PictureHeader, DynamicHead, StatutarCard, Logo, Form, LogoPlacable, FadeIn } from '@components'
+import { PictureHeader, DynamicHead, StatutarCard, Form, LogoPlacable, FadeIn } from '@components'
 import { Typography, Divider, Underliner } from '@lukasbriza/lbui-lib'
 import { siteMetaData } from '../src/config/siteMetadata'
 import { routes } from '../src/config/routes'

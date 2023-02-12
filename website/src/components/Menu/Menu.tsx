@@ -25,6 +25,8 @@ export const Menu: FC<MenuProps> = (props) => {
     const { width } = useElementSize(menuBarRef)
     const redirect = useRedirect()
 
+    const handleLogoClick = () => redirect({ path: "/" })
+
     useEffect(() => {
         showslider ? setDisabled(true) : setDisabled(false)
         // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -48,7 +50,7 @@ export const Menu: FC<MenuProps> = (props) => {
         <>
             <MenuBar className={styles.menu} ref={menuBarRef}>
                 <div className={styles.logoWrapper}>
-                    <Logo ref={logoRef} />
+                    <Logo ref={logoRef} onClick={handleLogoClick} />
                 </div>
                 <MenuList className={clsx([styles.menuList, hmbShow && styles.hide])}>
                     {items.map((item, index) => {

@@ -65,7 +65,7 @@
   "footer": {
     "col1": {
       "header": "LINSTA stavební s.r.o.",
-      "subtitle": "Zemní práce a demolice, výstavba komunikací, výstavba vodovodních kanalizací, nákladní autodoprava,pronájem stavebních strojů."
+      "subtitle": "Zemní práce a demolice, výstavba komunikací, výstavba vodovodních kanalizací, nákladní autodoprava, pronájem stavebních strojů."
     },
     "col2": {
       "header": "Odkazy",
@@ -77,8 +77,8 @@
     "col3": {
       "header": "Kontakt",
       "tel": "Tel.: +420 606 095 352",
-      "email": "linsta@linsta.cz",
-      "ico": "IČO.: 090 43 667",
+      "email": "Email: linsta@linsta.cz",
+      "ico": "IČO: 090 43 667",
       "dic": "DIČ: CZ09043667",
       "line1": "Hvozdecká 1488/1 ",
       "line2": "268 01 Hořovice",

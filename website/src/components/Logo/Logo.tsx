@@ -3,7 +3,7 @@ import styles from '../../styles/modules/Logo.module.scss'
 import React from "react"
 import clsx from 'clsx'
 import { initialAnimation } from './animations'
-import { useDisableScroll, useLogoContext, useTransitionContext } from '@hooks'
+import { useDisableScroll, useLogoContext } from '@hooks'
 import { SVGProps, forwardRef, useRef, useImperativeHandle, useEffect, useState } from "react"
 
 type LogoProps = {

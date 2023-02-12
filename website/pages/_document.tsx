@@ -1,4 +1,5 @@
 import { Html, Head, Main, NextScript } from 'next/document'
+import { keywords } from "../src/config/keywords"
 
 export default function Document() {
     return (
@@ -8,6 +9,7 @@ export default function Document() {
                 <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
                 <meta name="robots" content="index, follow" />
                 <meta name="format-detection" content="telephone=no" />
+                <meta name="keywords" content={keywords} />
                 <link rel="apple-touch-icon" sizes="76x76" href="/apple-touch-icon.png" />
                 <link rel="icon" type="image/png" href="/favicon.ico" />
                 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />

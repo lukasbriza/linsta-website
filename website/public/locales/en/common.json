@@ -6,7 +6,7 @@
     },
     "services": {
       "title": "Služby",
-      "description": "ZEMNÍ PRÁCE A DEMOLICE | VÝSTAVBA KOMUNIKACÍ | VÝSTAVBA VODOVODNÍCH KANALIZACÍ | NÁKLADNÍ AUTODOPRAVA | PRONÁJEM STAVEBÍCH STROJŮ"
+      "description": "ZEMNÍ PRÁCE A DEMOLICE | VÝSTAVBA KOMUNIKACÍ | VÝSTAVBA VODOVODŮ A KANALIZACÍ | NÁKLADNÍ AUTODOPRAVA | PRONÁJEM STAVEBÍCH STROJŮ"
     },
     "references": {
       "title": "Reference",
@@ -41,7 +41,7 @@
       "description": "-"
     },
     "sewersconstruction": {
-      "title": "Výstavba vodovodních kanalizací",
+      "title": "Výstavba vodovodů a kanalizací",
       "description": "-"
     },
     "transport": {
@@ -65,7 +65,7 @@
   "footer": {
     "col1": {
       "header": "LINSTA stavební s.r.o.",
-      "subtitle": "Zemní práce a demolice, výstavba komunikací, výstavba vodovodních kanalizací, nákladní autodoprava,pronájem stavebních strojů."
+      "subtitle": "Zemní práce a demolice, výstavba komunikací, výstavba vodovodů a kanalizací, nákladní autodoprava,pronájem stavebních strojů."
     },
     "col2": {
       "header": "Odkazy",
@@ -121,7 +121,7 @@
       "subtitle2": "Disponujeme řadou moderních strojů a nákladních automobilů. Specializujeme se na výstavbu liniových staveb, zemních a výkopových práci a nákladní autodopravu.",
       "service1": "ZEMNÍ PRÁCE A DEMOLICE",
       "service2": "VÝSTAVBA KOMUNIKACÍ",
-      "service3": "VÝSTAVBA VODOVODNÍCH KANALIZACÍ",
+      "service3": "VÝSTAVBA VODOVODŮ A KANALIZACÍ",
       "service4": "NÁKLADNÍ AUTODOPRAVA",
       "service5": "PRONÁJEM STAVEBÍCH STROJŮ"
     },
@@ -187,7 +187,7 @@
           "demolition": "Zemní práce a demolice",
           "communications": "Výstavba komunikací",
           "machinerent": "Pronájem stavebních strojů",
-          "sewersconstruction": "Výstavba vodovodních kanalizací",
+          "sewersconstruction": "Výstavba vodovodů a kanalizací",
           "transport": "Nákladní autodoprava"
         },
         "main": {

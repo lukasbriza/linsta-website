@@ -12,7 +12,7 @@ function Map() {
     })
 
     return (
-        <MapContainer center={POSITION} zoom={13} scrollWheelZoom={true} className={styles.map} >
+        <MapContainer center={POSITION} zoom={13} scrollWheelZoom={false} className={styles.map} >
             <TileLayer
                 attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
                 url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"

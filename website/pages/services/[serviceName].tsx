@@ -13,6 +13,7 @@ import { siteMetaData } from "src/config/siteMetadata";
 import clsx from 'clsx';
 import Link from 'next/link';
 import { useLogoContext, useRedirect, useTransitionContext } from '@hooks';
+import { FooterPoint } from "../../src/components/Footer/FooterPoint"
 import { StylesContext } from '../_app';
 
 type ServiceNames = 'demolition' | 'communications' | 'machinerent' | 'sewersconstruction' | 'transport'
@@ -28,6 +29,7 @@ type MainContentref = {
     getRefs: { ref1: HTMLDivElement | null, ref2: HTMLDivElement | null, ref3: HTMLDivElement | null }
 }
 type AnRef = HTMLDivElement | null | undefined
+type PointProps = { children: React.ReactNode }
 
 const ids: { id: number, serviceName: ServiceNames }[] = [
     { id: 0, serviceName: "demolition" },
@@ -192,6 +194,14 @@ const Arrow: FC<ArrowProps> = (props) => {
     )
 }
 
+const Point: FC<PointProps> = (props) => {
+    return (
+        <FooterPoint className={styles.serviceNamePoint}>
+            <Typography className={styles.pointTypography} type={"body1"}>{props.children}</Typography>
+        </FooterPoint>
+    )
+}
+
 const MainContent = forwardRef<MainContentref, MainContentProps>((props, ref) => {
     const { route, ...rest } = props
     const ref1 = useRef<HTMLDivElement>(null)
@@ -212,19 +222,76 @@ const MainContent = forwardRef<MainContentref, MainContentProps>((props, ref) =>
         }
     }))
 
+
+    const demolitionContent = (
+        <>
+            <Point>{t("pages.serviceName.content.main.demolition.1")}</Point>
+            <Point>{t("pages.serviceName.content.main.demolition.2")}</Point>
+            <Point>{t("pages.serviceName.content.main.demolition.3")}</Point>
+            <Point>{t("pages.serviceName.content.main.demolition.4")}</Point>
+            <Point>{t("pages.serviceName.content.main.demolition.5")}</Point>
+            <Point>{t("pages.serviceName.content.main.demolition.6")}</Point>
+            <Point>{t("pages.serviceName.content.main.demolition.7")}</Point>
+        </>
+    )
+    const communicationsContent = (
+        <>
+            <Point>{t("pages.serviceName.content.main.communications.1")}</Point>
+            <Point>{t("pages.serviceName.content.main.communications.2")}</Point>
+            <Point>{t("pages.serviceName.content.main.communications.3")}</Point>
+            <Point>{t("pages.serviceName.content.main.communications.4")}</Point>
+            <Point>{t("pages.serviceName.content.main.communications.5")}</Point>
+            <Point>{t("pages.serviceName.content.main.communications.6")}</Point>
+        </>
+    )
+
+    const machinerentContent = (
+        <>
+            <Point>{t("pages.serviceName.content.main.machinerent.1")}</Point>
+            <Point>{t("pages.serviceName.content.main.machinerent.2")}</Point>
+            <Point>{t("pages.serviceName.content.main.machinerent.3")}</Point>
+        </>
+    )
+
+    const seversContruction = (
+        <>
+            <Point>{t("pages.serviceName.content.main.sewersconstruction.1")}</Point>
+            <Point>{t("pages.serviceName.content.main.sewersconstruction.2")}</Point>
+            <Point>{t("pages.serviceName.content.main.sewersconstruction.3")}</Point>
+            <Point>{t("pages.serviceName.content.main.sewersconstruction.4")}</Point>
+            <Point>{t("pages.serviceName.content.main.sewersconstruction.5")}</Point>
+        </>
+    )
+
+    const transportContent = (
+        <>
+            <Point>{t("pages.serviceName.content.main.transport.1")}</Point>
+            <Point>{t("pages.serviceName.content.main.transport.2")}</Point>
+            <Point>{t("pages.serviceName.content.main.transport.3")}</Point>
+            <Point>{t("pages.serviceName.content.main.transport.4")}</Point>
+        </>
+    )
+
+
+
     return (
         <div {...rest}>
             <div className={styles.layer1} ref={ref1}></div>
             <div className={styles.layer2} ref={ref2}></div>
             <div className={styles.main} ref={ref3}>
                 <div className={styles.mainServiceInformation}>
-                    <Underliner underlinerClass={styles.underliner}>
+                    <Underliner className={styles.headerRoot} underlinerClass={styles.underliner}>
                         <Typography className={styles.header} type={"h6"} variant={["bold"]}>{t(`pages.serviceName.content.header.${route}`)}</Typography>
                     </Underliner>
-                    <Typography type={"body1"}>{t(`pages.serviceName.content.main.${route}`)}</Typography>
+                    <div className={styles.contentWrapper}>
+                        {route === "communications" ? communicationsContent :
+                            route === "demolition" ? demolitionContent :
+                                route === "machinerent" ? machinerentContent :
+                                    route === "sewersconstruction" ? seversContruction : transportContent}
+                    </div>
                 </div>
                 <div className={styles.secondaryServiceInformation}>
-                    <Typography type={"body1"} >
+                    <Typography className={styles.secondaryTypography} type={"body1"} >
                         {t(`pages.serviceName.content.secondary.${route}`)}
                     </Typography>
                 </div>

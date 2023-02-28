@@ -253,7 +253,7 @@ const NumberOfSection: FC<NumberOfSectionProps> = (props) => {
     return (
         <tr className={styles.sectionNumber}>
             <th colSpan={3}>
-                <Typography type={'subtitle1'} size={'medium'}>
+                <Typography type={'subtitle2'} size={'medium'}>
                     {children}
                 </Typography>
             </th>

@@ -77,8 +77,8 @@
     "col3": {
       "header": "Kontakt",
       "tel": "Tel.: +420 606 095 352",
-      "email": "linsta@linsta.cz",
-      "ico": "IČO.: 090 43 667",
+      "email": "Email: linsta@linsta.cz",
+      "ico": "IČO: 090 43 667",
       "dic": "DIČ: CZ09043667",
       "line1": "Hvozdecká 1488/1 ",
       "line2": "268 01 Hořovice",
@@ -107,7 +107,8 @@
         "header2": "Nosnost",
         "header3": "Cena",
         "from": "od",
-        "currency": "kč/den"
+        "currency": "kč/hod",
+        "currency2": "kč/den"
       }
     },
     "references": {
@@ -191,18 +192,48 @@
           "transport": "Nákladní autodoprava"
         },
         "main": {
-          "demolition": "xxx",
-          "communications": "xxx",
-          "machinerent": "xxx",
-          "sewersconstruction": "xxx",
-          "transport": "xxx"
+          "demolition": {
+            "1": "Příprava území",
+            "2": "Skrývka zeminy, ornice",
+            "3": "Hrubé terénní úpravy",
+            "4": "Výkopy inženýrských sítí",
+            "5": "Výkopy základů a základových pásů, bazénů, jímek",
+            "6": "Hutněné násypy a zásypy",
+            "7": "Třídění a recyklace materiálů"
+          },
+          "communications": {
+            "1": "Silnice I., II. a III. tříd",
+            "2": "Místní komunikace",
+            "3": "Polní silnice",
+            "4": "Cyklostezky",
+            "5": "Chodníky",
+            "6": "Parkoviště a odstavné plochy"
+          },
+          "machinerent": {
+            "1": "Pronájem strojů včetně obsluhy",
+            "2": "Převoz strojů a poskytnutí technické podpory",
+            "3": "Servis strojů včetně poradenství"
+          },
+          "sewersconstruction": {
+            "1": "Vodovody",
+            "2": "Vodojemy",
+            "3": "Dešťové a splaškové kanalizace",
+            "4": "Čističky odpadních vod",
+            "5": "Odvodňovací systémy"
+          },
+          "transport": {
+            "1": "Stavební autodoprava",
+            "2": "Nákup a doprava sypkých materiálů",
+            "3": "Odvoz a likvidace sypkých materiálů",
+            "4": "Pronájem kontejnerů – odvoz odpadu a suti včetně likvidace"
+          }
         },
         "secondary": {
-          "demolition": "xxx",
-          "communications": "xxx",
-          "machinerent": "xxx",
-          "sewersconstruction": "xxx",
-          "transport": "xxx"
+          "demolition": "Pro více informací o našich službách, nás můžete kontaktovat na telefonním čísle +420 606 095 352.",
+          "communications": "Pro více informací o našich službách, nás můžete kontaktovat na telefonním čísle +420 606 095 352.",
+          "machinerent": "Pro více informací o našich službách, nás můžete kontaktovat na telefonním čísle +420 606 095 352.",
+          "sewersconstruction": "Pro více informací o našich službách, nás můžete kontaktovat na telefonním čísle +420 606 095 352.",
+          "transport": "Pro více informací o našich službách, nás můžete kontaktovat na telefonním čísle +420 606 095 352."
         }
       },
       "banner": "Máte zájem o některou z našich služeb?",

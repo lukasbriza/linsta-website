@@ -105,6 +105,7 @@
       "mechaniztionCard": {
         "header1": "Označení",
         "header2": "Nosnost",
+        "header2b": "Hmotnost",
         "header3": "Cena",
         "from": "od",
         "currency": "kč/hod",

@@ -42,7 +42,7 @@ export const MechanizationCard: FC<MechanizationCardProps> = (props) => {
                 <div>{label}</div>
             </div>
             <div className={clsx([styles.sq3, styles.sq])}>
-                <h6 className={styles.header}>{t('pages.mechanization.mechaniztionCard.header2')}</h6>
+                <h6 className={styles.header}>{(type === "SM" || type === "M") ? t('pages.mechanization.mechaniztionCard.header2b') : t('pages.mechanization.mechaniztionCard.header2')}</h6>
                 <div>{capacity}</div>
             </div>
             <div className={clsx([styles.sq4, styles.sq])}>

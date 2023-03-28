@@ -65,7 +65,7 @@ const References: NextPage<ReferencesProps> = (props) => {
                 <section className={styles.referencesWrapper}>
                     {data.map((item, index) => {
                         return (
-                            <FadeIn canAnimate={animated && !transitioning} className={styles.demolition} key={index}>
+                            <FadeIn canAnimate={animated && !transitioning} className={styles.cardFadeWrapper} key={index}>
                                 <ReferenceCard
                                     src={item.pictures}
                                     header={item.name}

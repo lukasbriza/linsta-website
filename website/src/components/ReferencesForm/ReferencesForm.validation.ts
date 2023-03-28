@@ -22,8 +22,6 @@ const schema = (t: TFunction) => {
     file: ExtendedJoi.filelist()
       .ruleset.min(1)
       .rule({ message: "Form allow minimal one file." })
-      .ruleset.maxSize(1024 * 1024 * 3)
-      .rule({ message: "Maximum file size is 3MB." })
       .required()
       .messages({ "any.empty": "File is required." }),
   });

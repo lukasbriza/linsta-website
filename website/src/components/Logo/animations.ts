@@ -29,6 +29,7 @@ const fillElement = (el: SVGPathElement) => {
 const moveToInitialState = (
   svgRoot: SVGSVGElement,
   text: SVGPathElement,
+  text2: SVGPathElement,
   layer: HTMLDivElement
 ) => {
   const tl = gsap
@@ -47,9 +48,10 @@ const moveToInitialState = (
       },
       "initialStart"
     )
-    .set(svgRoot, { attr: { viewBox: "0 0 460 95" } })
+    .set(svgRoot, { attr: { viewBox: "0 -15 520 110" } })
     .addLabel("roundInInitial")
     .add(showtextAnimation(text), "roundInInitial")
+    .add(showtextAnimation(text2), "roundInInitial")
     .add(gsap.effects.hide(layer), 1.5);
   return tl;
 };
@@ -98,6 +100,7 @@ export const initialAnimation = (
   svgRoot: SVGSVGElement,
   svgContainer: HTMLDivElement,
   text: SVGPathElement,
+  text2: SVGPathElement,
   layer: HTMLDivElement,
   setAnimated: React.Dispatch<React.SetStateAction<boolean>>
 ) => {
@@ -112,6 +115,7 @@ export const initialAnimation = (
     .set(upPath, { opacity: 1 })
     .set(downPath, { opacity: 1 })
     .set(text, { display: "none", opacity: 0 })
+    .set(text2, { display: "none", opacity: 0 })
     //ANIMATE PATHS
     .add(strokeElement(upPath, 3.5), "paths")
     .add(strokeElement(downPath, 2, 1), 1)
@@ -119,7 +123,7 @@ export const initialAnimation = (
     .addLabel("fillAndShrink")
     .add(fillElement(upPath), "fillAndShrink")
     .add(fillElement(downPath), "fillAndShrink")
-    .add(moveToInitialState(svgRoot, text, layer), 3.75)
+    .add(moveToInitialState(svgRoot, text, text2, layer), 3.75)
     .call(() => setAnimated(true))
     .addLabel("clear")
     //CLEAR PROPERTIES

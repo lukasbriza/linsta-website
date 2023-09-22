@@ -1,9 +1,7 @@
 import { gsap, Power2, Power3 } from "gsap";
 import React from "react";
 
-const showtextAnimation = (el: SVGPathElement) => {
-  return gsap.effects.show(el, { duration: 1.5 });
-};
+
 const strokeElement = (
   el: SVGPathElement,
   duration?: number,
@@ -28,8 +26,6 @@ const fillElement = (el: SVGPathElement) => {
 
 const moveToInitialState = (
   svgRoot: SVGSVGElement,
-  text: SVGPathElement,
-  text2: SVGPathElement,
   layer: HTMLDivElement
 ) => {
   const tl = gsap
@@ -50,8 +46,7 @@ const moveToInitialState = (
     )
     .set(svgRoot, { attr: { viewBox: "0 -15 520 110" } })
     .addLabel("roundInInitial")
-    .add(showtextAnimation(text), "roundInInitial")
-    .add(showtextAnimation(text2), "roundInInitial")
+    .to(svgRoot, { opacity: 0, ease: Power3.easeInOut, duration: 0.5 })
     .add(gsap.effects.hide(layer), 1.5);
   return tl;
 };
@@ -123,7 +118,7 @@ export const initialAnimation = (
     .addLabel("fillAndShrink")
     .add(fillElement(upPath), "fillAndShrink")
     .add(fillElement(downPath), "fillAndShrink")
-    .add(moveToInitialState(svgRoot, text, text2, layer), 3.75)
+    .add(moveToInitialState(svgRoot, layer), 3.75)
     .call(() => setAnimated(true))
     .addLabel("clear")
     //CLEAR PROPERTIES

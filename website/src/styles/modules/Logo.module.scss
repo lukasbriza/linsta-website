@@ -11,6 +11,7 @@
   vertical-align: middle;
   overflow: hidden;
   cursor: pointer;
+  transition: opacity 0.3s ease-in;
 }
 
 .intialAnState {
@@ -51,4 +52,9 @@
   top: 0px;
   left: 0px;
   height: 38px;
+}
+
+
+.hide{
+  opacity:0;
 }

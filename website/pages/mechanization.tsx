@@ -29,9 +29,9 @@ export async function getServerSideProps({ locale }: { locale: string }) {
     if (mechanizationsHandle) return mechanizationsHandle
 
     const data = mechanizations as MechanizationObjectExt[]
-    const machines = findByType(data, "M")
-    const smallMachines = findByType(data, "SM")
-    const cars = findByType(data, "C")
+    const machines = findByType(data, "M").then((data) => data.sort((a, b) => a.order - b.order))
+    const smallMachines = findByType(data, "SM").then((data) => data.sort((a, b) => a.order - b.order))
+    const cars = findByType(data, "C").then((data) => data.sort((a, b) => a.order - b.order))
 
     const result = await Promise.all([machines, smallMachines, cars])
 

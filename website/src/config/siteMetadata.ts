@@ -9,7 +9,7 @@ export type MetaData = {
 
 export const siteMetaData: MetaData = {
   companyName: "LINSTA stavební s.r.o.",
-  phoneNumber: "+420606095352",
+  phoneNumber: "+420731184310",
   siteUrl:
     process.env.NODE_ENV === "development"
       ? "http://localhost:3000"

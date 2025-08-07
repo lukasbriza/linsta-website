@@ -45,13 +45,6 @@ const Contact: NextPage = () => {
                     text={t('pages.contact.pictureHeader')}
                 />
                 <section className={styles.statutars}>
-                    <FadeIn canAnimate={animated && !transitioning}>
-                        <StatutarCard
-                            header={t('pages.contact.contact1.name')}
-                            phone={t('pages.contact.contact1.tel')}
-                            mail={t('pages.contact.contact1.email')}
-                        />
-                    </FadeIn>
                     <FadeIn canAnimate={animated && !transitioning} delay={0.3}>
                         <StatutarCard
                             header={t('pages.contact.contact2.name')}
